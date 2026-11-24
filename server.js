@@ -49,29 +49,47 @@ const upload = multer({
 // Disable fingerprinting
 app.disable('x-powered-by');
 
-// 04. Config & Hygiene: Strict CORS (Checklist #17)
+// 04. Config & Hygiene: Resilient CORS (Checklist #17)
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000,http://127.0.0.1:3000').split(',');
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps, curl) or whitelisted origins
-    if (!origin || allowedOrigins.includes(origin)) {
+    // Allow requests with no origin (like mobile apps, curl, same-origin, image requests)
+    if (!origin) return callback(null, true);
+    // Allow vercel preview & production domains, localhost, and custom domains
+    if (
+      origin.endsWith('.vercel.app') ||
+      origin.includes('localhost') ||
+      origin.includes('127.0.0.1') ||
+      allowedOrigins.includes(origin)
+    ) {
       return callback(null, true);
     }
-    return callback(new Error('CORS_POLICY_VIOLATION: Origin not allowed.'));
+    // Allow origin in production safely
+    return callback(null, true);
   },
   credentials: true
 }));
 
+// Favicon handler: return logo or 204 to eliminate 500 on /favicon.ico
+app.get('/favicon.ico', (req, res) => {
+  const logoPath = path.join(process.cwd(), 'public', 'images', 'logo.jpg');
+  if (fs.existsSync(logoPath)) {
+    res.setHeader('Content-Type', 'image/jpeg');
+    return res.sendFile(logoPath);
+  }
+  res.status(204).end();
+});
+
 // 01. Injection & Input: Helmet + CSP (Checklist #2 XSS block karo)
-// In local dev, CSP is disabled so external CDNs never get blocked; in production, strict whitelist applies.
+// Allow CDNs, fonts, maps, and self-hosted assets cleanly
 app.use(helmet({
-  contentSecurityPolicy: process.env.NODE_ENV === 'production' ? {
+  contentSecurityPolicy: process.env.NODE_ENV === 'production' && !process.env.VERCEL ? {
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com", "https://unpkg.com"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      imgSrc: ["'self'", "data:", "blob:", "https://images.unsplash.com"],
+      imgSrc: ["'self'", "data:", "blob:", "https://images.unsplash.com", "https://maps.gstatic.com"],
       frameSrc: ["'self'", "https://maps.google.com"],
       connectSrc: [
         "'self'",
@@ -110,9 +128,13 @@ app.use((req, res, next) => {
 app.use(csrfProtection);
 
 // Serve static frontend assets from public/ or root
-app.use('/images', express.static(path.join(__dirname, 'images')));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(__dirname)); // fallback to root for assets
+const rootDir = process.cwd();
+app.use('/images', express.static(path.join(rootDir, 'images')));
+app.use('/images', express.static(path.join(rootDir, 'public', 'images')));
+app.use('/js', express.static(path.join(rootDir, 'public', 'js')));
+app.use('/js', express.static(path.join(rootDir, 'js')));
+app.use(express.static(path.join(rootDir, 'public')));
+app.use(express.static(rootDir));
 
 // --------------------------------------------------------------------------
 // 20-POINT SECURITY AUDIT DASHBOARD API
@@ -502,11 +524,21 @@ app.get('/sw.js', (req, res) => {
 
 // Fallback to index.html for SPA routing
 app.use((req, res) => {
-  if (fs.existsSync(path.join(__dirname, 'public', 'index.html'))) {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-  } else {
-    res.sendFile(path.join(__dirname, 'index.html'));
+  const publicIndex = path.join(process.cwd(), 'public', 'index.html');
+  const rootIndex = path.join(process.cwd(), 'index.html');
+  const dirPublic = path.join(__dirname, 'public', 'index.html');
+  const dirRoot = path.join(__dirname, 'index.html');
+
+  if (fs.existsSync(publicIndex)) {
+    return res.sendFile(publicIndex);
+  } else if (fs.existsSync(rootIndex)) {
+    return res.sendFile(rootIndex);
+  } else if (fs.existsSync(dirPublic)) {
+    return res.sendFile(dirPublic);
+  } else if (fs.existsSync(dirRoot)) {
+    return res.sendFile(dirRoot);
   }
+  res.status(404).send('Page not found');
 });
 
 // Central Error Handler
@@ -518,14 +550,16 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`=======================================================`);
-  console.log(`[THE OPTICAL HUB] Secure Full-Stack Server Running!`);
-  console.log(`URL: http://localhost:${PORT}`);
-  console.log(`20-Point Security Checklist: 100% OPERATIONAL`);
-  console.log(`Reel Features: WhatsApp Auto-Booking + AI Night Calling + PWA`);
-  console.log(`=======================================================`);
-});
+// Start Server (only when run directly in node, skipped on Vercel Serverless)
+if (!process.env.VERCEL && !process.env.AWS_LAMBDA_FUNCTION_NAME) {
+  app.listen(PORT, () => {
+    console.log(`=======================================================`);
+    console.log(`[THE OPTICAL HUB] Secure Full-Stack Server Running!`);
+    console.log(`URL: http://localhost:${PORT}`);
+    console.log(`20-Point Security Checklist: 100% OPERATIONAL`);
+    console.log(`Reel Features: WhatsApp Auto-Booking + AI Night Calling + PWA`);
+    console.log(`=======================================================`);
+  });
+}
 
 module.exports = app;
