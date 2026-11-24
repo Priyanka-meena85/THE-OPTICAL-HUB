@@ -1,0 +1,30 @@
+{
+  "name": "optical-folder",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000T\u0000H\u0000E\u0000-\u0000O\u0000P\u0000T\u0000I\u0000C\u0000A\u0000L\u0000-\u0000H\u0000U\u0000B\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Priyanka-meena85/THE-OPTICAL-HUB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Priyanka-meena85/THE-OPTICAL-HUB/issues"
+  },
+  "homepage": "https://github.com/Priyanka-meena85/THE-OPTICAL-HUB#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.5",
+    "helmet": "^8.3.0",
+    "multer": "^2.5.0"
+  }
+}
