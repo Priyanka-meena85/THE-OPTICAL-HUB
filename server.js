@@ -70,14 +70,46 @@ app.use(cors({
   credentials: true
 }));
 
-// Favicon handler: return logo or 204 to eliminate 500 on /favicon.ico
+// Favicon handler: return favicon or logo with direct buffer send
 app.get('/favicon.ico', (req, res) => {
-  const logoPath = path.join(process.cwd(), 'public', 'images', 'logo.jpg');
-  if (fs.existsSync(logoPath)) {
-    res.setHeader('Content-Type', 'image/jpeg');
-    return res.sendFile(logoPath);
+  const possibleIcons = [
+    path.join(__dirname, 'public', 'favicon.ico'),
+    path.join(__dirname, 'favicon.ico'),
+    path.join(process.cwd(), 'public', 'favicon.ico'),
+    path.join(process.cwd(), 'favicon.ico'),
+    path.join(__dirname, 'public', 'images', 'logo.jpg'),
+    path.join(process.cwd(), 'public', 'images', 'logo.jpg')
+  ];
+  for (const p of possibleIcons) {
+    if (fs.existsSync(p)) {
+      try {
+        const buf = fs.readFileSync(p);
+        res.setHeader('Content-Type', p.endsWith('.ico') ? 'image/x-icon' : 'image/jpeg');
+        return res.status(200).send(buf);
+      } catch (e) {}
+    }
   }
   res.status(204).end();
+});
+
+// Explicit Root Handler: serve index.html directly with UTF-8 string
+app.get('/', (req, res) => {
+  const possibleIndex = [
+    path.join(__dirname, 'public', 'index.html'),
+    path.join(__dirname, 'index.html'),
+    path.join(process.cwd(), 'public', 'index.html'),
+    path.join(process.cwd(), 'index.html')
+  ];
+  for (const p of possibleIndex) {
+    if (fs.existsSync(p)) {
+      try {
+        const html = fs.readFileSync(p, 'utf8');
+        res.setHeader('Content-Type', 'text/html; charset=utf-8');
+        return res.status(200).send(html);
+      } catch (e) {}
+    }
+  }
+  res.status(200).send('<!DOCTYPE html><html><head><title>The Optical Hub</title></head><body><h1>The Optical Hub</h1></body></html>');
 });
 
 // 01. Injection & Input: Helmet + CSP (Checklist #2 XSS block karo)
@@ -524,19 +556,27 @@ app.get('/sw.js', (req, res) => {
 
 // Fallback to index.html for SPA routing
 app.use((req, res) => {
-  const publicIndex = path.join(process.cwd(), 'public', 'index.html');
-  const rootIndex = path.join(process.cwd(), 'index.html');
-  const dirPublic = path.join(__dirname, 'public', 'index.html');
-  const dirRoot = path.join(__dirname, 'index.html');
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ success: false, error: 'API endpoint not found' });
+  }
 
-  if (fs.existsSync(publicIndex)) {
-    return res.sendFile(publicIndex);
-  } else if (fs.existsSync(rootIndex)) {
-    return res.sendFile(rootIndex);
-  } else if (fs.existsSync(dirPublic)) {
-    return res.sendFile(dirPublic);
-  } else if (fs.existsSync(dirRoot)) {
-    return res.sendFile(dirRoot);
+  const possibleIndex = [
+    path.join(__dirname, 'public', 'index.html'),
+    path.join(__dirname, 'index.html'),
+    path.join(process.cwd(), 'public', 'index.html'),
+    path.join(process.cwd(), 'index.html')
+  ];
+
+  for (const p of possibleIndex) {
+    if (fs.existsSync(p)) {
+      try {
+        const html = fs.readFileSync(p, 'utf8');
+        res.setHeader('Content-Type', 'text/html; charset=utf-8');
+        return res.status(200).send(html);
+      } catch (readErr) {
+        // continue trying next path
+      }
+    }
   }
   res.status(404).send('Page not found');
 });

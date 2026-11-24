@@ -65,12 +65,15 @@ const initialAdmin = {
 };
 memStore.users.push(initialAdmin);
 
-try {
-  const { DatabaseSync } = require('node:sqlite');
-  db = new DatabaseSync(DB_PATH);
+const isVercelServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NETLIFY);
 
-  // Initialize SQLite Tables
-  db.exec(`
+if (!isVercelServerless) {
+  try {
+    const { DatabaseSync } = require('node:sqlite');
+    db = new DatabaseSync(DB_PATH);
+
+    // Initialize SQLite Tables
+    db.exec(`
     PRAGMA foreign_keys = ON;
 
     CREATE TABLE IF NOT EXISTS users (
@@ -162,8 +165,12 @@ try {
 
   useSqlite = true;
   console.log('[Database] Native SQLite operational at:', DB_PATH);
-} catch (sqliteErr) {
-  console.warn('[Database Notice] SQLite bypassed for serverless safety (' + sqliteErr.message + '). Active resilient storage enabled.');
+  } catch (sqliteErr) {
+    console.warn('[Database Notice] SQLite bypassed for safety (' + sqliteErr.message + '). Active resilient storage enabled.');
+    useSqlite = false;
+  }
+} else {
+  console.log('[Database] Serverless environment detected: Active resilient in-memory storage enabled.');
   useSqlite = false;
 }
 
