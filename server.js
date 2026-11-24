@@ -320,16 +320,16 @@ app.post('/api/ai-call/query', aiCallingLimiter, (req, res) => {
     actionSuggestion = { type: 'OPEN_CALCULATOR', text: 'Price Calculator Kholein' };
   } else if (normalized.includes('toota') || normalized.includes('screw') || normalized.includes('repair') || normalized.includes('theek')) {
     intent = 'repair_help';
-    replyText = 'Fikar mat kijiye! Frame toota ho, screw loose ho ya nose pad badalna ho, Ramesh ji same day ready kar dete hain. Aap repair form me details daal dijiye, subah 9 baje aate hi ready milega.';
-    actionSuggestion = { type: 'OPEN_REPAIR', text: 'Repair Request Dalein' };
+    replyText = 'The Optical Hub workshop me precision frame alignment, laser welding, screw replacement, aur nose pad service same-day complete kiya jata hai. Aap online repair desk me request submit kar sakte hain.';
+    actionSuggestion = { type: 'OPEN_REPAIR', text: 'Repair Desk Kholein' };
   } else if (normalized.includes('address') || normalized.includes('kahan') || normalized.includes('location') || normalized.includes('landmark')) {
     intent = 'store_location';
     replyText = 'Hamara address hai: Shop no. 128, POOJA TOWER, 80 Feet Road, near AGRAWAL JEWELLERS, Krishna Nagar-B, Mahesh Nagar, Gopal Pura Mode, Jaipur. WhatsApp par location ke liye call karein: 9509959157.';
     actionSuggestion = { type: 'VIEW_MAP', text: 'Google Maps Par Dekhein' };
   } else {
     intent = 'ai_consultation';
-    replyText = `Namaste! Main The Optical Hub ka AI Assistant bol raha hoon. Raat ho ya din, hum aapki aankhon ki dekhbhaal ke liye taiyaar hain. Aap subah Ramesh Sharma ji se free checkup ke liye mil sakte hain ya WhatsApp par 9509959157 par message chhod sakte hain.`;
-    actionSuggestion = { type: 'WHATSAPP_CHAT', text: 'WhatsApp Par Message Chhodein' };
+    replyText = 'Namaste! Welcome to The Optical Hub. Main Optometrist Ramesh Sharma ka 24/7 AI Optical Assistant hoon. Clinic me free computerized vision testing, premium frames aur same-day spectacle repairs uplabdh hain. Direct assistance ke liye aap WhatsApp par 9509959157 par connect kar sakte hain.';
+    actionSuggestion = { type: 'WHATSAPP_CHAT', text: 'WhatsApp Par Connect Karein' };
   }
 
   // Log night call record in DB (SQLi safe)
