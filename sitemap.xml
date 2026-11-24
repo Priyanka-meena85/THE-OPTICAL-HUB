@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage -->
+  <url>
+    <loc>https://theopticalhub.vercel.app/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://theopticalhub.vercel.app/images/logo.jpg</image:loc>
+      <image:title>The Optical Hub Jaipur Official Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://theopticalhub.vercel.app/images/hero.jpg</image:loc>
+      <image:title>The Optical Hub Clinic and Eyewear Boutique</image:title>
+    </image:image>
+  </url>
+
+  <!-- Designer Eyewear & Boutique Frames Section -->
+  <url>
+    <loc>https://theopticalhub.vercel.app/#frames</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Free Eye Test & Clinic Booking Section -->
+  <url>
+    <loc>https://theopticalhub.vercel.app/#booking</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Virtual Selfie Try-On Mirror -->
+  <url>
+    <loc>https://theopticalhub.vercel.app/#try-on</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Same-Day Spectacle Repair Desk -->
+  <url>
+    <loc>https://theopticalhub.vercel.app/#repairs</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Encrypted Prescription Vault -->
+  <url>
+    <loc>https://theopticalhub.vercel.app/#rx</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Transparent Lens & Frame Price Calculator -->
+  <url>
+    <loc>https://theopticalhub.vercel.app/#calculator</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Store Location & Google Profile -->
+  <url>
+    <loc>https://theopticalhub.vercel.app/#contact</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

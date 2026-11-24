@@ -561,6 +561,66 @@ app.get('/api/auth/me', optionalAuth, (req, res) => {
 });
 
 // --------------------------------------------------------------------------
+// SEO & AI SEARCH DISCOVERY: SITEMAP, ROBOTS, LLMS.TXT
+// --------------------------------------------------------------------------
+app.get('/sitemap.xml', (req, res) => {
+  const possiblePaths = [
+    path.join(__dirname, 'public', 'sitemap.xml'),
+    path.join(process.cwd(), 'public', 'sitemap.xml'),
+    path.join(__dirname, 'sitemap.xml'),
+    path.join(process.cwd(), 'sitemap.xml')
+  ];
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      try {
+        const data = fs.readFileSync(p, 'utf8');
+        res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+        return res.status(200).send(data);
+      } catch (e) {}
+    }
+  }
+  res.status(404).send('Not Found');
+});
+
+app.get('/robots.txt', (req, res) => {
+  const possiblePaths = [
+    path.join(__dirname, 'public', 'robots.txt'),
+    path.join(process.cwd(), 'public', 'robots.txt'),
+    path.join(__dirname, 'robots.txt'),
+    path.join(process.cwd(), 'robots.txt')
+  ];
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      try {
+        const data = fs.readFileSync(p, 'utf8');
+        res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+        return res.status(200).send(data);
+      } catch (e) {}
+    }
+  }
+  res.status(404).send('Not Found');
+});
+
+app.get('/llms.txt', (req, res) => {
+  const possiblePaths = [
+    path.join(__dirname, 'public', 'llms.txt'),
+    path.join(process.cwd(), 'public', 'llms.txt'),
+    path.join(__dirname, 'llms.txt'),
+    path.join(process.cwd(), 'llms.txt')
+  ];
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      try {
+        const data = fs.readFileSync(p, 'utf8');
+        res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+        return res.status(200).send(data);
+      } catch (e) {}
+    }
+  }
+  res.status(404).send('Not Found');
+});
+
+// --------------------------------------------------------------------------
 // REEL FEATURE 4: PWA MANIFEST & SERVICE WORKER
 // --------------------------------------------------------------------------
 app.get('/manifest.json', (req, res) => {
