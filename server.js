@@ -161,11 +161,19 @@ app.use(csrfProtection);
 
 // Serve static frontend assets from public/ or root
 const rootDir = process.cwd();
-app.use('/images', express.static(path.join(rootDir, 'images')));
+app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 app.use('/images', express.static(path.join(rootDir, 'public', 'images')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/images', express.static(path.join(rootDir, 'images')));
+
+app.use('/js', express.static(path.join(__dirname, 'public', 'js')));
 app.use('/js', express.static(path.join(rootDir, 'public', 'js')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
 app.use('/js', express.static(path.join(rootDir, 'js')));
+
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(rootDir, 'public')));
+app.use(express.static(__dirname));
 app.use(express.static(rootDir));
 
 // --------------------------------------------------------------------------
@@ -545,13 +553,42 @@ app.get('/api/auth/me', optionalAuth, (req, res) => {
 // REEL FEATURE 4: PWA MANIFEST & SERVICE WORKER
 // --------------------------------------------------------------------------
 app.get('/manifest.json', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'manifest.json'));
+  const possiblePaths = [
+    path.join(__dirname, 'public', 'manifest.json'),
+    path.join(process.cwd(), 'public', 'manifest.json'),
+    path.join(__dirname, 'manifest.json'),
+    path.join(process.cwd(), 'manifest.json')
+  ];
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      try {
+        const data = fs.readFileSync(p, 'utf8');
+        res.setHeader('Content-Type', 'application/manifest+json');
+        return res.status(200).send(data);
+      } catch (e) {}
+    }
+  }
+  res.status(404).send('Not Found');
 });
 
 app.get('/sw.js', (req, res) => {
-  res.setHeader('Content-Type', 'application/javascript');
-  res.setHeader('Service-Worker-Allowed', '/');
-  res.sendFile(path.join(__dirname, 'public', 'sw.js'));
+  const possiblePaths = [
+    path.join(__dirname, 'public', 'sw.js'),
+    path.join(process.cwd(), 'public', 'sw.js'),
+    path.join(__dirname, 'sw.js'),
+    path.join(process.cwd(), 'sw.js')
+  ];
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      try {
+        const data = fs.readFileSync(p, 'utf8');
+        res.setHeader('Content-Type', 'application/javascript');
+        res.setHeader('Service-Worker-Allowed', '/');
+        return res.status(200).send(data);
+      } catch (e) {}
+    }
+  }
+  res.status(404).send('Not Found');
 });
 
 // Fallback to index.html for SPA routing
