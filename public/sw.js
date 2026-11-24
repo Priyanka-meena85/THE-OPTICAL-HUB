@@ -3,7 +3,7 @@
  * Completely eliminates CSP & MIME type conflicts.
  */
 
-const CACHE_NAME = 'optical-hub-v3';
+const CACHE_NAME = 'optical-hub-v4';
 
 self.addEventListener('install', (event) => {
   // Instantly take over without waiting
