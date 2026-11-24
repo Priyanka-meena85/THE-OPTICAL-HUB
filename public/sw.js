@@ -1,63 +1,45 @@
 /**
- * THE OPTICAL HUB — Service Worker
- * Enables PWA App under ₹1,000 ("Free Tools se App Live Karo")
- * Offline Caching & Instant Launch
+ * THE OPTICAL HUB — High Reliability Service Worker (v3)
+ * Completely eliminates CSP & MIME type conflicts.
  */
 
-const CACHE_NAME = 'optical-hub-cache-v1';
-const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/images/hero.jpg',
-  '/images/overlay-rect.svg',
-  '/images/overlay-round.svg',
-  '/images/overlay-aviator.svg'
-];
+const CACHE_NAME = 'optical-hub-v3';
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(STATIC_ASSETS);
-    })
-  );
+  // Instantly take over without waiting
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
+  // Clear any corrupted or old caches immediately
   event.waitUntil(
     caches.keys().then((keys) => {
-      return Promise.all(
-        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
-      );
-    })
+      return Promise.all(keys.map((key) => caches.delete(key)));
+    }).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
-  // Network first for API calls, Cache first for static assets
-  if (event.request.url.includes('/api/')) {
-    event.respondWith(
-      fetch(event.request).catch(() => {
-        return new Response(JSON.stringify({ success: false, error: 'Offline mode active.' }), {
-          headers: { 'Content-Type': 'application/json' }
-        });
-      })
-    );
-  } else {
-    event.respondWith(
-      caches.match(event.request).then((cachedResponse) => {
-        return cachedResponse || fetch(event.request).then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200 && event.request.method === 'GET') {
-            const responseToCache = networkResponse.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, responseToCache);
-            });
-          }
-          return networkResponse;
-        });
-      }).catch(() => caches.match('/'))
-    );
+  // 1. NEVER intercept third-party CDN scripts, fonts, or APIs
+  if (!event.request.url.startsWith(self.location.origin)) {
+    return;
   }
+
+  // 2. Pass-through for all dynamic APIs
+  if (event.request.url.includes('/api/')) {
+    return;
+  }
+
+  // 3. For page navigation (HTML document) only, fallback to offline index if network fails
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(() => caches.match('/index.html') || caches.match('/'))
+    );
+    return;
+  }
+
+  // 4. For local images/assets: network-first, do NOT fallback to HTML
+  event.respondWith(
+    fetch(event.request).catch(() => caches.match(event.request))
+  );
 });

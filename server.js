@@ -63,8 +63,9 @@ app.use(cors({
 }));
 
 // 01. Injection & Input: Helmet + CSP (Checklist #2 XSS block karo)
+// In local dev, CSP is disabled so external CDNs never get blocked; in production, strict whitelist applies.
 app.use(helmet({
-  contentSecurityPolicy: {
+  contentSecurityPolicy: process.env.NODE_ENV === 'production' ? {
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com", "https://unpkg.com"],
@@ -72,11 +73,16 @@ app.use(helmet({
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       imgSrc: ["'self'", "data:", "blob:", "https://images.unsplash.com"],
       frameSrc: ["'self'", "https://maps.google.com"],
-      connectSrc: ["'self'"],
-      objectSrc: ["'none'"],
-      upgradeInsecureRequests: process.env.NODE_ENV === 'production' ? [] : null
+      connectSrc: [
+        "'self'",
+        "https://cdn.tailwindcss.com",
+        "https://fonts.googleapis.com",
+        "https://fonts.gstatic.com",
+        "https://unpkg.com"
+      ],
+      objectSrc: ["'none'"]
     }
-  },
+  } : false,
   crossOriginEmbedderPolicy: false
 }));
 
