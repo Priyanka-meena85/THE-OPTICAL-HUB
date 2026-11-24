@@ -251,51 +251,114 @@
       </div>
     </section>
 
-    <!-- SECTION 2: SMART FRAME SEARCH -->
-    <section id="frames" class="border-t border-line bg-cream">
-      <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
-        <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    <!-- SECTION 2: SMART FRAME SEARCH & DESIGNER COLLECTION -->
+    <section id="frames" class="border-t border-line bg-surface/40 py-14 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div class="max-w-2xl">
-            <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Smart frame search</p>
-            <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">Frames you can filter before you visit.</h2>
-            <p class="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">Twelve frames in the shop right now. Pick who it is for, the lens type, and a budget. Enquiry goes straight to WhatsApp.</p>
+            <div class="inline-flex items-center gap-2 rounded-full bg-blue-100 text-pine px-3 py-1 text-xs font-bold uppercase tracking-wider">
+              <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="12" r="4"/><circle cx="18" cy="12" r="4"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+              <span>Designer Eyewear &amp; Boutique Frames</span>
+            </div>
+            <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+              Frames you can filter before you visit.
+            </h2>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70 sm:text-base">
+              Explore 12 curated styles in-store right now. Filter by category, lens prescription, or budget. Click "Try On" to test on your selfie, or book via WhatsApp.
+            </p>
           </div>
-          <p id="frame-count" class="text-sm font-medium text-ink/60" aria-live="polite"></p>
+
+          <!-- In-Store Status Badge -->
+          <div class="flex items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 shadow-sm shrink-0">
+            <span class="flex h-3 w-3 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+            </span>
+            <div>
+              <p class="text-xs font-bold text-ink">In-Store Collection</p>
+              <p class="text-[11px] text-ink/60">Pooja Tower, Gopal Pura Mode</p>
+            </div>
+          </div>
         </div>
 
-        <div class="mt-8 space-y-4">
-          <div>
-            <p class="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink/50">Category</p>
+        <!-- Unified Smart Filter Console -->
+        <div class="mt-8 rounded-3xl border border-line bg-white p-5 sm:p-7 shadow-card space-y-5">
+          
+          <!-- Top Row: Live Search Input + Count & Reset -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-b border-line/60 pb-4">
+            <div class="relative flex-1 max-w-md">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-ink/40">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <input id="frame-search-input" type="text" placeholder="Search by name (e.g. Browline, Cat-Eye, Fort, Flex)..." class="h-11 w-full rounded-2xl border border-line bg-surface/40 pl-10 pr-4 text-xs sm:text-sm text-ink outline-none transition-all focus:border-pine focus:bg-white focus:ring-2 focus:ring-pine/20" />
+            </div>
+
+            <div class="flex items-center justify-between sm:justify-end gap-3">
+              <span id="frame-count" class="inline-flex items-center gap-1.5 rounded-full bg-pine/10 text-pine px-3 py-1 text-xs font-semibold" aria-live="polite">
+                12 frames found
+              </span>
+              <button id="reset-filters-btn" type="button" class="inline-flex items-center gap-1 rounded-full border border-line bg-surface/40 px-3 py-1 text-xs font-medium text-ink/70 hover:bg-white hover:text-clay transition-colors" title="Clear all filters">
+                <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                <span>Reset Filters</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Filter Group 1: Category -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-ink/70 flex items-center gap-1.5">
+                <svg class="h-3.5 w-3.5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Category:
+              </span>
+            </div>
             <div class="no-scrollbar flex gap-2 overflow-x-auto pb-1" role="group" aria-label="Category">
-              <button type="button" class="filter-btn is-on h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="cat" data-value="All" aria-pressed="true">All</button>
-              <button type="button" class="filter-btn h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="cat" data-value="Gents" aria-pressed="false">Gents</button>
-              <button type="button" class="filter-btn h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="cat" data-value="Ladies" aria-pressed="false">Ladies</button>
-              <button type="button" class="filter-btn h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="cat" data-value="Kids" aria-pressed="false">Kids</button>
-              <button type="button" class="filter-btn h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="cat" data-value="Sunglasses" aria-pressed="false">Sunglasses</button>
+              <button type="button" class="filter-btn is-on h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-semibold transition-all" data-filter="cat" data-value="All" aria-pressed="true">All (12)</button>
+              <button type="button" class="filter-btn h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-medium transition-all" data-filter="cat" data-value="Gents" aria-pressed="false">Gents</button>
+              <button type="button" class="filter-btn h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-medium transition-all" data-filter="cat" data-value="Ladies" aria-pressed="false">Ladies</button>
+              <button type="button" class="filter-btn h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-medium transition-all" data-filter="cat" data-value="Kids" aria-pressed="false">Kids</button>
+              <button type="button" class="filter-btn h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-medium transition-all" data-filter="cat" data-value="Sunglasses" aria-pressed="false">Sunglasses</button>
             </div>
           </div>
-          <div>
-            <p class="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink/50">Type</p>
+
+          <!-- Filter Group 2: Lens Compatibility -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-ink/70 flex items-center gap-1.5">
+                <svg class="h-3.5 w-3.5 text-pine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg>
+                Lens Compatibility:
+              </span>
+            </div>
             <div class="no-scrollbar flex gap-2 overflow-x-auto pb-1" role="group" aria-label="Type">
-              <button type="button" class="filter-btn is-on h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="type" data-value="All" aria-pressed="true">All</button>
-              <button type="button" class="filter-btn h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="type" data-value="Power" aria-pressed="false">Power</button>
-              <button type="button" class="filter-btn h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="type" data-value="Blue-Cut" aria-pressed="false">Blue-Cut</button>
-              <button type="button" class="filter-btn h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="type" data-value="Progressive" aria-pressed="false">Progressive</button>
+              <button type="button" class="filter-btn is-on h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-semibold transition-all" data-filter="type" data-value="All" aria-pressed="true">All</button>
+              <button type="button" class="filter-btn h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-medium transition-all" data-filter="type" data-value="Power" aria-pressed="false">Power / Single Vision</button>
+              <button type="button" class="filter-btn h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-medium transition-all" data-filter="type" data-value="Blue-Cut" aria-pressed="false">Blue-Cut Computer</button>
+              <button type="button" class="filter-btn h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-medium transition-all" data-filter="type" data-value="Progressive" aria-pressed="false">Progressive Bifocal</button>
             </div>
           </div>
-          <div>
-            <p class="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink/50">Price</p>
+
+          <!-- Filter Group 3: Price Range -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-ink/70 flex items-center gap-1.5">
+                <svg class="h-3.5 w-3.5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Price Budget:
+              </span>
+            </div>
             <div class="no-scrollbar flex gap-2 overflow-x-auto pb-1" role="group" aria-label="Price">
-              <button type="button" class="filter-btn is-on h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="price" data-value="All" aria-pressed="true">All</button>
-              <button type="button" class="filter-btn h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="price" data-value="under" aria-pressed="false">Under 999</button>
-              <button type="button" class="filter-btn h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="price" data-value="mid" aria-pressed="false">999-1999</button>
-              <button type="button" class="filter-btn h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="price" data-value="high" aria-pressed="false">1999-4000</button>
-              <button type="button" class="filter-btn h-10 shrink-0 rounded-full px-4 text-sm font-medium" data-filter="price" data-value="top" aria-pressed="false">4000+</button>
+              <button type="button" class="filter-btn is-on h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-semibold transition-all" data-filter="price" data-value="All" aria-pressed="true">All</button>
+              <button type="button" class="filter-btn h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-medium transition-all" data-filter="price" data-value="under" aria-pressed="false">Under ₹999</button>
+              <button type="button" class="filter-btn h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-medium transition-all" data-filter="price" data-value="mid" aria-pressed="false">₹999 – ₹1,999</button>
+              <button type="button" class="filter-btn h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-medium transition-all" data-filter="price" data-value="high" aria-pressed="false">₹1,999 – ₹4,000</button>
+              <button type="button" class="filter-btn h-9 sm:h-10 shrink-0 rounded-full px-4 text-xs sm:text-sm font-medium transition-all" data-filter="price" data-value="top" aria-pressed="false">₹4,000+ Luxury</button>
             </div>
           </div>
+
         </div>
 
-        <div id="frame-grid" class="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4"></div>
+        <div id="frame-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"></div>
       </div>
     </section>
 
@@ -1308,39 +1371,87 @@
 
     // Frames Rendering
     function renderFrames() {
+      var searchInput = document.getElementById("frame-search-input");
+      var query = searchInput ? searchInput.value.toLowerCase().trim() : "";
+
       var list = FRAMES.filter(function (frame) {
         var catOk = filters.cat === "All" || frame.cat === filters.cat;
         var typeOk = filters.type === "All" || frame.type === filters.type;
-        return catOk && typeOk && inPrice(frame.price, filters.price);
+        var priceOk = inPrice(frame.price, filters.price);
+        var queryOk = !query
+          || frame.name.toLowerCase().indexOf(query) !== -1
+          || frame.cat.toLowerCase().indexOf(query) !== -1
+          || frame.type.toLowerCase().indexOf(query) !== -1
+          || frame.tag.toLowerCase().indexOf(query) !== -1;
+        return catOk && typeOk && priceOk && queryOk;
       });
+
       var grid = document.getElementById("frame-grid");
       var count = document.getElementById("frame-count");
-      count.textContent = list.length + (list.length === 1 ? " frame" : " frames");
+      if (count) {
+        count.textContent = list.length + (list.length === 1 ? " frame found" : " frames found");
+      }
+
       if (!list.length) {
-        grid.innerHTML = '<p class="col-span-full rounded-2xl border border-dashed border-line bg-white px-4 py-10 text-center text-sm text-ink/70">No frames in this combination. Change a filter, or <button type="button" id="reset-filters" class="font-semibold underline">reset all</button>.</p>';
+        grid.innerHTML = '<div class="col-span-full rounded-3xl border border-dashed border-line bg-white/70 p-10 text-center">'
+          + '<div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-pine mb-3">'
+          + '<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>'
+          + '</div>'
+          + '<h4 class="text-base font-semibold text-ink">No frames matched this criteria</h4>'
+          + '<p class="mt-1 text-xs text-ink/60">Try adjusting your filters, clearing your search query, or reset everything.</p>'
+          + '<button type="button" id="reset-filters" class="mt-4 inline-flex items-center gap-1.5 rounded-full bg-pine px-4 py-2 text-xs font-semibold text-white hover:bg-pineDark transition-all">Clear Filters &amp; Search</button>'
+          + '</div>';
         var reset = document.getElementById("reset-filters");
         if (reset) reset.addEventListener("click", resetFilters);
         return;
       }
+
       grid.innerHTML = list.map(function (frame) {
         var text = "Hi The Optical Hub, I want to enquire about " + frame.name + " (" + frame.cat + ", " + frame.type + ") at Rs " + frame.price + ".";
+        var savings = frame.old - frame.price;
+        var pct = Math.round((savings / frame.old) * 100);
+
         return ''
-          + '<article class="flex flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition-transform duration-200 hover:-translate-y-1">'
-          + '<div class="relative aspect-[4/3] bg-[#efeae2] overflow-hidden">'
-          + '<img src="' + escapeHtml(frame.img) + '" alt="' + escapeHtml(frame.name) + ' eyeglasses" width="800" height="600" class="h-full w-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />'
-          + '<span class="absolute left-2.5 top-2.5 rounded-full bg-cream/95 backdrop-blur px-2.5 py-1 text-[11px] font-semibold text-ink shadow-sm">' + escapeHtml(frame.tag) + '</span>'
+          + '<article class="group flex flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">'
+          + '<div class="relative aspect-[4/3] bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden">'
+          + '<img src="' + escapeHtml(frame.img) + '" alt="' + escapeHtml(frame.name) + ' eyeglasses" width="800" height="600" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />'
+          + '<div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>'
+          + '<div class="absolute left-3 top-3 flex items-center gap-1.5">'
+          + '<span class="inline-flex items-center gap-1 rounded-full bg-white/95 backdrop-blur px-2.5 py-1 text-[11px] font-bold text-ink shadow-sm">'
+          + '<span class="h-1.5 w-1.5 rounded-full bg-pine"></span>'
+          + escapeHtml(frame.tag)
+          + '</span>'
           + '</div>'
-          + '<div class="flex flex-1 flex-col p-3 sm:p-4">'
-          + '<h3 class="font-display text-sm sm:text-base lg:text-lg font-semibold leading-tight text-ink truncate">' + escapeHtml(frame.name) + '</h3>'
-          + '<p class="mt-1 text-[11px] sm:text-xs text-ink/60">' + escapeHtml(frame.cat) + ' · ' + escapeHtml(frame.type) + '</p>'
-          + '<p class="mt-2 flex items-baseline gap-1.5 sm:gap-2">'
-          + '<span class="text-sm sm:text-base font-semibold text-ink">' + escapeHtml(money(frame.price)) + '</span>'
-          + '<span class="text-[11px] sm:text-xs text-ink/40 line-through">' + escapeHtml(money(frame.old)) + '</span>'
-          + '</p>'
-          + '<a href="' + escapeHtml(waLink(text)) + '" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex h-9 sm:h-10 items-center justify-center gap-1.5 rounded-full bg-pine text-xs sm:text-sm font-semibold text-cream hover:bg-pineDark transition-colors">'
-          + '<i data-lucide="message-circle" class="h-3.5 w-3.5 sm:h-4 sm:w-4"></i>'
-          + '<span>WhatsApp Enquiry</span>'
+          + '<span class="absolute right-3 top-3 inline-flex items-center rounded-full bg-rose-500 text-white px-2 py-0.5 text-[10px] font-bold tracking-tight shadow-sm">'
+          + pct + '% OFF'
+          + '</span>'
+          + '</div>'
+          + '<div class="flex flex-1 flex-col p-4 sm:p-5">'
+          + '<div class="flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-pine mb-1">'
+          + '<span>' + escapeHtml(frame.cat) + '</span>'
+          + '<span class="text-ink/40 font-normal">·</span>'
+          + '<span class="text-ink/60">' + escapeHtml(frame.type) + '</span>'
+          + '</div>'
+          + '<h3 class="font-display text-base sm:text-lg font-bold leading-snug text-ink group-hover:text-pine transition-colors truncate">'
+          + escapeHtml(frame.name)
+          + '</h3>'
+          + '<div class="mt-2.5 flex items-baseline justify-between">'
+          + '<div class="flex items-baseline gap-2">'
+          + '<span class="text-base sm:text-lg font-bold text-ink">' + escapeHtml(money(frame.price)) + '</span>'
+          + '<span class="text-xs text-ink/40 line-through">' + escapeHtml(money(frame.old)) + '</span>'
+          + '</div>'
+          + '<span class="inline-flex items-center rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 px-2 py-0.5 text-[10px] font-semibold">Save ' + escapeHtml(money(savings)) + '</span>'
+          + '</div>'
+          + '<div class="mt-4 flex items-center gap-2 pt-3 border-t border-line/60">'
+          + '<a href="#try-on" class="flex-1 inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-pine/30 bg-pine/5 text-xs font-semibold text-pine hover:bg-pine hover:text-white transition-all shadow-sm">'
+          + '<svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="12" r="4"/><circle cx="18" cy="12" r="4"/><line x1="10" y1="12" x2="14" y2="12"/></svg>'
+          + '<span>Try On</span>'
           + '</a>'
+          + '<a href="' + escapeHtml(waLink(text)) + '" target="_blank" rel="noopener noreferrer" style="background-color: #25D366 !important;" class="flex-1 inline-flex h-9 items-center justify-center gap-1.5 rounded-xl text-xs font-semibold text-white shadow-sm hover:brightness-105 transition-all">'
+          + '<svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84-1.56 1.56-3.64 2.42-5.84 2.42-1.44 0-2.86-.38-4.12-1.12l-.3-.18-3.12.82.83-3.04-.2-.31c-.81-1.28-1.24-2.77-1.24-4.31 0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg>'
+          + '<span>WhatsApp</span>'
+          + '</a>'
+          + '</div>'
           + '</div></article>';
       }).join("");
       refreshIcons();
@@ -1348,6 +1459,8 @@
 
     function resetFilters() {
       filters = { cat: "All", type: "All", price: "All" };
+      var searchInput = document.getElementById("frame-search-input");
+      if (searchInput) searchInput.value = "";
       document.querySelectorAll("[data-filter]").forEach(function (btn) {
         var on = btn.getAttribute("data-value") === "All";
         btn.classList.toggle("is-on", on);
@@ -1620,6 +1733,19 @@
         renderFrames();
       });
     });
+
+    // Smart Frame Search Input & Reset Button Listeners
+    var frameSearchInput = document.getElementById("frame-search-input");
+    if (frameSearchInput) {
+      frameSearchInput.addEventListener("input", function () {
+        renderFrames();
+      });
+    }
+
+    var resetFiltersBtn = document.getElementById("reset-filters-btn");
+    if (resetFiltersBtn) {
+      resetFiltersBtn.addEventListener("click", resetFilters);
+    }
 
     document.getElementById("frame-range").addEventListener("input", updateCalculator);
     document.querySelectorAll('input[name="lens"], [data-coat]').forEach(function (input) {
