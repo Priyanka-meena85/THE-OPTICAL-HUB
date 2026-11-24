@@ -13,8 +13,12 @@ const path = require('node:path');
 const fs = require('node:fs');
 const crypto = require('node:crypto');
 
-const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NETLIFY);
-const DB_DIR = isServerless ? '/tmp' : __dirname;
+let DB_DIR = __dirname;
+try {
+  fs.accessSync(__dirname, fs.constants.W_OK);
+} catch (accessErr) {
+  DB_DIR = '/tmp';
+}
 const DB_PATH = path.join(DB_DIR, 'optical_hub.db');
 
 let db = null;

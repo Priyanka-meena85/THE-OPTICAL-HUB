@@ -550,8 +550,8 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start Server (only when run directly in node, skipped on Vercel Serverless)
-if (!process.env.VERCEL && !process.env.AWS_LAMBDA_FUNCTION_NAME) {
+// Start Server (only when run directly via node server.js, never when imported as a serverless module)
+if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`=======================================================`);
     console.log(`[THE OPTICAL HUB] Secure Full-Stack Server Running!`);
