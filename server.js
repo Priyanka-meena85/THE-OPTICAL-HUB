@@ -49,6 +49,17 @@ const upload = multer({
 // Disable fingerprinting
 app.disable('x-powered-by');
 
+// Normalize rewritten destination URL for Vercel Serverless
+app.use((req, res, next) => {
+  const orig = req.headers['x-forwarded-uri'] || req.headers['x-matched-path'];
+  if (orig && !orig.startsWith('/api/index.js')) {
+    req.url = orig;
+  } else if (req.url.startsWith('/api/index.js')) {
+    req.url = req.url.replace(/^\/api\/index\.js/, '') || '/';
+  }
+  next();
+});
+
 // 04. Config & Hygiene: Resilient CORS (Checklist #17)
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000,http://127.0.0.1:3000').split(',');
 app.use(cors({
