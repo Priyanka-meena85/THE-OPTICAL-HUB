@@ -1,10 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" fill="none">
-  <g stroke="#1a1814" stroke-linejoin="round">
-    <path d="M40 78 H250 L300 150 L250 196 H78 Q40 196 40 150 Z" fill="rgba(40,40,40,0.22)" stroke-width="12"/>
-    <path d="M600 78 H390 L340 150 L390 196 H562 Q600 196 600 150 Z" fill="rgba(40,40,40,0.22)" stroke-width="12"/>
-    <path d="M250 92 H390" stroke-width="10" stroke-linecap="round"/>
-    <path d="M300 92 V118" stroke-width="8" stroke-linecap="round"/>
-    <path d="M40 100 H10" stroke-width="10" stroke-linecap="round"/>
-    <path d="M630 100 H600" stroke-width="10" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" fill="none">
+  <defs>
+    <linearGradient id="av-frame-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--frame-c1, #2b2b2b)"/>
+      <stop offset="50%" stop-color="var(--frame-c2, #181818)"/>
+      <stop offset="100%" stop-color="var(--frame-c3, #0a0a0a)"/>
+    </linearGradient>
+    <linearGradient id="av-lens-glare" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--lens-tint, #ffffff)" stop-opacity="0.22"/>
+      <stop offset="35%" stop-color="var(--lens-tint, #ffffff)" stop-opacity="0.06"/>
+      <stop offset="70%" stop-color="var(--lens-glare, #38bdf8)" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="var(--lens-tint, #ffffff)" stop-opacity="0.02"/>
+    </linearGradient>
+    <filter id="av-shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#av-shadow)">
+    <!-- Left Lens Glass -->
+    <path d="M50,85 C55,55 125,50 255,52 C265,52 275,65 272,95 C268,135 258,195 210,215 C160,235 70,225 52,175 C42,145 45,105 50,85 Z" fill="url(#av-lens-glare)"/>
+    <!-- Right Lens Glass -->
+    <path d="M590,85 C585,55 515,50 385,52 C375,52 365,65 368,95 C372,135 382,195 430,215 C480,235 570,225 588,175 C598,145 595,105 590,85 Z" fill="url(#av-lens-glare)"/>
+
+    <!-- Left Teardrop Aviator Rim -->
+    <path d="M50,85 C55,55 125,50 255,52 C265,52 275,65 272,95 C268,135 258,195 210,215 C160,235 70,225 52,175 C42,145 45,105 50,85 Z" stroke="url(#av-frame-grad)" stroke-width="8" stroke-linejoin="round" fill="none"/>
+    <path d="M54,88 C59,60 125,55 251,57 C260,57 269,68 266,95 C263,132 253,190 208,209 C162,228 76,219 59,173 C50,145 52,107 54,88 Z" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2" fill="none"/>
+
+    <!-- Right Teardrop Aviator Rim -->
+    <path d="M590,85 C585,55 515,50 385,52 C375,52 365,65 368,95 C372,135 382,195 430,215 C480,235 570,225 588,175 C598,145 595,105 590,85 Z" stroke="url(#av-frame-grad)" stroke-width="8" stroke-linejoin="round" fill="none"/>
+    <path d="M586,88 C581,60 515,55 389,57 C380,57 371,68 374,95 C377,132 387,190 432,209 C478,228 564,219 581,173 C590,145 588,107 586,88 Z" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2" fill="none"/>
+
+    <!-- Top Brow Bar (Iconic Aviator Sweat Bar) -->
+    <path d="M215,46 C255,42 385,42 425,46" stroke="url(#av-frame-grad)" stroke-width="7" stroke-linecap="round"/>
+    <path d="M220,45 C255,42 385,42 420,45" stroke="#ffffff" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Lower Arched Nose Bridge -->
+    <path d="M260,82 C285,68 355,68 380,82" stroke="url(#av-frame-grad)" stroke-width="7" stroke-linecap="round"/>
+    <path d="M262,81 C285,69 355,69 378,81" stroke="#ffffff" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Nose Pad Mounts & Silicone Pads -->
+    <path d="M280,105 C282,125 288,140 286,150" stroke="url(#av-frame-grad)" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="286" cy="148" rx="4.5" ry="9" transform="rotate(-15 286 148)" fill="rgba(240,240,240,0.65)" stroke="url(#av-frame-grad)" stroke-width="1.5"/>
+
+    <path d="M360,105 C358,125 352,140 354,150" stroke="url(#av-frame-grad)" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="354" cy="148" rx="4.5" ry="9" transform="rotate(15 354 148)" fill="rgba(240,240,240,0.65)" stroke="url(#av-frame-grad)" stroke-width="1.5"/>
+
+    <!-- Outer Temples / Hinges -->
+    <path d="M48,85 L14,83" stroke="url(#av-frame-grad)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M592,85 L626,83" stroke="url(#av-frame-grad)" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- Realistic Glass Glare Streak -->
+    <line x1="80" y1="70" x2="160" y2="185" stroke="#ffffff" stroke-width="22" stroke-linecap="round" opacity="0.12"/>
+    <line x1="175" y1="120" x2="225" y2="180" stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity="0.08"/>
+    <line x1="420" y1="70" x2="500" y2="185" stroke="#ffffff" stroke-width="22" stroke-linecap="round" opacity="0.12"/>
+    <line x1="515" y1="120" x2="565" y2="180" stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity="0.08"/>
   </g>
 </svg>

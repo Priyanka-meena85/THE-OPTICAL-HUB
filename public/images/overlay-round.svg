@@ -1,9 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" fill="none">
-  <g stroke="#1a1814" stroke-linejoin="round">
-    <circle cx="168" cy="112" r="92" fill="rgba(255,255,255,0.16)" stroke-width="12"/>
-    <circle cx="472" cy="112" r="92" fill="rgba(255,255,255,0.16)" stroke-width="12"/>
-    <path d="M260 108 H380" stroke-width="10" stroke-linecap="round"/>
-    <path d="M76 104 H18" stroke-width="10" stroke-linecap="round"/>
-    <path d="M622 104 H564" stroke-width="10" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" fill="none">
+  <defs>
+    <linearGradient id="rd-frame-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--frame-c1, #2b2b2b)"/>
+      <stop offset="50%" stop-color="var(--frame-c2, #181818)"/>
+      <stop offset="100%" stop-color="var(--frame-c3, #0a0a0a)"/>
+    </linearGradient>
+    <linearGradient id="rd-lens-glare" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--lens-tint, #ffffff)" stop-opacity="0.2"/>
+      <stop offset="40%" stop-color="var(--lens-tint, #ffffff)" stop-opacity="0.05"/>
+      <stop offset="70%" stop-color="var(--lens-glare, #38bdf8)" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="var(--lens-tint, #ffffff)" stop-opacity="0.02"/>
+    </linearGradient>
+    <filter id="rd-shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.32"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#rd-shadow)">
+    <!-- Left Glass -->
+    <circle cx="155" cy="118" r="95" fill="url(#rd-lens-glare)"/>
+    <!-- Right Glass -->
+    <circle cx="485" cy="118" r="95" fill="url(#rd-lens-glare)"/>
+
+    <!-- Left Round Rim -->
+    <circle cx="155" cy="118" r="95" stroke="url(#rd-frame-grad)" stroke-width="9"/>
+    <circle cx="155" cy="118" r="91" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2"/>
+
+    <!-- Right Round Rim -->
+    <circle cx="485" cy="118" r="95" stroke="url(#rd-frame-grad)" stroke-width="9"/>
+    <circle cx="485" cy="118" r="91" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2"/>
+
+    <!-- High Keyhole Round Bridge -->
+    <path d="M250,110 C270,82 370,82 390,110" stroke="url(#rd-frame-grad)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M252,108 C270,84 370,84 388,108" stroke="#ffffff" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Outer Hinges -->
+    <path d="M60,114 L20,114" stroke="url(#rd-frame-grad)" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="34" cy="114" r="2.5" fill="#e2e8f0"/>
+    <path d="M580,114 L620,114" stroke="url(#rd-frame-grad)" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="606" cy="114" r="2.5" fill="#e2e8f0"/>
+
+    <!-- Glare Sheen -->
+    <line x1="100" y1="65" x2="185" y2="175" stroke="#ffffff" stroke-width="20" stroke-linecap="round" opacity="0.12"/>
+    <line x1="430" y1="65" x2="515" y2="175" stroke="#ffffff" stroke-width="20" stroke-linecap="round" opacity="0.12"/>
   </g>
 </svg>

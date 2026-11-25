@@ -543,101 +543,236 @@
       </div>
     </section>
 
-    <!-- SECTION 4: VIRTUAL TRY-ON (6 SHAPES, COLOR SELECTOR & ON-DEVICE PRIVACY) -->
-    <section id="try-on" class="border-t border-line bg-[#efeae1]">
-      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:px-6 sm:py-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center">
-        <div>
-          <div class="inline-flex items-center gap-1.5 rounded-full bg-amber-100 text-amber-900 px-3 py-1 text-xs font-bold uppercase tracking-wider">
+    <!-- SECTION 4: VIRTUAL TRY-ON STUDIO (6 REALISTIC SHAPES, DRAGGING, COLORS & LENSES) -->
+    <section id="try-on" class="border-t border-line bg-[#f5f2eb]">
+      <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+        <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <div class="inline-flex items-center gap-1.5 rounded-full bg-amber-100 text-amber-900 px-3.5 py-1 text-xs font-bold uppercase tracking-wider">
             <svg class="h-3.5 w-3.5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="12" r="4"/><circle cx="18" cy="12" r="4"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
-            <span>Virtual Try-On Studio</span>
+            <span>Virtual Eyewear Studio</span>
           </div>
-          <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl text-ink">Preview eyewear directly on your selfie.</h2>
-          <p class="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">Pick from 6 classic &amp; modern eyewear silhouettes, choose your frame tone, and adjust sizing to match your face structure.</p>
-          
-          <!-- 6 Frame Shape Pickers -->
-          <div class="mt-5">
-            <span class="text-xs font-bold uppercase tracking-wider text-ink/70 block mb-2">1. Select Frame Shape (6 Styles):</span>
-            <div class="grid grid-cols-3 gap-2" role="group" aria-label="Frame shapes">
-              <button type="button" class="frame-pick is-on rounded-2xl border border-line bg-white p-2.5 text-center hover:border-pine transition-all" data-overlay="images/overlay-rect.svg" data-shape="rect" aria-pressed="true">
-                <img src="images/overlay-rect.svg" alt="Rectangle Frame" class="mx-auto h-8 w-full object-contain" />
-                <span class="mt-1 block text-xs font-semibold text-ink">Rectangle</span>
-              </button>
-              <button type="button" class="frame-pick rounded-2xl border border-line bg-white p-2.5 text-center hover:border-pine transition-all" data-overlay="images/overlay-round.svg" data-shape="round" aria-pressed="false">
-                <img src="images/overlay-round.svg" alt="Round Frame" class="mx-auto h-8 w-full object-contain" />
-                <span class="mt-1 block text-xs font-medium text-ink">Round</span>
-              </button>
-              <button type="button" class="frame-pick rounded-2xl border border-line bg-white p-2.5 text-center hover:border-pine transition-all" data-overlay="images/overlay-aviator.svg" data-shape="aviator" aria-pressed="false">
-                <img src="images/overlay-aviator.svg" alt="Aviator Frame" class="mx-auto h-8 w-full object-contain" />
-                <span class="mt-1 block text-xs font-medium text-ink">Aviator</span>
-              </button>
-              <button type="button" class="frame-pick rounded-2xl border border-line bg-white p-2.5 text-center hover:border-pine transition-all" data-overlay="images/overlay-rect.svg" data-shape="wayfarer" aria-pressed="false">
-                <svg class="mx-auto h-8 w-full text-slate-800" viewBox="0 0 200 60" fill="currentColor"><path d="M15,10 C45,10 80,14 90,28 C85,48 55,54 25,48 C15,44 10,25 15,10 Z M185,10 C155,10 120,14 110,28 C115,48 145,54 175,48 C185,44 190,25 185,10 Z M88,20 L112,20 C108,24 92,24 88,20 Z" /></svg>
-                <span class="mt-1 block text-xs font-medium text-ink">Wayfarer</span>
-              </button>
-              <button type="button" class="frame-pick rounded-2xl border border-line bg-white p-2.5 text-center hover:border-pine transition-all" data-overlay="images/overlay-round.svg" data-shape="cateye" aria-pressed="false">
-                <svg class="mx-auto h-8 w-full text-slate-800" viewBox="0 0 200 60" fill="currentColor"><path d="M10,8 C40,16 75,20 88,32 C82,50 52,56 22,50 C12,42 6,22 10,8 Z M190,8 C160,16 125,20 112,32 C118,50 148,56 178,50 C188,42 194,22 190,8 Z M85,22 L115,22 C110,26 90,26 85,22 Z" /></svg>
-                <span class="mt-1 block text-xs font-medium text-ink">Cat-Eye</span>
-              </button>
-              <button type="button" class="frame-pick rounded-2xl border border-line bg-white p-2.5 text-center hover:border-pine transition-all" data-overlay="images/overlay-rect.svg" data-shape="hexagonal" aria-pressed="false">
-                <svg class="mx-auto h-8 w-full text-slate-800" viewBox="0 0 200 60" fill="currentColor"><polygon points="20,12 80,12 92,32 78,52 24,52 10,32" stroke="currentColor" stroke-width="4" fill="none" /><polygon points="180,12 120,12 108,32 122,52 176,52 190,32" stroke="currentColor" stroke-width="4" fill="none" /><line x1="88" y1="26" x2="112" y2="26" stroke="currentColor" stroke-width="4" /></svg>
-                <span class="mt-1 block text-xs font-medium text-ink">Hexagonal</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Color & Sizing Controls -->
-          <div class="mt-5 space-y-3 rounded-2xl border border-line bg-white p-4 shadow-sm">
-            <div>
-              <span class="text-xs font-bold uppercase tracking-wider text-ink/70 block mb-1.5">2. Frame Color:</span>
-              <div class="flex flex-wrap gap-2">
-                <button type="button" class="tryon-color-btn is-active h-7 px-3 rounded-full text-xs font-medium border border-ink bg-slate-900 text-white" data-color="slate-900">Matte Black</button>
-                <button type="button" class="tryon-color-btn h-7 px-3 rounded-full text-xs font-medium border border-line bg-amber-700 text-white" data-color="amber-700">Warm Tortoise</button>
-                <button type="button" class="tryon-color-btn h-7 px-3 rounded-full text-xs font-medium border border-line bg-slate-400 text-white" data-color="slate-400">Silver Steel</button>
-                <button type="button" class="tryon-color-btn h-7 px-3 rounded-full text-xs font-medium border border-line bg-rose-700 text-white" data-color="rose-700">Rose Gold</button>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-3 pt-2 border-t border-line/60">
-              <div>
-                <label class="block text-xs font-semibold text-ink/75" for="frame-align">Eye Level Position:</label>
-                <input id="frame-align" class="mt-1.5 w-full" type="range" min="20" max="48" value="34" />
-              </div>
-              <div>
-                <label class="block text-xs font-semibold text-ink/75" for="frame-scale">Frame Width Scale:</label>
-                <input id="frame-scale" class="mt-1.5 w-full" type="range" min="70" max="130" value="100" />
-              </div>
-            </div>
-          </div>
-
-          <p id="face-error" class="mt-3 text-sm text-clay" role="alert"></p>
+          <h2 class="mt-3 font-display text-2xl font-bold tracking-tight text-ink sm:text-4xl">
+            Hold frames directly over your face.
+          </h2>
+          <p class="mt-2.5 text-sm sm:text-base leading-relaxed text-ink/75">
+            Touch and drag to adjust position, test 6 boutique frame silhouettes, switch luxury metals &amp; acetate shades, and preview blue-cut lenses.
+          </p>
         </div>
 
-        <div>
-          <!-- Photo Canvas Card with Clear Privacy Badge -->
-          <div class="relative mx-auto block max-w-md overflow-hidden rounded-[1.75rem] border border-line bg-cream shadow-card">
-            <div id="tryon-container" class="relative aspect-[3/4] w-full overflow-hidden bg-slate-200">
-              <img id="tryon-face" src="images/tryon-face.jpg" alt="Selfie preview for virtual eyewear" width="800" height="1000" class="h-full w-full object-cover object-center" />
-              <img id="tryon-overlay" src="images/overlay-rect.svg" alt="Eyewear contour" class="tryon-overlay transition-all" style="top: 34%; transform: translateX(-50%) scale(1);" />
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start">
+          
+          <!-- LEFT: INTERACTIVE CONTROLS -->
+          <div class="space-y-4 sm:space-y-5">
+            
+            <!-- STEP 1: SILHOUETTES (6 STYLES) -->
+            <div class="rounded-2xl border border-line bg-white p-4 sm:p-5 shadow-sm">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-ink/70">1. Select Frame Silhouette (6 Styles)</span>
+                <span id="tryon-selected-shape-badge" class="rounded-full bg-pine/10 px-2.5 py-0.5 text-[11px] font-semibold text-pine">Executive Rectangle</span>
+              </div>
+              <div class="grid grid-cols-3 gap-2 sm:gap-2.5" role="group" aria-label="Eyewear shapes">
+                <button type="button" class="frame-pick is-on group flex flex-col items-center justify-center rounded-xl border-2 border-pine bg-pine/5 p-2 text-center transition-all hover:border-pine active:scale-95 shadow-sm" data-shape="rect">
+                  <div class="h-8 w-full flex items-center justify-center text-ink pointer-events-none">
+                    <img src="images/overlay-rect.svg" alt="Rectangle" class="h-7 w-auto max-w-[90%] object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform" />
+                  </div>
+                  <span class="mt-1 block text-xs font-bold text-ink">Rectangle</span>
+                  <span class="text-[10px] text-ink/60">Oval &amp; Round faces</span>
+                </button>
+
+                <button type="button" class="frame-pick group flex flex-col items-center justify-center rounded-xl border border-line bg-cream/50 p-2 text-center transition-all hover:border-pine active:scale-95" data-shape="round">
+                  <div class="h-8 w-full flex items-center justify-center text-ink pointer-events-none">
+                    <img src="images/overlay-round.svg" alt="Round" class="h-7 w-auto max-w-[90%] object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform" />
+                  </div>
+                  <span class="mt-1 block text-xs font-bold text-ink">Round Panto</span>
+                  <span class="text-[10px] text-ink/60">Square faces</span>
+                </button>
+
+                <button type="button" class="frame-pick group flex flex-col items-center justify-center rounded-xl border border-line bg-cream/50 p-2 text-center transition-all hover:border-pine active:scale-95" data-shape="aviator">
+                  <div class="h-8 w-full flex items-center justify-center text-ink pointer-events-none">
+                    <img src="images/overlay-aviator.svg" alt="Aviator" class="h-8 w-auto max-w-[90%] object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform" />
+                  </div>
+                  <span class="mt-1 block text-xs font-bold text-ink">Aviator</span>
+                  <span class="text-[10px] text-ink/60">All face shapes</span>
+                </button>
+
+                <button type="button" class="frame-pick group flex flex-col items-center justify-center rounded-xl border border-line bg-cream/50 p-2 text-center transition-all hover:border-pine active:scale-95" data-shape="wayfarer">
+                  <div class="h-8 w-full flex items-center justify-center text-ink pointer-events-none">
+                    <img src="images/overlay-wayfarer.svg" alt="Wayfarer" class="h-7 w-auto max-w-[90%] object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform" />
+                  </div>
+                  <span class="mt-1 block text-xs font-bold text-ink">Wayfarer</span>
+                  <span class="text-[10px] text-ink/60">Classic Acetate</span>
+                </button>
+
+                <button type="button" class="frame-pick group flex flex-col items-center justify-center rounded-xl border border-line bg-cream/50 p-2 text-center transition-all hover:border-pine active:scale-95" data-shape="hexagonal">
+                  <div class="h-8 w-full flex items-center justify-center text-ink pointer-events-none">
+                    <img src="images/overlay-hexagonal.svg" alt="Hexagonal" class="h-7 w-auto max-w-[90%] object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform" />
+                  </div>
+                  <span class="mt-1 block text-xs font-bold text-ink">Hexagonal</span>
+                  <span class="text-[10px] text-ink/60">Modern Wire</span>
+                </button>
+
+                <button type="button" class="frame-pick group flex flex-col items-center justify-center rounded-xl border border-line bg-cream/50 p-2 text-center transition-all hover:border-pine active:scale-95" data-shape="cateye">
+                  <div class="h-8 w-full flex items-center justify-center text-ink pointer-events-none">
+                    <img src="images/overlay-cateye.svg" alt="Cat-Eye" class="h-7 w-auto max-w-[90%] object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform" />
+                  </div>
+                  <span class="mt-1 block text-xs font-bold text-ink">Chic Cat-Eye</span>
+                  <span class="text-[10px] text-ink/60">Winged Brow</span>
+                </button>
+              </div>
             </div>
 
-            <!-- Upload Floating Pill -->
-            <label for="face-file" class="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-cream/95 px-3.5 py-2 text-xs font-bold text-ink shadow-md hover:bg-white cursor-pointer transition-transform hover:scale-105">
-              <svg class="h-4 w-4 text-pine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              <span>Upload Your Selfie</span>
-            </label>
-            <input id="face-file" type="file" accept="image/*" class="sr-only" />
+            <!-- STEP 2: FRAME MATERIAL & COLOR -->
+            <div class="rounded-2xl border border-line bg-white p-4 sm:p-5 shadow-sm">
+              <div class="flex items-center justify-between mb-2.5">
+                <span class="text-xs font-bold uppercase tracking-wider text-ink/70">2. Frame Tone &amp; Material</span>
+                <span id="tryon-selected-color-badge" class="text-xs font-bold text-ink">Obsidian Matte Black</span>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <button type="button" class="tryon-color-btn is-active flex items-center gap-2 rounded-full border-2 border-pine bg-paper px-3 py-1.5 text-xs font-bold text-ink transition-all shadow-sm" data-color="black" data-label="Obsidian Matte Black">
+                  <span class="h-3.5 w-3.5 rounded-full bg-stone-900 border border-black/30 shadow-inner"></span>
+                  <span>Matte Black</span>
+                </button>
+                <button type="button" class="tryon-color-btn flex items-center gap-2 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-bold text-ink transition-all hover:border-ink/40 shadow-sm" data-color="gold" data-label="24K Luxury Gold">
+                  <span class="h-3.5 w-3.5 rounded-full bg-gradient-to-tr from-amber-600 via-amber-300 to-yellow-200 border border-amber-600/40 shadow-inner"></span>
+                  <span>24K Gold</span>
+                </button>
+                <button type="button" class="tryon-color-btn flex items-center gap-2 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-bold text-ink transition-all hover:border-ink/40 shadow-sm" data-color="silver" data-label="Gunmetal Steel">
+                  <span class="h-3.5 w-3.5 rounded-full bg-gradient-to-tr from-slate-500 via-slate-300 to-slate-100 border border-slate-500/40 shadow-inner"></span>
+                  <span>Gunmetal Steel</span>
+                </button>
+                <button type="button" class="tryon-color-btn flex items-center gap-2 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-bold text-ink transition-all hover:border-ink/40 shadow-sm" data-color="tortoise" data-label="Warm Amber Tortoise">
+                  <span class="h-3.5 w-3.5 rounded-full bg-gradient-to-tr from-amber-950 via-amber-700 to-amber-500 border border-amber-900/40 shadow-inner"></span>
+                  <span>Warm Tortoise</span>
+                </button>
+                <button type="button" class="tryon-color-btn flex items-center gap-2 rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-bold text-ink transition-all hover:border-ink/40 shadow-sm" data-color="rosegold" data-label="Rose Gold Metallic">
+                  <span class="h-3.5 w-3.5 rounded-full bg-gradient-to-tr from-rose-700 via-rose-300 to-rose-200 border border-rose-600/40 shadow-inner"></span>
+                  <span>Rose Gold</span>
+                </button>
+              </div>
+            </div>
 
-            <!-- Reset Button -->
-            <button id="reset-tryon-btn" type="button" class="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-black/60 backdrop-blur px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-black/80 transition-colors">
-              <span>Reset Model</span>
-            </button>
+            <!-- STEP 3: LENS COATING -->
+            <div class="rounded-2xl border border-line bg-white p-4 sm:p-5 shadow-sm">
+              <div class="flex items-center justify-between mb-2.5">
+                <span class="text-xs font-bold uppercase tracking-wider text-ink/70">3. Lens Treatment</span>
+                <span id="tryon-selected-lens-badge" class="text-xs font-bold text-pine">Clear AR Vision</span>
+              </div>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" class="tryon-lens-btn is-active rounded-xl border-2 border-pine bg-pine/5 p-2 text-center text-xs font-bold text-ink transition-all" data-lens="clear" data-label="Clear Anti-Glare">
+                  <span>Clear Anti-Glare</span>
+                </button>
+                <button type="button" class="tryon-lens-btn rounded-xl border border-line bg-paper p-2 text-center text-xs font-medium text-ink transition-all hover:border-ink/40" data-lens="bluecut" data-label="Blue-Cut Shield">
+                  <span class="text-sky font-semibold">Blue-Cut Shield</span>
+                </button>
+                <button type="button" class="tryon-lens-btn rounded-xl border border-line bg-paper p-2 text-center text-xs font-medium text-ink transition-all hover:border-ink/40" data-lens="sunglass" data-label="Sunglasses Tint">
+                  <span>Sunglasses Tint</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 4: PRECISION SIZING & FIT SLIDERS -->
+            <div class="rounded-2xl border border-line bg-white p-4 sm:p-5 shadow-sm">
+              <span class="text-xs font-bold uppercase tracking-wider text-ink/70 block mb-3">4. Fine-Tune Fit &amp; Tilt</span>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                <div>
+                  <div class="flex justify-between text-xs font-semibold text-ink/75">
+                    <label for="frame-scale">Frame Width:</label>
+                    <span id="frame-scale-val" class="font-bold text-pine">100%</span>
+                  </div>
+                  <input id="frame-scale" class="mt-1.5 w-full accent-pine cursor-pointer" type="range" min="65" max="140" value="100" />
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-semibold text-ink/75">
+                    <label for="frame-align">Eye Level:</label>
+                    <span id="frame-align-val" class="font-bold text-pine">35%</span>
+                  </div>
+                  <input id="frame-align" class="mt-1.5 w-full accent-pine cursor-pointer" type="range" min="15" max="65" value="35" />
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-semibold text-ink/75">
+                    <label for="frame-tilt">Tilt / Angle:</label>
+                    <span id="frame-tilt-val" class="font-bold text-pine">0°</span>
+                  </div>
+                  <input id="frame-tilt" class="mt-1.5 w-full accent-pine cursor-pointer" type="range" min="-15" max="15" value="0" />
+                </div>
+              </div>
+              <p class="mt-3 text-[11px] text-ink/60 flex items-center gap-1">
+                <svg class="h-3 w-3 text-pine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span>You can also touch &amp; drag the glasses directly over the face!</span>
+              </p>
+            </div>
+
+            <p id="face-error" class="text-sm font-semibold text-clay" role="alert"></p>
           </div>
 
-          <!-- Trust & Privacy Card -->
-          <div class="mx-auto mt-3 max-w-md rounded-xl border border-emerald-500/20 bg-emerald-50/50 p-2.5 flex items-center justify-center gap-2 text-xs text-emerald-800">
-            <svg class="h-4 w-4 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            <span class="font-medium">100% On-Device Privacy — Photo stays in your browser memory and is never uploaded.</span>
+          <!-- RIGHT: INTERACTIVE CANVAS VIEWPORT & WHATSAPP ACTION -->
+          <div class="lg:sticky lg:top-24 space-y-3">
+            
+            <div class="relative mx-auto block max-w-md overflow-hidden rounded-[2rem] border border-line bg-slate-900 shadow-2xl">
+              
+              <!-- CANVAS CONTAINER -->
+              <div id="tryon-container" class="relative aspect-[3/4] w-full overflow-hidden bg-slate-900 select-none touch-none cursor-crosshair">
+                
+                <!-- MODEL PHOTO -->
+                <img id="tryon-face" src="images/tryon-face.jpg" alt="Model Selfie Preview" width="800" height="1000" class="h-full w-full object-cover object-center pointer-events-none select-none transition-opacity duration-300" />
+                
+                <!-- DRAGGABLE GLASSES HOLDER -->
+                <div id="tryon-frame-holder" class="absolute cursor-grab active:cursor-grabbing select-none" style="left: 50%; top: 35%; width: 75%; transform: translate(-50%, -50%) rotate(0deg) scale(1); will-change: transform, left, top;">
+                  <div id="tryon-svg-mount" class="w-full h-auto drop-shadow-[0_12px_24px_rgba(0,0,0,0.45)] transition-all"></div>
+                </div>
+
+                <!-- DRAG HINT PILL (Fades on interaction) -->
+                <div id="tryon-hint" class="pointer-events-none absolute bottom-4 inset-x-4 mx-auto max-w-[260px] rounded-full bg-black/80 backdrop-blur-md px-3 py-1.5 text-center text-[11px] font-semibold text-white/90 shadow-lg flex items-center justify-center gap-1.5 transition-opacity duration-500">
+                  <svg class="h-3 w-3 text-gold shrink-0 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                  <span>Drag glasses to fit eyes</span>
+                  <svg class="h-3 w-3 text-gold shrink-0 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                </div>
+
+                <!-- TOP FLOATING ACTIONS -->
+                <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2 pointer-events-auto">
+                  
+                  <!-- Female / Male Model Switcher -->
+                  <div class="flex items-center gap-0.5 rounded-full bg-black/65 backdrop-blur-md p-1 border border-white/20 shadow-md">
+                    <button type="button" id="model-female-btn" class="model-select-btn is-active rounded-full px-2.5 py-1 text-[11px] font-semibold text-white bg-pine transition-all">Female</button>
+                    <button type="button" id="model-male-btn" class="model-select-btn rounded-full px-2.5 py-1 text-[11px] font-semibold text-white/80 hover:text-white transition-all">Male</button>
+                  </div>
+
+                  <!-- Upload Selfie & Reset Buttons -->
+                  <div class="flex items-center gap-1.5">
+                    <label for="face-file" class="inline-flex items-center gap-1.5 rounded-full bg-cream/95 backdrop-blur-md px-3 py-1 text-xs font-bold text-ink shadow-md hover:bg-white cursor-pointer transition-transform hover:scale-105 active:scale-95">
+                      <svg class="h-3.5 w-3.5 text-pine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                      <span class="hidden sm:inline">Upload Selfie</span>
+                      <span class="inline sm:hidden">Selfie</span>
+                    </label>
+                    <input id="face-file" type="file" accept="image/*" class="sr-only" />
+
+                    <button id="reset-tryon-btn" type="button" class="inline-flex items-center justify-center h-7 w-7 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white hover:bg-black/90 transition-all" title="Reset Fit Position">
+                      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    </button>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- ENQUIRE THIS FRAME ON WHATSAPP CTA -->
+            <a id="tryon-wa-btn" href="#" target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#25D366] px-4 py-3.5 text-sm font-bold text-white shadow-md hover:bg-[#1ebd5a] transition-all">
+              <svg class="h-5 w-5 fill-white" viewBox="0 0 24 24">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.27-2.42 5.82a8.196 8.196 0 0 1-5.82 2.42c-1.44 0-2.86-.38-4.11-1.12l-.29-.18-3.06.8 1.05-2.98-.19-.31c-.81-1.32-1.24-2.84-1.24-4.45 0-4.54 3.7-8.24 8.24-8.24m4.54 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.43 1.02 2.6c.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.59.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31Z"/>
+              </svg>
+              <span id="tryon-wa-btn-label">Check Availability on WhatsApp</span>
+            </a>
+
+            <!-- PRIVACY GUARANTEE PILL -->
+            <div class="rounded-xl border border-emerald-500/20 bg-emerald-50/70 p-2.5 flex items-center justify-center gap-2 text-xs text-emerald-800 text-center">
+              <svg class="h-4 w-4 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span class="font-medium">100% On-Device Privacy — Photo stays in browser memory only and is never uploaded.</span>
+            </div>
+
           </div>
+
         </div>
       </div>
     </section>
@@ -2163,391 +2298,299 @@
       input.addEventListener("change", updateCalculator);
     });
 
+    // ==========================================
+    // VIRTUAL TRY-ON STUDIO ENGINE
+    // ==========================================
+    var TRYON_SVGS = {"rect":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 230\" fill=\"none\">\n  <defs>\n    <linearGradient id=\"rc-frame-grad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"var(--frame-c1, #2b2b2b)\"/>\n      <stop offset=\"50%\" stop-color=\"var(--frame-c2, #181818)\"/>\n      <stop offset=\"100%\" stop-color=\"var(--frame-c3, #0a0a0a)\"/>\n    </linearGradient>\n    <linearGradient id=\"rc-lens-glare\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.2\"/>\n      <stop offset=\"40%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.05\"/>\n      <stop offset=\"70%\" stop-color=\"var(--lens-glare, #38bdf8)\" stop-opacity=\"0.12\"/>\n      <stop offset=\"100%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.02\"/>\n    </linearGradient>\n    <filter id=\"rc-shadow\" x=\"-5%\" y=\"-5%\" width=\"110%\" height=\"115%\">\n      <feDropShadow dx=\"0\" dy=\"4\" stdDeviation=\"4\" flood-color=\"#000\" flood-opacity=\"0.32\"/>\n    </filter>\n  </defs>\n\n  <g filter=\"url(#rc-shadow)\">\n    <!-- Left Glass -->\n    <rect x=\"42\" y=\"46\" width=\"224\" height=\"136\" rx=\"28\" fill=\"url(#rc-lens-glare)\"/>\n    <!-- Right Glass -->\n    <rect x=\"374\" y=\"46\" width=\"224\" height=\"136\" rx=\"28\" fill=\"url(#rc-lens-glare)\"/>\n\n    <!-- Left Rectangular Rim -->\n    <rect x=\"42\" y=\"46\" width=\"224\" height=\"136\" rx=\"28\" stroke=\"url(#rc-frame-grad)\" stroke-width=\"10\" stroke-linejoin=\"round\" fill=\"none\"/>\n    <rect x=\"46\" y=\"50\" width=\"216\" height=\"128\" rx=\"24\" stroke=\"#ffffff\" stroke-opacity=\"0.25\" stroke-width=\"2\" fill=\"none\"/>\n\n    <!-- Right Rectangular Rim -->\n    <rect x=\"374\" y=\"46\" width=\"224\" height=\"136\" rx=\"28\" stroke=\"url(#rc-frame-grad)\" stroke-width=\"10\" stroke-linejoin=\"round\" fill=\"none\"/>\n    <rect x=\"378\" y=\"50\" width=\"216\" height=\"128\" rx=\"24\" stroke=\"#ffffff\" stroke-opacity=\"0.25\" stroke-width=\"2\" fill=\"none\"/>\n\n    <!-- Keyhole Arch Bridge -->\n    <path d=\"M266,95 C285,78 355,78 374,95\" stroke=\"url(#rc-frame-grad)\" stroke-width=\"11\" stroke-linecap=\"round\"/>\n    <path d=\"M268,93 C285,79 355,79 372,93\" stroke=\"#ffffff\" stroke-opacity=\"0.3\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n\n    <!-- Outer Hinge Endpieces -->\n    <path d=\"M42,95 L14,94\" stroke=\"url(#rc-frame-grad)\" stroke-width=\"10\" stroke-linecap=\"round\"/>\n    <circle cx=\"28\" cy=\"94.5\" r=\"2.5\" fill=\"#e2e8f0\"/>\n    <path d=\"M598,95 L626,94\" stroke=\"url(#rc-frame-grad)\" stroke-width=\"10\" stroke-linecap=\"round\"/>\n    <circle cx=\"612\" cy=\"94.5\" r=\"2.5\" fill=\"#e2e8f0\"/>\n\n    <!-- Subtle Glare Slants -->\n    <line x1=\"75\" y1=\"60\" x2=\"155\" y2=\"165\" stroke=\"#ffffff\" stroke-width=\"20\" stroke-linecap=\"round\" opacity=\"0.12\"/>\n    <line x1=\"407\" y1=\"60\" x2=\"487\" y2=\"165\" stroke=\"#ffffff\" stroke-width=\"20\" stroke-linecap=\"round\" opacity=\"0.12\"/>\n  </g>\n</svg>","round":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 240\" fill=\"none\">\n  <defs>\n    <linearGradient id=\"rd-frame-grad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"var(--frame-c1, #2b2b2b)\"/>\n      <stop offset=\"50%\" stop-color=\"var(--frame-c2, #181818)\"/>\n      <stop offset=\"100%\" stop-color=\"var(--frame-c3, #0a0a0a)\"/>\n    </linearGradient>\n    <linearGradient id=\"rd-lens-glare\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.2\"/>\n      <stop offset=\"40%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.05\"/>\n      <stop offset=\"70%\" stop-color=\"var(--lens-glare, #38bdf8)\" stop-opacity=\"0.12\"/>\n      <stop offset=\"100%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.02\"/>\n    </linearGradient>\n    <filter id=\"rd-shadow\" x=\"-5%\" y=\"-5%\" width=\"110%\" height=\"115%\">\n      <feDropShadow dx=\"0\" dy=\"4\" stdDeviation=\"4\" flood-color=\"#000\" flood-opacity=\"0.32\"/>\n    </filter>\n  </defs>\n\n  <g filter=\"url(#rd-shadow)\">\n    <!-- Left Glass -->\n    <circle cx=\"155\" cy=\"118\" r=\"95\" fill=\"url(#rd-lens-glare)\"/>\n    <!-- Right Glass -->\n    <circle cx=\"485\" cy=\"118\" r=\"95\" fill=\"url(#rd-lens-glare)\"/>\n\n    <!-- Left Round Rim -->\n    <circle cx=\"155\" cy=\"118\" r=\"95\" stroke=\"url(#rd-frame-grad)\" stroke-width=\"9\"/>\n    <circle cx=\"155\" cy=\"118\" r=\"91\" stroke=\"#ffffff\" stroke-opacity=\"0.25\" stroke-width=\"2\"/>\n\n    <!-- Right Round Rim -->\n    <circle cx=\"485\" cy=\"118\" r=\"95\" stroke=\"url(#rd-frame-grad)\" stroke-width=\"9\"/>\n    <circle cx=\"485\" cy=\"118\" r=\"91\" stroke=\"#ffffff\" stroke-opacity=\"0.25\" stroke-width=\"2\"/>\n\n    <!-- High Keyhole Round Bridge -->\n    <path d=\"M250,110 C270,82 370,82 390,110\" stroke=\"url(#rd-frame-grad)\" stroke-width=\"9\" stroke-linecap=\"round\"/>\n    <path d=\"M252,108 C270,84 370,84 388,108\" stroke=\"#ffffff\" stroke-opacity=\"0.3\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n\n    <!-- Outer Hinges -->\n    <path d=\"M60,114 L20,114\" stroke=\"url(#rd-frame-grad)\" stroke-width=\"9\" stroke-linecap=\"round\"/>\n    <circle cx=\"34\" cy=\"114\" r=\"2.5\" fill=\"#e2e8f0\"/>\n    <path d=\"M580,114 L620,114\" stroke=\"url(#rd-frame-grad)\" stroke-width=\"9\" stroke-linecap=\"round\"/>\n    <circle cx=\"606\" cy=\"114\" r=\"2.5\" fill=\"#e2e8f0\"/>\n\n    <!-- Glare Sheen -->\n    <line x1=\"100\" y1=\"65\" x2=\"185\" y2=\"175\" stroke=\"#ffffff\" stroke-width=\"20\" stroke-linecap=\"round\" opacity=\"0.12\"/>\n    <line x1=\"430\" y1=\"65\" x2=\"515\" y2=\"175\" stroke=\"#ffffff\" stroke-width=\"20\" stroke-linecap=\"round\" opacity=\"0.12\"/>\n  </g>\n</svg>","aviator":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 260\" fill=\"none\">\n  <defs>\n    <linearGradient id=\"av-frame-grad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"var(--frame-c1, #2b2b2b)\"/>\n      <stop offset=\"50%\" stop-color=\"var(--frame-c2, #181818)\"/>\n      <stop offset=\"100%\" stop-color=\"var(--frame-c3, #0a0a0a)\"/>\n    </linearGradient>\n    <linearGradient id=\"av-lens-glare\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.22\"/>\n      <stop offset=\"35%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.06\"/>\n      <stop offset=\"70%\" stop-color=\"var(--lens-glare, #38bdf8)\" stop-opacity=\"0.12\"/>\n      <stop offset=\"100%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.02\"/>\n    </linearGradient>\n    <filter id=\"av-shadow\" x=\"-5%\" y=\"-5%\" width=\"110%\" height=\"115%\">\n      <feDropShadow dx=\"0\" dy=\"4\" stdDeviation=\"4\" flood-color=\"#000\" flood-opacity=\"0.35\"/>\n    </filter>\n  </defs>\n\n  <g filter=\"url(#av-shadow)\">\n    <!-- Left Lens Glass -->\n    <path d=\"M50,85 C55,55 125,50 255,52 C265,52 275,65 272,95 C268,135 258,195 210,215 C160,235 70,225 52,175 C42,145 45,105 50,85 Z\" fill=\"url(#av-lens-glare)\"/>\n    <!-- Right Lens Glass -->\n    <path d=\"M590,85 C585,55 515,50 385,52 C375,52 365,65 368,95 C372,135 382,195 430,215 C480,235 570,225 588,175 C598,145 595,105 590,85 Z\" fill=\"url(#av-lens-glare)\"/>\n\n    <!-- Left Teardrop Aviator Rim -->\n    <path d=\"M50,85 C55,55 125,50 255,52 C265,52 275,65 272,95 C268,135 258,195 210,215 C160,235 70,225 52,175 C42,145 45,105 50,85 Z\" stroke=\"url(#av-frame-grad)\" stroke-width=\"8\" stroke-linejoin=\"round\" fill=\"none\"/>\n    <path d=\"M54,88 C59,60 125,55 251,57 C260,57 269,68 266,95 C263,132 253,190 208,209 C162,228 76,219 59,173 C50,145 52,107 54,88 Z\" stroke=\"#ffffff\" stroke-opacity=\"0.25\" stroke-width=\"2\" fill=\"none\"/>\n\n    <!-- Right Teardrop Aviator Rim -->\n    <path d=\"M590,85 C585,55 515,50 385,52 C375,52 365,65 368,95 C372,135 382,195 430,215 C480,235 570,225 588,175 C598,145 595,105 590,85 Z\" stroke=\"url(#av-frame-grad)\" stroke-width=\"8\" stroke-linejoin=\"round\" fill=\"none\"/>\n    <path d=\"M586,88 C581,60 515,55 389,57 C380,57 371,68 374,95 C377,132 387,190 432,209 C478,228 564,219 581,173 C590,145 588,107 586,88 Z\" stroke=\"#ffffff\" stroke-opacity=\"0.25\" stroke-width=\"2\" fill=\"none\"/>\n\n    <!-- Top Brow Bar (Iconic Aviator Sweat Bar) -->\n    <path d=\"M215,46 C255,42 385,42 425,46\" stroke=\"url(#av-frame-grad)\" stroke-width=\"7\" stroke-linecap=\"round\"/>\n    <path d=\"M220,45 C255,42 385,42 420,45\" stroke=\"#ffffff\" stroke-opacity=\"0.3\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n\n    <!-- Lower Arched Nose Bridge -->\n    <path d=\"M260,82 C285,68 355,68 380,82\" stroke=\"url(#av-frame-grad)\" stroke-width=\"7\" stroke-linecap=\"round\"/>\n    <path d=\"M262,81 C285,69 355,69 378,81\" stroke=\"#ffffff\" stroke-opacity=\"0.3\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n\n    <!-- Nose Pad Mounts & Silicone Pads -->\n    <path d=\"M280,105 C282,125 288,140 286,150\" stroke=\"url(#av-frame-grad)\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n    <ellipse cx=\"286\" cy=\"148\" rx=\"4.5\" ry=\"9\" transform=\"rotate(-15 286 148)\" fill=\"rgba(240,240,240,0.65)\" stroke=\"url(#av-frame-grad)\" stroke-width=\"1.5\"/>\n\n    <path d=\"M360,105 C358,125 352,140 354,150\" stroke=\"url(#av-frame-grad)\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n    <ellipse cx=\"354\" cy=\"148\" rx=\"4.5\" ry=\"9\" transform=\"rotate(15 354 148)\" fill=\"rgba(240,240,240,0.65)\" stroke=\"url(#av-frame-grad)\" stroke-width=\"1.5\"/>\n\n    <!-- Outer Temples / Hinges -->\n    <path d=\"M48,85 L14,83\" stroke=\"url(#av-frame-grad)\" stroke-width=\"8\" stroke-linecap=\"round\"/>\n    <path d=\"M592,85 L626,83\" stroke=\"url(#av-frame-grad)\" stroke-width=\"8\" stroke-linecap=\"round\"/>\n\n    <!-- Realistic Glass Glare Streak -->\n    <line x1=\"80\" y1=\"70\" x2=\"160\" y2=\"185\" stroke=\"#ffffff\" stroke-width=\"22\" stroke-linecap=\"round\" opacity=\"0.12\"/>\n    <line x1=\"175\" y1=\"120\" x2=\"225\" y2=\"180\" stroke=\"#ffffff\" stroke-width=\"10\" stroke-linecap=\"round\" opacity=\"0.08\"/>\n    <line x1=\"420\" y1=\"70\" x2=\"500\" y2=\"185\" stroke=\"#ffffff\" stroke-width=\"22\" stroke-linecap=\"round\" opacity=\"0.12\"/>\n    <line x1=\"515\" y1=\"120\" x2=\"565\" y2=\"180\" stroke=\"#ffffff\" stroke-width=\"10\" stroke-linecap=\"round\" opacity=\"0.08\"/>\n  </g>\n</svg>","wayfarer":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 240\" fill=\"none\">\n  <defs>\n    <linearGradient id=\"wf-frame-grad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"var(--frame-c1, #2b2b2b)\"/>\n      <stop offset=\"50%\" stop-color=\"var(--frame-c2, #181818)\"/>\n      <stop offset=\"100%\" stop-color=\"var(--frame-c3, #0a0a0a)\"/>\n    </linearGradient>\n    <linearGradient id=\"wf-lens-glare\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.2\"/>\n      <stop offset=\"40%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.05\"/>\n      <stop offset=\"70%\" stop-color=\"var(--lens-glare, #38bdf8)\" stop-opacity=\"0.12\"/>\n      <stop offset=\"100%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.02\"/>\n    </linearGradient>\n    <filter id=\"wf-shadow\" x=\"-5%\" y=\"-5%\" width=\"110%\" height=\"115%\">\n      <feDropShadow dx=\"0\" dy=\"4\" stdDeviation=\"4\" flood-color=\"#000\" flood-opacity=\"0.35\"/>\n    </filter>\n  </defs>\n\n  <g filter=\"url(#wf-shadow)\">\n    <!-- Left Glass -->\n    <path d=\"M48,60 C90,56 220,62 258,74 C255,130 240,185 195,200 C155,212 75,200 55,160 C42,125 45,85 48,60 Z\" fill=\"url(#wf-lens-glare)\"/>\n    <!-- Right Glass -->\n    <path d=\"M592,60 C550,56 420,62 382,74 C385,130 400,185 445,200 C485,212 565,200 585,160 C598,125 595,85 592,60 Z\" fill=\"url(#wf-lens-glare)\"/>\n\n    <!-- Left Thick Acetate Wayfarer Rim -->\n    <path d=\"M48,60 C90,56 220,62 258,74 C255,130 240,185 195,200 C155,212 75,200 55,160 C42,125 45,85 48,60 Z\" stroke=\"url(#wf-frame-grad)\" stroke-width=\"14\" stroke-linejoin=\"round\" fill=\"none\"/>\n    <path d=\"M54,66 C92,62 216,68 250,78 C248,128 234,178 193,192 C157,203 82,192 63,156 C51,126 53,89 54,66 Z\" stroke=\"#ffffff\" stroke-opacity=\"0.25\" stroke-width=\"2\" fill=\"none\"/>\n\n    <!-- Right Thick Acetate Wayfarer Rim -->\n    <path d=\"M592,60 C550,56 420,62 382,74 C385,130 400,185 445,200 C485,212 565,200 585,160 C598,125 595,85 592,60 Z\" stroke=\"url(#wf-frame-grad)\" stroke-width=\"14\" stroke-linejoin=\"round\" fill=\"none\"/>\n    <path d=\"M586,66 C548,62 424,68 390,78 C392,128 406,178 447,192 C483,203 558,192 577,156 C589,126 587,89 586,66 Z\" stroke=\"#ffffff\" stroke-opacity=\"0.25\" stroke-width=\"2\" fill=\"none\"/>\n\n    <!-- Bold Bridge -->\n    <path d=\"M255,80 C275,68 365,68 385,80\" stroke=\"url(#wf-frame-grad)\" stroke-width=\"14\" stroke-linecap=\"round\"/>\n    <path d=\"M258,78 C275,69 365,69 382,78\" stroke=\"#ffffff\" stroke-opacity=\"0.3\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n\n    <!-- Silver Rivets (Wayfarer Signature Accents) -->\n    <ellipse cx=\"32\" cy=\"62\" rx=\"4.5\" ry=\"2.5\" transform=\"rotate(-15 32 62)\" fill=\"#e2e8f0\" stroke=\"#94a3b8\" stroke-width=\"0.5\"/>\n    <ellipse cx=\"608\" cy=\"62\" rx=\"4.5\" ry=\"2.5\" transform=\"rotate(15 608 62)\" fill=\"#e2e8f0\" stroke=\"#94a3b8\" stroke-width=\"0.5\"/>\n\n    <!-- Outer Temples -->\n    <path d=\"M42,66 L12,70\" stroke=\"url(#wf-frame-grad)\" stroke-width=\"13\" stroke-linecap=\"round\"/>\n    <path d=\"M598,66 L628,70\" stroke=\"url(#wf-frame-grad)\" stroke-width=\"13\" stroke-linecap=\"round\"/>\n\n    <!-- Glass Glare -->\n    <line x1=\"80\" y1=\"75\" x2=\"160\" y2=\"185\" stroke=\"#ffffff\" stroke-width=\"22\" stroke-linecap=\"round\" opacity=\"0.12\"/>\n    <line x1=\"420\" y1=\"75\" x2=\"500\" y2=\"185\" stroke=\"#ffffff\" stroke-width=\"22\" stroke-linecap=\"round\" opacity=\"0.12\"/>\n  </g>\n</svg>","cateye":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 240\" fill=\"none\">\n  <defs>\n    <linearGradient id=\"ce-frame-grad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"var(--frame-c1, #2b2b2b)\"/>\n      <stop offset=\"50%\" stop-color=\"var(--frame-c2, #181818)\"/>\n      <stop offset=\"100%\" stop-color=\"var(--frame-c3, #0a0a0a)\"/>\n    </linearGradient>\n    <linearGradient id=\"ce-lens-glare\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.2\"/>\n      <stop offset=\"40%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.05\"/>\n      <stop offset=\"70%\" stop-color=\"var(--lens-glare, #38bdf8)\" stop-opacity=\"0.12\"/>\n      <stop offset=\"100%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.02\"/>\n    </linearGradient>\n    <filter id=\"ce-shadow\" x=\"-5%\" y=\"-5%\" width=\"110%\" height=\"115%\">\n      <feDropShadow dx=\"0\" dy=\"4\" stdDeviation=\"4\" flood-color=\"#000\" flood-opacity=\"0.32\"/>\n    </filter>\n  </defs>\n\n  <g filter=\"url(#ce-shadow)\">\n    <!-- Left Glass -->\n    <path d=\"M25,55 C120,68 215,80 256,92 C252,145 230,195 180,205 C130,215 55,190 42,145 C35,115 28,75 25,55 Z\" fill=\"url(#ce-lens-glare)\"/>\n    <!-- Right Glass -->\n    <path d=\"M615,55 C520,68 425,80 384,92 C388,145 410,195 460,205 C510,215 585,190 598,145 C605,115 612,75 615,55 Z\" fill=\"url(#ce-lens-glare)\"/>\n\n    <!-- Left Upswept Cat-Eye Rim -->\n    <path d=\"M25,55 C120,68 215,80 256,92 C252,145 230,195 180,205 C130,215 55,190 42,145 C35,115 28,75 25,55 Z\" stroke=\"url(#ce-frame-grad)\" stroke-width=\"11\" stroke-linejoin=\"round\" fill=\"none\"/>\n    <path d=\"M30,62 C122,74 212,85 248,96 C245,142 225,188 178,197 C133,206 63,184 50,143 C44,115 35,78 30,62 Z\" stroke=\"#ffffff\" stroke-opacity=\"0.25\" stroke-width=\"2\" fill=\"none\"/>\n\n    <!-- Right Upswept Cat-Eye Rim -->\n    <path d=\"M615,55 C520,68 425,80 384,92 C388,145 410,195 460,205 C510,215 585,190 598,145 C605,115 612,75 615,55 Z\" stroke=\"url(#ce-frame-grad)\" stroke-width=\"11\" stroke-linejoin=\"round\" fill=\"none\"/>\n    <path d=\"M610,62 C518,74 428,85 392,96 C395,142 415,188 462,197 C507,206 577,184 590,143 C596,115 605,78 610,62 Z\" stroke=\"#ffffff\" stroke-opacity=\"0.25\" stroke-width=\"2\" fill=\"none\"/>\n\n    <!-- Feminine Bridge -->\n    <path d=\"M254,95 C275,80 365,80 386,95\" stroke=\"url(#ce-frame-grad)\" stroke-width=\"10\" stroke-linecap=\"round\"/>\n    <path d=\"M256,93 C275,81 365,81 384,93\" stroke=\"#ffffff\" stroke-opacity=\"0.3\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n\n    <!-- Cat-Eye Wing Highlights -->\n    <circle cx=\"20\" cy=\"52\" r=\"3\" fill=\"#e2e8f0\"/>\n    <circle cx=\"620\" cy=\"52\" r=\"3\" fill=\"#e2e8f0\"/>\n\n    <!-- Glare Sheen -->\n    <line x1=\"70\" y1=\"75\" x2=\"150\" y2=\"185\" stroke=\"#ffffff\" stroke-width=\"20\" stroke-linecap=\"round\" opacity=\"0.12\"/>\n    <line x1=\"430\" y1=\"75\" x2=\"510\" y2=\"185\" stroke=\"#ffffff\" stroke-width=\"20\" stroke-linecap=\"round\" opacity=\"0.12\"/>\n  </g>\n</svg>","hexagonal":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 240\" fill=\"none\">\n  <defs>\n    <linearGradient id=\"hx-frame-grad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"var(--frame-c1, #2b2b2b)\"/>\n      <stop offset=\"50%\" stop-color=\"var(--frame-c2, #181818)\"/>\n      <stop offset=\"100%\" stop-color=\"var(--frame-c3, #0a0a0a)\"/>\n    </linearGradient>\n    <linearGradient id=\"hx-lens-glare\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.2\"/>\n      <stop offset=\"40%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.05\"/>\n      <stop offset=\"70%\" stop-color=\"var(--lens-glare, #38bdf8)\" stop-opacity=\"0.12\"/>\n      <stop offset=\"100%\" stop-color=\"var(--lens-tint, #ffffff)\" stop-opacity=\"0.02\"/>\n    </linearGradient>\n    <filter id=\"hx-shadow\" x=\"-5%\" y=\"-5%\" width=\"110%\" height=\"115%\">\n      <feDropShadow dx=\"0\" dy=\"4\" stdDeviation=\"4\" flood-color=\"#000\" flood-opacity=\"0.32\"/>\n    </filter>\n  </defs>\n\n  <g filter=\"url(#hx-shadow)\">\n    <!-- Left Glass -->\n    <polygon points=\"68,55 240,55 264,115 236,182 72,182 44,115\" fill=\"url(#hx-lens-glare)\"/>\n    <!-- Right Glass -->\n    <polygon points=\"376,55 548,55 572,115 544,182 380,182 352,115\" fill=\"url(#hx-lens-glare)\"/>\n\n    <!-- Left Hexagonal Wire Rim -->\n    <polygon points=\"68,55 240,55 264,115 236,182 72,182 44,115\" stroke=\"url(#hx-frame-grad)\" stroke-width=\"8\" stroke-linejoin=\"round\"/>\n    <polygon points=\"71,59 237,59 259,115 233,178 75,178 49,115\" stroke=\"#ffffff\" stroke-opacity=\"0.25\" stroke-width=\"2\"/>\n\n    <!-- Right Hexagonal Wire Rim -->\n    <polygon points=\"400,55 572,55 596,115 568,182 404,182 376,115\" stroke=\"url(#hx-frame-grad)\" stroke-width=\"8\" stroke-linejoin=\"round\"/>\n    <polygon points=\"403,59 569,59 591,115 565,178 407,178 381,115\" stroke=\"#ffffff\" stroke-opacity=\"0.25\" stroke-width=\"2\"/>\n\n    <!-- Geometric Bridge -->\n    <path d=\"M264,98 C285,82 355,82 376,98\" stroke=\"url(#hx-frame-grad)\" stroke-width=\"8\" stroke-linecap=\"round\"/>\n    <path d=\"M266,96 C285,83 355,83 374,96\" stroke=\"#ffffff\" stroke-opacity=\"0.3\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n\n    <!-- Outer Temples -->\n    <path d=\"M44,115 L14,115\" stroke=\"url(#hx-frame-grad)\" stroke-width=\"8\" stroke-linecap=\"round\"/>\n    <path d=\"M596,115 L626,115\" stroke=\"url(#hx-frame-grad)\" stroke-width=\"8\" stroke-linecap=\"round\"/>\n\n    <!-- Glass Glare -->\n    <line x1=\"85\" y1=\"65\" x2=\"165\" y2=\"175\" stroke=\"#ffffff\" stroke-width=\"20\" stroke-linecap=\"round\" opacity=\"0.12\"/>\n    <line x1=\"417\" y1=\"65\" x2=\"497\" y2=\"175\" stroke=\"#ffffff\" stroke-width=\"20\" stroke-linecap=\"round\" opacity=\"0.12\"/>\n  </g>\n</svg>"};
+
+    var currentShape = "rect";
+    var currentColor = "black";
+    var currentLens = "clear";
+    var currentLeft = 50;
+    var currentTop = 35;
+    var currentScale = 1.0;
+    var currentTilt = 0;
+    var isDragging = false;
+    var startX = 0, startY = 0;
+    var initialLeft = 50, initialTop = 35;
+
+    var COLOR_PALETTES = {
+      black: { name: "Obsidian Matte Black", c1: "#2d2d30", c2: "#18181b", c3: "#09090b" },
+      gold: { name: "24K Luxury Gold", c1: "#fde68a", c2: "#d4af37", c3: "#92400e" },
+      silver: { name: "Gunmetal Steel", c1: "#f1f5f9", c2: "#94a3b8", c3: "#334155" },
+      tortoise: { name: "Warm Amber Tortoise", c1: "#f59e0b", c2: "#b45309", c3: "#451a03" },
+      rosegold: { name: "Rose Gold Metallic", c1: "#fce7f3", c2: "#f43f5e", c3: "#881337" }
+    };
+
+    var LENS_PALETTES = {
+      clear: { name: "Clear Anti-Glare", tint: "rgba(255, 255, 255, 0.08)", glare: "rgba(255, 255, 255, 0.35)" },
+      bluecut: { name: "Blue-Cut Shield", tint: "rgba(14, 165, 233, 0.16)", glare: "rgba(56, 189, 248, 0.55)" },
+      sunglass: { name: "Sunglasses Tint", tint: "rgba(15, 23, 42, 0.72)", glare: "rgba(255, 255, 255, 0.25)" }
+    };
+
+    var SHAPE_NAMES = {
+      rect: "Executive Rectangle",
+      round: "Vintage Round Panto",
+      aviator: "Classic Aviator",
+      wayfarer: "Timeless Wayfarer",
+      hexagonal: "Geometric Hexagonal",
+      cateye: "Chic Cat-Eye"
+    };
+
+    function renderTryOnMount() {
+      var mount = document.getElementById("tryon-svg-mount");
+      if (!mount) return;
+      var svgStr = TRYON_SVGS[currentShape] || TRYON_SVGS.rect;
+      mount.innerHTML = svgStr;
+      applyTryOnColors();
+      updateTryOnWhatsApp();
+    }
+
+    function applyTryOnColors() {
+      var holder = document.getElementById("tryon-frame-holder");
+      if (!holder) return;
+      var colorDef = COLOR_PALETTES[currentColor] || COLOR_PALETTES.black;
+      var lensDef = LENS_PALETTES[currentLens] || LENS_PALETTES.clear;
+      holder.style.setProperty("--frame-c1", colorDef.c1);
+      holder.style.setProperty("--frame-c2", colorDef.c2);
+      holder.style.setProperty("--frame-c3", colorDef.c3);
+      holder.style.setProperty("--lens-tint", lensDef.tint);
+      holder.style.setProperty("--lens-glare", lensDef.glare);
+    }
+
+    function updateTryOnTransform() {
+      var holder = document.getElementById("tryon-frame-holder");
+      if (!holder) return;
+      holder.style.left = currentLeft + "%";
+      holder.style.top = currentTop + "%";
+      holder.style.transform = "translate(-50%, -50%) rotate(" + currentTilt + "deg) scale(" + currentScale + ")";
+    }
+
+    function updateTryOnWhatsApp() {
+      var btn = document.getElementById("tryon-wa-btn");
+      var label = document.getElementById("tryon-wa-btn-label");
+      if (!btn) return;
+      var shapeName = SHAPE_NAMES[currentShape] || "Custom Frame";
+      var colorName = (COLOR_PALETTES[currentColor] && COLOR_PALETTES[currentColor].name) || "Matte Black";
+      var lensName = (LENS_PALETTES[currentLens] && LENS_PALETTES[currentLens].name) || "Clear AR";
+      var msg = "Hi The Optical Hub, I liked the " + shapeName + " frame in " + colorName + " with " + lensName + " lenses in your Virtual Try-On studio. Can you check price & availability?";
+      btn.href = waLink(msg);
+      if (label) label.textContent = "Enquire " + shapeName + " on WhatsApp";
+    }
+
+    // Frame pick button clicks
     document.querySelectorAll(".frame-pick").forEach(function (btn) {
       btn.addEventListener("click", function () {
         document.querySelectorAll(".frame-pick").forEach(function (el) {
           var on = el === btn;
           el.classList.toggle("is-on", on);
-          el.setAttribute("aria-pressed", on ? "true" : "false");
+          el.classList.toggle("border-2", on);
+          el.classList.toggle("border-pine", on);
+          el.classList.toggle("bg-pine/5", on);
+          el.classList.toggle("shadow-sm", on);
+          el.classList.toggle("border-line", !on);
+          el.classList.toggle("bg-cream/50", !on);
         });
-        var overlay = document.getElementById("tryon-overlay");
-        if (overlay) {
-          overlay.src = btn.getAttribute("data-overlay");
-        }
+        currentShape = btn.getAttribute("data-shape") || "rect";
+        var badge = document.getElementById("tryon-selected-shape-badge");
+        if (badge) badge.textContent = SHAPE_NAMES[currentShape] || currentShape;
+        renderTryOnMount();
       });
     });
 
-    document.getElementById("frame-align").addEventListener("input", function (event) {
-      var overlay = document.getElementById("tryon-overlay");
-      if (overlay) overlay.style.top = event.target.value + "%";
-    });
-
-    var frameScaleInput = document.getElementById("frame-scale");
-    if (frameScaleInput) {
-      frameScaleInput.addEventListener("input", function (event) {
-        var scale = Number(event.target.value) / 100;
-        var overlay = document.getElementById("tryon-overlay");
-        if (overlay) {
-          overlay.style.transform = "translateX(-50%) scale(" + scale + ")";
-        }
-      });
-    }
-
-    // Try-On Color Controls
+    // Frame color button clicks
     document.querySelectorAll(".tryon-color-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
         document.querySelectorAll(".tryon-color-btn").forEach(function (b) {
-          b.classList.remove("ring-2", "ring-pine");
+          var on = b === btn;
+          b.classList.toggle("is-active", on);
+          b.classList.toggle("border-2", on);
+          b.classList.toggle("border-pine", on);
+          b.classList.toggle("border-line", !on);
         });
-        btn.classList.add("ring-2", "ring-pine");
-        var color = btn.getAttribute("data-color");
-        var overlay = document.getElementById("tryon-overlay");
-        if (!overlay) return;
-        if (color === "amber-700") {
-          overlay.style.filter = "sepia(1) saturate(3) hue-rotate(330deg)";
-        } else if (color === "slate-400") {
-          overlay.style.filter = "brightness(1.5) contrast(0.8)";
-        } else if (color === "rose-700") {
-          overlay.style.filter = "sepia(0.8) saturate(2) hue-rotate(300deg)";
-        } else {
-          overlay.style.filter = "none";
-        }
+        currentColor = btn.getAttribute("data-color") || "black";
+        var badge = document.getElementById("tryon-selected-color-badge");
+        if (badge) badge.textContent = (COLOR_PALETTES[currentColor] && COLOR_PALETTES[currentColor].name) || currentColor;
+        applyTryOnColors();
+        updateTryOnWhatsApp();
       });
     });
 
-    // Reset Model Button
+    // Frame lens button clicks
+    document.querySelectorAll(".tryon-lens-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll(".tryon-lens-btn").forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle("is-active", on);
+          b.classList.toggle("border-2", on);
+          b.classList.toggle("border-pine", on);
+          b.classList.toggle("bg-pine/5", on);
+          b.classList.toggle("border-line", !on);
+          b.classList.toggle("bg-paper", !on);
+        });
+        currentLens = btn.getAttribute("data-lens") || "clear";
+        var badge = document.getElementById("tryon-selected-lens-badge");
+        if (badge) badge.textContent = (LENS_PALETTES[currentLens] && LENS_PALETTES[currentLens].name) || currentLens;
+        applyTryOnColors();
+        updateTryOnWhatsApp();
+      });
+    });
+
+    // Precision Sliders
+    var frameAlignInput = document.getElementById("frame-align");
+    if (frameAlignInput) {
+      frameAlignInput.addEventListener("input", function (e) {
+        currentTop = Number(e.target.value);
+        var valEl = document.getElementById("frame-align-val");
+        if (valEl) valEl.textContent = currentTop + "%";
+        updateTryOnTransform();
+      });
+    }
+
+    var frameScaleInput = document.getElementById("frame-scale");
+    if (frameScaleInput) {
+      frameScaleInput.addEventListener("input", function (e) {
+        currentScale = Number(e.target.value) / 100;
+        var valEl = document.getElementById("frame-scale-val");
+        if (valEl) valEl.textContent = e.target.value + "%";
+        updateTryOnTransform();
+      });
+    }
+
+    var frameTiltInput = document.getElementById("frame-tilt");
+    if (frameTiltInput) {
+      frameTiltInput.addEventListener("input", function (e) {
+        currentTilt = Number(e.target.value);
+        var valEl = document.getElementById("frame-tilt-val");
+        if (valEl) valEl.textContent = currentTilt + "°";
+        updateTryOnTransform();
+      });
+    }
+
+    // Direct Dragging on Face Viewport
+    var tryonHolder = document.getElementById("tryon-frame-holder");
+    var tryonContainer = document.getElementById("tryon-container");
+    if (tryonHolder && tryonContainer) {
+      tryonHolder.addEventListener("pointerdown", function (e) {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        initialLeft = currentLeft;
+        initialTop = currentTop;
+        try { tryonHolder.setPointerCapture(e.pointerId); } catch (err) {}
+        var hint = document.getElementById("tryon-hint");
+        if (hint) hint.style.opacity = "0";
+        e.preventDefault();
+      });
+
+      tryonHolder.addEventListener("pointermove", function (e) {
+        if (!isDragging) return;
+        var rect = tryonContainer.getBoundingClientRect();
+        var deltaX = e.clientX - startX;
+        var deltaY = e.clientY - startY;
+        currentLeft = Math.max(15, Math.min(85, initialLeft + (deltaX / rect.width) * 100));
+        currentTop = Math.max(15, Math.min(75, initialTop + (deltaY / rect.height) * 100));
+        updateTryOnTransform();
+        if (frameAlignInput) {
+          frameAlignInput.value = Math.round(currentTop);
+          var valEl = document.getElementById("frame-align-val");
+          if (valEl) valEl.textContent = Math.round(currentTop) + "%";
+        }
+      });
+
+      function endTryonDrag(e) {
+        if (isDragging) {
+          isDragging = false;
+          try { tryonHolder.releasePointerCapture(e.pointerId); } catch (err) {}
+        }
+      }
+      tryonHolder.addEventListener("pointerup", endTryonDrag);
+      tryonHolder.addEventListener("pointercancel", endTryonDrag);
+    }
+
+    // Model Selector (Female / Male)
+    var modelFemaleBtn = document.getElementById("model-female-btn");
+    var modelMaleBtn = document.getElementById("model-male-btn");
+    var tryonFaceImg = document.getElementById("tryon-face");
+
+    if (modelFemaleBtn && modelMaleBtn && tryonFaceImg) {
+      modelFemaleBtn.addEventListener("click", function () {
+        modelFemaleBtn.classList.add("is-active", "bg-pine", "text-white");
+        modelFemaleBtn.classList.remove("text-white/80");
+        modelMaleBtn.classList.remove("is-active", "bg-pine", "text-white");
+        modelMaleBtn.classList.add("text-white/80");
+        tryonFaceImg.src = "images/tryon-face.jpg";
+      });
+
+      modelMaleBtn.addEventListener("click", function () {
+        modelMaleBtn.classList.add("is-active", "bg-pine", "text-white");
+        modelMaleBtn.classList.remove("text-white/80");
+        modelFemaleBtn.classList.remove("is-active", "bg-pine", "text-white");
+        modelFemaleBtn.classList.add("text-white/80");
+        tryonFaceImg.src = "images/tryon-face-male.jpg";
+      });
+    }
+
+    // Reset Model & Fit Position
     var resetTryOnBtn = document.getElementById("reset-tryon-btn");
     if (resetTryOnBtn) {
       resetTryOnBtn.addEventListener("click", function () {
-        var face = document.getElementById("tryon-face");
-        if (face) face.src = "images/tryon-face.jpg";
-        var overlay = document.getElementById("tryon-overlay");
-        if (overlay) {
-          overlay.src = "images/overlay-rect.svg";
-          overlay.style.top = "34%";
-          overlay.style.transform = "translateX(-50%) scale(1)";
-          overlay.style.filter = "none";
+        currentLeft = 50;
+        currentTop = 35;
+        currentScale = 1.0;
+        currentTilt = 0;
+        updateTryOnTransform();
+
+        if (frameAlignInput) {
+          frameAlignInput.value = 35;
+          document.getElementById("frame-align-val").textContent = "35%";
         }
-        var align = document.getElementById("frame-align");
-        if (align) align.value = 34;
-        var scale = document.getElementById("frame-scale");
-        if (scale) scale.value = 100;
-        document.querySelectorAll(".frame-pick").forEach(function (el, idx) {
-          var on = idx === 0;
-          el.classList.toggle("is-on", on);
-          el.setAttribute("aria-pressed", on ? "true" : "false");
-        });
+        if (frameScaleInput) {
+          frameScaleInput.value = 100;
+          document.getElementById("frame-scale-val").textContent = "100%";
+        }
+        if (frameTiltInput) {
+          frameTiltInput.value = 0;
+          document.getElementById("frame-tilt-val").textContent = "0°";
+        }
       });
     }
 
+    // Selfie Upload Handler (100% On-Device Memory)
     function useSelfie(file) {
       var error = document.getElementById("face-error");
       if (!file || file.type.indexOf("image/") !== 0) {
-        error.textContent = "Please choose a photo.";
+        if (error) error.textContent = "Please select a valid image file.";
         return;
       }
       if (file.size > 8 * 1024 * 1024) {
-        error.textContent = "Please choose a photo under 8 MB.";
+        if (error) error.textContent = "Please select an image smaller than 8 MB.";
         return;
       }
-      error.textContent = "";
+      if (error) error.textContent = "";
       if (faceUrl) URL.revokeObjectURL(faceUrl);
       faceUrl = URL.createObjectURL(file);
-      document.getElementById("tryon-face").src = faceUrl;
-    }
+      if (tryonFaceImg) tryonFaceImg.src = faceUrl;
 
-    document.getElementById("face-file").addEventListener("change", function (event) {
-      useSelfie(event.target.files && event.target.files[0]);
-    });
-
-    var drop = document.getElementById("face-drop");
-    if (drop) {
-      ["dragover", "dragenter"].forEach(function (name) {
-        drop.addEventListener(name, function (event) { event.preventDefault(); });
-      });
-      drop.addEventListener("drop", function (event) {
-        event.preventDefault();
-        var file = event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0];
-        useSelfie(file);
-      });
-    }
-
-    document.querySelectorAll(".slot-btn").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        selectedSlot = btn.getAttribute("data-slot");
-        document.querySelectorAll(".slot-btn").forEach(function (el) {
-          var on = el === btn;
-          el.classList.toggle("is-on", on);
-          el.setAttribute("aria-pressed", on ? "true" : "false");
-        });
-        setFieldError("book-slot-error", "");
-      });
-    });
-
-    // Eye Test Booking Form Submission
-    document.getElementById("booking-form").addEventListener("submit", function (event) {
-      event.preventDefault();
-      var name = document.getElementById("book-name").value.trim();
-      var phone = normalizePhone(document.getElementById("book-phone").value);
-      var age = Number(document.getElementById("book-age").value);
-      var date = document.getElementById("book-date").value;
-      var home = document.getElementById("book-home").checked;
-      var valid = true;
-
-      if (name.length < 2) {
-        setFieldError("book-name-error", "Enter the name we should call.");
-        valid = false;
-      } else setFieldError("book-name-error", "");
-
-      if (!isValidPhone(phone)) {
-        setFieldError("book-phone-error", "Enter a 10 digit mobile number.");
-        valid = false;
-      } else setFieldError("book-phone-error", "");
-
-      if (!Number.isInteger(age) || age < 1 || age > 110) {
-        setFieldError("book-age-error", "Enter an age from 1 to 110.");
-        valid = false;
-      } else setFieldError("book-age-error", "");
-
-      if (!date || date < todayISO()) {
-        setFieldError("book-date-error", "Choose today or a later date.");
-        valid = false;
-      } else setFieldError("book-date-error", "");
-
-      if (SLOTS.indexOf(selectedSlot) === -1) {
-        setFieldError("book-slot-error", "Pick a time slot.");
-        valid = false;
-      } else setFieldError("book-slot-error", "");
-
-      if (!valid) return;
-
-      var entry = { name: name, phone: phone, age: age, date: date, slot: selectedSlot, home: home };
-      var all = readStore(BOOK_KEY);
-      all.unshift(entry);
-      writeStore(BOOK_KEY, all);
-
-      // Async push to server database
-      fetch('/api/appointments', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(entry)
-      }).catch(function () {});
-
-      renderBookings();
-      var success = document.getElementById("book-success");
-      success.classList.remove("hidden");
-      var homeLine = home ? " Home eye test, Rs 199." : "";
-      document.getElementById("book-success-text").textContent = name + ", " + selectedSlot + " on " + prettyDate(date) + " is saved on this phone & clinic server." + homeLine;
-      document.getElementById("book-success-wa").href = waLink(
-        "Hi The Optical Hub, I am " + name + ". Please confirm my free eye test on " + date + " at " + selectedSlot + ". Age " + age + ". Phone " + phone + "." + (home ? " I need a home eye test for seniors, Rs 199." : "")
-      );
-    });
-
-    // Prescription Vault Tab Switcher
-    var rxTabAdd = document.getElementById("rx-tab-add");
-    var rxTabLookup = document.getElementById("rx-tab-lookup");
-    var rxForm = document.getElementById("rx-form");
-    if (rxTabAdd && rxTabLookup) {
-      rxTabAdd.addEventListener("click", function () {
-        rxTabAdd.classList.add("is-active", "bg-pine", "text-white");
-        rxTabAdd.classList.remove("text-ink/70");
-        rxTabLookup.classList.remove("is-active", "bg-pine", "text-white");
-        rxTabLookup.classList.add("text-ink/70");
-        if (rxForm) rxForm.scrollIntoView({ behavior: "smooth" });
-      });
-      rxTabLookup.addEventListener("click", function () {
-        rxTabLookup.classList.add("is-active", "bg-pine", "text-white");
-        rxTabLookup.classList.remove("text-ink/70");
-        rxTabAdd.classList.remove("is-active", "bg-pine", "text-white");
-        rxTabAdd.classList.add("text-ink/70");
-        var lookupInput = document.getElementById("rx-lookup-phone");
-        if (lookupInput) {
-          lookupInput.focus();
-          lookupInput.scrollIntoView({ behavior: "smooth" });
-        }
-      });
-    }
-
-    var rxLookupBtn = document.getElementById("rx-lookup-btn");
-    if (rxLookupBtn) {
-      rxLookupBtn.addEventListener("click", function () {
-        var query = (document.getElementById("rx-lookup-phone").value || "").trim();
-        renderPrescriptions(query);
-      });
-      document.getElementById("rx-lookup-phone").addEventListener("input", function (e) {
-        if (!e.target.value.trim()) renderPrescriptions();
-      });
-    }
-
-    // Prescription Vault Form Submission
-    document.getElementById("rx-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var name = document.getElementById("rx-name").value.trim();
-      var phone = normalizePhone(document.getElementById("rx-phone").value);
-      var sphR = document.getElementById("rx-sph-r").value.trim();
-      var cylR = document.getElementById("rx-cyl-r").value.trim();
-      var sphL = document.getElementById("rx-sph-l").value.trim();
-      var cylL = document.getElementById("rx-cyl-l").value.trim();
-      var notes = document.getElementById("rx-notes").value.trim();
-      var statusMsg = document.getElementById("rx-status-msg");
-
-      if (!name || !isValidPhone(phone)) {
-        statusMsg.textContent = "Please enter patient name and valid 10-digit phone.";
-        statusMsg.className = "mt-2 text-xs text-center text-clay block";
-        return;
+      if (modelFemaleBtn) {
+        modelFemaleBtn.classList.remove("is-active", "bg-pine", "text-white");
+        modelFemaleBtn.classList.add("text-white/80");
       }
-
-      var rxEntry = {
-        patientName: name,
-        phone: phone,
-        sphereR: sphR || '0.00',
-        cylR: cylR || '0.00',
-        sphereL: sphL || '0.00',
-        cylL: cylL || '0.00',
-        notes: notes,
-        created_at: todayISO()
-      };
-
-      var list = readStore(RX_KEY);
-      list.unshift(rxEntry);
-      writeStore(RX_KEY, list);
-      renderPrescriptions();
-
-      statusMsg.textContent = "Prescription encrypted and saved in Medical Vault!";
-      statusMsg.className = "mt-2 text-xs text-center text-pine font-semibold block";
-      this.reset();
-    });
-
-    // Repair Form Submission
-    document.getElementById("repair-photo").addEventListener("change", function (event) {
-      var file = event.target.files && event.target.files[0];
-      var preview = document.getElementById("repair-preview");
-      var container = document.getElementById("repair-preview-container");
-      if (!file || file.type.indexOf("image/") !== 0) {
-        if (container) container.classList.add("hidden");
-        preview.removeAttribute("src");
-        return;
+      if (modelMaleBtn) {
+        modelMaleBtn.classList.remove("is-active", "bg-pine", "text-white");
+        modelMaleBtn.classList.add("text-white/80");
       }
-      preview.src = URL.createObjectURL(file);
-      if (container) container.classList.remove("hidden");
-    });
+    }
 
-    document.getElementById("repair-form").addEventListener("submit", function (event) {
-      event.preventDefault();
-      var name = document.getElementById("repair-name").value.trim();
-      var phone = normalizePhone(document.getElementById("repair-phone").value);
-      var problem = document.getElementById("repair-problem").value;
-      var date = document.getElementById("repair-date").value;
-      var file = document.getElementById("repair-photo").files[0];
-      var valid = true;
-
-      if (name.length < 2) {
-        setFieldError("repair-name-error", "Enter the name we should call.");
-        valid = false;
-      } else setFieldError("repair-name-error", "");
-
-      if (!isValidPhone(phone)) {
-        setFieldError("repair-phone-error", "Enter a 10 digit mobile number.");
-        valid = false;
-      } else setFieldError("repair-phone-error", "");
-
-      if (PROBLEMS.indexOf(problem) === -1) {
-        setFieldError("repair-problem-error", "Choose the problem.");
-        valid = false;
-      } else setFieldError("repair-problem-error", "");
-
-      if (!date || date < todayISO()) {
-        setFieldError("repair-date-error", "Choose today or a later date.");
-        valid = false;
-      } else setFieldError("repair-date-error", "");
-
-      if (!valid) return;
-
-      var id = String(Date.now());
-      var ticketId = "OPT-" + Math.floor(1000 + Math.random() * 9000);
-      if (file && file.type.indexOf("image/") === 0) repairPhotos[id] = URL.createObjectURL(file);
-      var entry = { id: id, ticketId: ticketId, name: name, phone: phone, problem: problem, date: date, status: "Raised", hasPhoto: Boolean(file) };
-      var all = readStore(REPAIR_KEY);
-      all.unshift(entry);
-      writeStore(REPAIR_KEY, all);
-
-      renderRepairs();
-      var box = document.getElementById("repair-success");
-      box.classList.remove("hidden");
-      document.getElementById("repair-success-text").textContent = "Namaste " + name + "! Aapka repair ticket successfully generate ho gaya hai: " + ticketId + " (" + problem + "). Expected collection: " + prettyDate(date) + ". Is Ticket ID aur phone number se aap status track kar sakte hain.";
-      event.target.reset();
-      var previewContainer = document.getElementById("repair-preview-container");
-      if (previewContainer) previewContainer.classList.add("hidden");
-    });
-
-    var repairSearchBtn = document.getElementById("repair-search-btn");
-    if (repairSearchBtn) {
-      repairSearchBtn.addEventListener("click", function () {
-        var ticketQ = (document.getElementById("repair-search-ticket").value || "").trim();
-        var phoneQ = (document.getElementById("repair-search-phone").value || "").trim();
-        var errEl = document.getElementById("repair-search-error");
-        if (!ticketQ && !phoneQ) {
-          if (errEl) {
-            errEl.textContent = "Kripya Ticket ID (OPT-XXXX) aur registered mobile number dono enter karein.";
-            errEl.classList.remove("hidden");
-          }
-          renderRepairs();
-          return;
-        }
-        if (errEl) errEl.classList.add("hidden");
-        renderRepairs(ticketQ, phoneQ);
-      });
-      document.getElementById("repair-search-phone").addEventListener("input", function (e) {
-        if (!e.target.value.trim() && !document.getElementById("repair-search-ticket").value.trim()) {
-          renderRepairs();
-        }
-      });
-      document.getElementById("repair-search-ticket").addEventListener("input", function (e) {
-        if (!e.target.value.trim() && !document.getElementById("repair-search-phone").value.trim()) {
-          renderRepairs();
-        }
+    var faceFileInput = document.getElementById("face-file");
+    if (faceFileInput) {
+      faceFileInput.addEventListener("change", function (event) {
+        useSelfie(event.target.files && event.target.files[0]);
       });
     }
 
-    // Wire Modals & Triggers
-    ["nav-ai-call-btn", "hero-ai-call-btn", "float-ai-call-btn", "bar-ai-call"].forEach(function (id) {
-      var btn = document.getElementById(id);
-      if (btn) btn.addEventListener("click", openAiCallModal);
-    });
-    document.getElementById("close-ai-call").addEventListener("click", closeAiCallModal);
-
-    document.getElementById("open-security-modal").addEventListener("click", openSecurityModal);
-    document.getElementById("close-security-modal").addEventListener("click", closeSecurityModal);
-
-    // AI Call Form
-    document.getElementById("ai-call-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var val = document.getElementById("ai-query-input").value;
-      sendAiQuery(val);
-    });
-
-    // Voice Mute/Unmute Toggle
-    var voiceToggleBtn = document.getElementById("ai-voice-toggle");
-    if (voiceToggleBtn) {
-      voiceToggleBtn.addEventListener("click", function () {
-        aiVoiceEnabled = !aiVoiceEnabled;
-        var voiceLabel = document.getElementById("ai-voice-label");
-        if (aiVoiceEnabled) {
-          if (voiceLabel) voiceLabel.textContent = "Voice On";
-          voiceToggleBtn.classList.remove("opacity-50", "text-cream/50");
-          voiceToggleBtn.classList.add("text-emerald-300");
-          var stat = document.getElementById("ai-status-label");
-          if (stat) stat.textContent = "Voice enabled · AI will speak answers";
-        } else {
-          if (voiceLabel) voiceLabel.textContent = "Voice Muted";
-          voiceToggleBtn.classList.add("opacity-50", "text-cream/50");
-          voiceToggleBtn.classList.remove("text-emerald-300");
-          if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-          var statMute = document.getElementById("ai-status-label");
-          if (statMute) statMute.textContent = "Voice muted · Text replies active";
-        }
-      });
-    }
+    // Initialize Try-On mount
+    renderTryOnMount();
 
     // Voice Speech Recognition (Checklist & Reel Feature 2)
     var micBtn = document.getElementById("ai-mic-btn");

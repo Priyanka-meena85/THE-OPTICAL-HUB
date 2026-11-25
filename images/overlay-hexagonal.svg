@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" fill="none">
+  <defs>
+    <linearGradient id="hx-frame-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--frame-c1, #2b2b2b)"/>
+      <stop offset="50%" stop-color="var(--frame-c2, #181818)"/>
+      <stop offset="100%" stop-color="var(--frame-c3, #0a0a0a)"/>
+    </linearGradient>
+    <linearGradient id="hx-lens-glare" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--lens-tint, #ffffff)" stop-opacity="0.2"/>
+      <stop offset="40%" stop-color="var(--lens-tint, #ffffff)" stop-opacity="0.05"/>
+      <stop offset="70%" stop-color="var(--lens-glare, #38bdf8)" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="var(--lens-tint, #ffffff)" stop-opacity="0.02"/>
+    </linearGradient>
+    <filter id="hx-shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.32"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#hx-shadow)">
+    <!-- Left Glass -->
+    <polygon points="68,55 240,55 264,115 236,182 72,182 44,115" fill="url(#hx-lens-glare)"/>
+    <!-- Right Glass -->
+    <polygon points="376,55 548,55 572,115 544,182 380,182 352,115" fill="url(#hx-lens-glare)"/>
+
+    <!-- Left Hexagonal Wire Rim -->
+    <polygon points="68,55 240,55 264,115 236,182 72,182 44,115" stroke="url(#hx-frame-grad)" stroke-width="8" stroke-linejoin="round"/>
+    <polygon points="71,59 237,59 259,115 233,178 75,178 49,115" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2"/>
+
+    <!-- Right Hexagonal Wire Rim -->
+    <polygon points="400,55 572,55 596,115 568,182 404,182 376,115" stroke="url(#hx-frame-grad)" stroke-width="8" stroke-linejoin="round"/>
+    <polygon points="403,59 569,59 591,115 565,178 407,178 381,115" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2"/>
+
+    <!-- Geometric Bridge -->
+    <path d="M264,98 C285,82 355,82 376,98" stroke="url(#hx-frame-grad)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M266,96 C285,83 355,83 374,96" stroke="#ffffff" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Outer Temples -->
+    <path d="M44,115 L14,115" stroke="url(#hx-frame-grad)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M596,115 L626,115" stroke="url(#hx-frame-grad)" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- Glass Glare -->
+    <line x1="85" y1="65" x2="165" y2="175" stroke="#ffffff" stroke-width="20" stroke-linecap="round" opacity="0.12"/>
+    <line x1="417" y1="65" x2="497" y2="175" stroke="#ffffff" stroke-width="20" stroke-linecap="round" opacity="0.12"/>
+  </g>
+</svg>

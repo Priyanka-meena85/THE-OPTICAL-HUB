@@ -1,9 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" fill="none">
-  <g stroke="#1a1814" stroke-linejoin="round">
-    <rect x="36" y="42" width="230" height="136" rx="22" fill="rgba(255,255,255,0.18)" stroke-width="14"/>
-    <rect x="374" y="42" width="230" height="136" rx="22" fill="rgba(255,255,255,0.18)" stroke-width="14"/>
-    <path d="M266 110 H374" stroke-width="10" stroke-linecap="round"/>
-    <path d="M36 108 H8" stroke-width="10" stroke-linecap="round"/>
-    <path d="M632 108 H604" stroke-width="10" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 230" fill="none">
+  <defs>
+    <linearGradient id="rc-frame-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--frame-c1, #2b2b2b)"/>
+      <stop offset="50%" stop-color="var(--frame-c2, #181818)"/>
+      <stop offset="100%" stop-color="var(--frame-c3, #0a0a0a)"/>
+    </linearGradient>
+    <linearGradient id="rc-lens-glare" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--lens-tint, #ffffff)" stop-opacity="0.2"/>
+      <stop offset="40%" stop-color="var(--lens-tint, #ffffff)" stop-opacity="0.05"/>
+      <stop offset="70%" stop-color="var(--lens-glare, #38bdf8)" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="var(--lens-tint, #ffffff)" stop-opacity="0.02"/>
+    </linearGradient>
+    <filter id="rc-shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.32"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#rc-shadow)">
+    <!-- Left Glass -->
+    <rect x="42" y="46" width="224" height="136" rx="28" fill="url(#rc-lens-glare)"/>
+    <!-- Right Glass -->
+    <rect x="374" y="46" width="224" height="136" rx="28" fill="url(#rc-lens-glare)"/>
+
+    <!-- Left Rectangular Rim -->
+    <rect x="42" y="46" width="224" height="136" rx="28" stroke="url(#rc-frame-grad)" stroke-width="10" stroke-linejoin="round" fill="none"/>
+    <rect x="46" y="50" width="216" height="128" rx="24" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2" fill="none"/>
+
+    <!-- Right Rectangular Rim -->
+    <rect x="374" y="46" width="224" height="136" rx="28" stroke="url(#rc-frame-grad)" stroke-width="10" stroke-linejoin="round" fill="none"/>
+    <rect x="378" y="50" width="216" height="128" rx="24" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2" fill="none"/>
+
+    <!-- Keyhole Arch Bridge -->
+    <path d="M266,95 C285,78 355,78 374,95" stroke="url(#rc-frame-grad)" stroke-width="11" stroke-linecap="round"/>
+    <path d="M268,93 C285,79 355,79 372,93" stroke="#ffffff" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Outer Hinge Endpieces -->
+    <path d="M42,95 L14,94" stroke="url(#rc-frame-grad)" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="28" cy="94.5" r="2.5" fill="#e2e8f0"/>
+    <path d="M598,95 L626,94" stroke="url(#rc-frame-grad)" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="612" cy="94.5" r="2.5" fill="#e2e8f0"/>
+
+    <!-- Subtle Glare Slants -->
+    <line x1="75" y1="60" x2="155" y2="165" stroke="#ffffff" stroke-width="20" stroke-linecap="round" opacity="0.12"/>
+    <line x1="407" y1="60" x2="487" y2="165" stroke="#ffffff" stroke-width="20" stroke-linecap="round" opacity="0.12"/>
   </g>
 </svg>
