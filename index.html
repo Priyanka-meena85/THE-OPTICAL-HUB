@@ -1180,23 +1180,29 @@
             <p class="text-[11px] text-emerald-400">Live · 24/7 Optical Assistance</p>
           </div>
         </div>
-        <button id="close-ai-call" type="button" class="h-8 w-8 grid place-items-center rounded-full text-cream/70 hover:bg-white/10" aria-label="Close Call">
-          <i data-lucide="x" class="h-5 w-5"></i>
-        </button>
+        <div class="flex items-center gap-2">
+          <button id="ai-voice-toggle" type="button" class="inline-flex items-center gap-1.5 rounded-full bg-white/10 hover:bg-white/20 px-2.5 py-1 text-[11px] font-medium text-emerald-300 border border-white/10 transition-colors" title="Toggle Voice Response">
+            <i data-lucide="volume-2" class="h-3.5 w-3.5"></i>
+            <span id="ai-voice-label">Voice On</span>
+          </button>
+          <button id="close-ai-call" type="button" class="h-8 w-8 grid place-items-center rounded-full text-cream/70 hover:bg-white/10" aria-label="Close Call">
+            <i data-lucide="x" class="h-5 w-5"></i>
+          </button>
+        </div>
       </div>
 
       <!-- Call Visualizer & Conversation Log -->
       <div class="p-5 flex-1 overflow-y-auto space-y-4 max-h-80">
         <!-- Audio Waves Pulse -->
         <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">
-          <div class="flex items-center justify-center gap-1.5 h-8">
+          <div id="ai-wave-bars" class="flex items-center justify-center gap-1.5 h-8">
             <span class="w-1 bg-emerald-400 rounded-full wave-bar" style="animation-delay: 0.1s"></span>
             <span class="w-1 bg-emerald-400 rounded-full wave-bar" style="animation-delay: 0.3s"></span>
             <span class="w-1 bg-emerald-400 rounded-full wave-bar" style="animation-delay: 0.2s"></span>
             <span class="w-1 bg-emerald-400 rounded-full wave-bar" style="animation-delay: 0.4s"></span>
             <span class="w-1 bg-emerald-400 rounded-full wave-bar" style="animation-delay: 0.15s"></span>
           </div>
-          <p class="text-xs text-cream/60 mt-2 font-medium">Listening & Speaking via Web Speech Voice Synthesis</p>
+          <p id="ai-status-label" class="text-xs text-cream/70 mt-2 font-medium">Ready · Tap a quick chip, type, or speak below</p>
         </div>
 
         <div id="ai-chat-history" class="space-y-3 text-xs sm:text-sm">
@@ -1213,8 +1219,10 @@
         <div class="flex flex-wrap gap-1.5 text-xs">
           <button type="button" class="quick-chip rounded-full bg-white/10 hover:bg-white/20 px-3 py-1 border border-white/10 text-cream/80" data-q="Free eye test ka timing kya hai?">Eye Test Timing?</button>
           <button type="button" class="quick-chip rounded-full bg-white/10 hover:bg-white/20 px-3 py-1 border border-white/10 text-cream/80" data-q="Blue-cut computer lenses ka kitna lagega?">Blue-Cut Price?</button>
+          <button type="button" class="quick-chip rounded-full bg-white/10 hover:bg-white/20 px-3 py-1 border border-white/10 text-cream/80" data-q="Progressive lens ki price kya hai?">Progressive Lenses?</button>
+          <button type="button" class="quick-chip rounded-full bg-white/10 hover:bg-white/20 px-3 py-1 border border-white/10 text-cream/80" data-q="Senior citizen ke liye home eye test ho jayega?">Home Eye Test (₹199)?</button>
           <button type="button" class="quick-chip rounded-full bg-white/10 hover:bg-white/20 px-3 py-1 border border-white/10 text-cream/80" data-q="Frame toot gaya hai, repair ho jayega?">Repair Frame?</button>
-          <button type="button" class="quick-chip rounded-full bg-white/10 hover:bg-white/20 px-3 py-1 border border-white/10 text-cream/80" data-q="Kal subah 11 baje ka slot confirm karo.">Book 11 AM Slot</button>
+          <button type="button" class="quick-chip rounded-full bg-white/10 hover:bg-white/20 px-3 py-1 border border-white/10 text-cream/80" data-q="Pooja tower shop ka address aur landmark kya hai?">Store Location & Map</button>
         </div>
       </div>
 
@@ -1719,51 +1727,247 @@
     }
 
     // -----------------------------------------------------------------
-    // AI NIGHT CALLING ASSISTANT (Web Speech & API Client)
+    // AI OPTICAL ASSISTANT & 24/7 VOICE DESK (Resilient Intelligence)
     // -----------------------------------------------------------------
+    var aiVoiceEnabled = true;
+    var isAiThinking = false;
+
+    function getCookie(name) {
+      var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? decodeURIComponent(match[2]) : null;
+    }
+
     function speakText(text) {
-      if ('speechSynthesis' in window) {
+      if (!aiVoiceEnabled || !('speechSynthesis' in window)) return;
+      try {
         window.speechSynthesis.cancel();
-        var utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'hi-IN';
+        if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+        }
+        var clean = text.replace(/₹/g, 'rupaye ').replace(/https?:\/\/\S+/g, '');
+        var utterance = new SpeechSynthesisUtterance(clean);
         utterance.rate = 0.95;
+        utterance.pitch = 1.0;
+
+        var voices = window.speechSynthesis.getVoices() || [];
+        var voice = voices.find(function (v) {
+          return (v.lang && (v.lang === 'hi-IN' || v.lang.startsWith('hi') || v.lang === 'en-IN')) ||
+                 (v.name && (v.name.toLowerCase().includes('india') || v.name.toLowerCase().includes('hindi')));
+        });
+        if (voice) {
+          utterance.voice = voice;
+        } else {
+          utterance.lang = 'hi-IN';
+        }
+
+        var visualizer = document.getElementById("ai-wave-bars");
+        var statusLabel = document.getElementById("ai-status-label");
+
+        utterance.onstart = function () {
+          if (visualizer) visualizer.classList.add("scale-110");
+          if (statusLabel) statusLabel.textContent = "Speaking response...";
+        };
+        utterance.onend = function () {
+          if (visualizer) visualizer.classList.remove("scale-110");
+          if (statusLabel) statusLabel.textContent = "Ready · Tap a quick chip or ask another question";
+        };
+        utterance.onerror = function () {
+          if (visualizer) visualizer.classList.remove("scale-110");
+          if (statusLabel) statusLabel.textContent = "Ready · Tap a quick chip or ask another question";
+        };
+
         window.speechSynthesis.speak(utterance);
+      } catch (e) {
+        console.warn("Speech synthesis notice:", e);
       }
     }
 
-    function addAiMessage(sender, text, isAi) {
+    // Instant Client-side Clinical Knowledge Engine (Ensures 100% Uptime Even Offline)
+    function getLocalAiReply(query) {
+      var q = (query || "").toLowerCase().trim();
+      if (q.match(/ramesh|doctor|optometrist|owner|phone|contact|mobile|call|whatsapp|baat karni/i)) {
+        return {
+          reply: "Optometrist Ramesh Sharma ji (15+ saal anubhav) se direct consultation ya appointment ke liye aap abhi +91 95099 59157 par call ya WhatsApp message kar sakte hain.",
+          actionSuggestion: { type: "CALL_NOW", text: "Direct Call: +91 95099 59157", target: "tel:+919509959157" }
+        };
+      }
+      if (q.match(/time|timing|khula|open|band|close|kab tak|sunday|roz/i)) {
+        return {
+          reply: "The Optical Hub roz subah 9:00 baje se raat 9:00 baje tak open rehta hai (Sunday bhi open hai!). Certified Optometrist Ramesh Sharma ji (15+ yrs exp) dwara 5-minute computerized eye checkup bilkul free hota hai. Aap abhi slot book kar sakte hain!",
+          actionSuggestion: { type: "BOOK_APPOINTMENT", text: "Free Eye Test Slot Book Karein", target: "booking-section" }
+        };
+      }
+      if (q.match(/home|ghar|senior|elder|bujurg|ghar par|visit/i)) {
+        return {
+          reply: "Senior citizens aur busy patients ke liye The Optical Hub provide karta hai doorstep Home Eye Test pure Jaipur me sirf ₹199 me! Isme computerized digital eye evaluation aur 50+ frames ka home trial shamil hai.",
+          actionSuggestion: { type: "BOOK_APPOINTMENT", text: "Home Eye Test Book Karein (₹199)", target: "booking-section" }
+        };
+      }
+      if (q.match(/eye test|checkup|test|aankh|vision|power|chashme ka number|aankh ka number|slot|appointment|exam/i)) {
+        return {
+          reply: "Hamari clinic par Comprehensive Computerized Eye Testing bilkul FREE hai (zero coupon required). 15+ saal anubhavi Optometrist Ramesh Sharma ji digital auto-refractometer se accurate cylindrical aur spherical number test karte hain.",
+          actionSuggestion: { type: "BOOK_APPOINTMENT", text: "Instant Free Slot Book Karein", target: "booking-section" }
+        };
+      }
+      if (q.match(/blue|screen|computer|laptop|phone|eye strain|sir dard/i)) {
+        return {
+          reply: "Screen work aur night digital fatigue se bachne ke liye The Optical Hub me Certified Blue-Cut Lenses sirf ₹800 se shuru hote hain with 99.9% blue light blocking and anti-reflective coating.",
+          actionSuggestion: { type: "OPEN_CALCULATOR", text: "Lens Price Calculator Kholein", target: "calculator-section" }
+        };
+      }
+      if (q.match(/progressive|varifocal|bifocal|pass ka|door ka|reading|presbyopia/i)) {
+        return {
+          reply: "Progressive lenses me bina kisi dividing line ke door, intermediate (computer), aur pass (reading) teeno visions bilkul natural milti hain. High-definition German corridor progressive lenses ₹1,499 se shuru hote hain with adaptation guarantee!",
+          actionSuggestion: { type: "OPEN_CALCULATOR", text: "Progressive Lens Price Dekhein", target: "calculator-section" }
+        };
+      }
+      if (q.match(/price|rate|cost|kitne|chashma|frame price|charges|fee/i)) {
+        return {
+          reply: "The Optical Hub me transparent fair pricing hai: Lightweight frames ₹699 se, Blue-Cut lenses ₹800 se, Photogray/Transitions ₹1,200 se aur Progressive lenses ₹1,499 se start hote hain with 1-year frame warranty.",
+          actionSuggestion: { type: "OPEN_CALCULATOR", text: "Interactive Price Calculator Kholein", target: "calculator-section" }
+        };
+      }
+      if (q.match(/toot|tut|repair|screw|nose pad|theek|loose|dandi|welding|bend|fit/i)) {
+        return {
+          reply: "Precision optical repair workshop me broken frame welding, temple alignment, loose screws aur nose pad replacement same-day complete kiya jata hai! Minor repairs free hain, major repairs sirf ₹49 se.",
+          actionSuggestion: { type: "OPEN_REPAIR", text: "Repair Desk Kholein", target: "repair-section" }
+        };
+      }
+      if (q.match(/address|kahan|location|landmark|pooja tower|gopalpura|mahesh nagar|rasta|map|near/i)) {
+        return {
+          reply: "Hamara physical address hai: Shop No. 128, POOJA TOWER, 80 Feet Road, near AGRAWAL JEWELLERS, Krishna Nagar-B, Mahesh Nagar, Gopal Pura Mode, Jaipur. Free customer parking uplabdh hai.",
+          actionSuggestion: { type: "VIEW_MAP", text: "Google Maps Par Location Dekhein", target: "https://maps.google.com/?q=The+Optical+Hub+Shop+128+Pooja+Tower+80+Feet+Road+Gopal+Pura+Mode+Jaipur" }
+        };
+      }
+      if (q.match(/offer|discount|deal|sasta|saving/i)) {
+        return {
+          reply: "The Optical Hub par current offers: 1) Computerized Eye Testing 100% FREE, 2) Complete Spectacle Sets (Frame + Blue-Cut lenses) starting ₹999, 3) 20% direct saving on premium coatings.",
+          actionSuggestion: { type: "WHATSAPP_CHAT", text: "WhatsApp Par Offer Catalog Mangwayein", target: "https://wa.me/919509959157?text=Hi%20The%20Optical%20Hub,%20mujhe%20current%20eyewear%20offers%20aur%20pricing%20ke%20baare%20me%20janna%20hai." }
+        };
+      }
+      if (q.match(/ramesh|doctor|optometrist|owner|phone|contact|number|call/i)) {
+        return {
+          reply: "Optometrist Ramesh Sharma ji (15+ yrs experience) se direct consultation ya appointment ke liye aap +91 95099 59157 par direct call ya WhatsApp message kar sakte hain.",
+          actionSuggestion: { type: "CALL_NOW", text: "Direct Call: +91 95099 59157", target: "tel:+919509959157" }
+        };
+      }
+      return {
+        reply: "Namaste! Welcome to The Optical Hub. Main Optometrist Ramesh Sharma ka 24/7 AI Optical Assistant hoon. Clinic me free computerized vision testing, designer spectacle frames, blue-cut computer lenses aur precision frame repairs uplabdh hain. Direct assistance ke liye aap WhatsApp par connect kar sakte hain.",
+        actionSuggestion: { type: "WHATSAPP_CHAT", text: "WhatsApp Par Connect Karein", target: "https://wa.me/919509959157?text=Hi%20Ramesh%20Ji,%20I%20have%20an%20optical%20inquiry%20regarding%20glasses%20and%20eye%20testing." }
+      };
+    }
+
+    function handleAiAction(type, target) {
+      closeAiCallModal();
+      if (!target) return;
+      if (target === 'booking-section') {
+        var el = document.getElementById('eye-test');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        var nameInput = document.getElementById('booking-name');
+        if (nameInput) setTimeout(function () { nameInput.focus(); }, 600);
+      } else if (target === 'calculator-section') {
+        var calc = document.getElementById('calculator');
+        if (calc) calc.scrollIntoView({ behavior: 'smooth' });
+      } else if (target === 'repair-section') {
+        var rep = document.getElementById('repair');
+        if (rep) rep.scrollIntoView({ behavior: 'smooth' });
+        var repName = document.getElementById('repair-name');
+        if (repName) setTimeout(function () { repName.focus(); }, 600);
+      } else if (target.startsWith('http') || target.startsWith('tel:')) {
+        window.open(target, target.startsWith('http') ? '_blank' : '_self');
+      }
+    }
+
+    function addAiMessage(sender, text, isAi, actionSuggestion) {
       var history = document.getElementById("ai-chat-history");
+      if (!history) return;
       var div = document.createElement("div");
       div.className = (isAi ? "bg-white/10" : "bg-pine/50 ml-auto") + " rounded-2xl p-3.5 max-w-[90%] leading-relaxed";
-      div.innerHTML = '<span class="font-semibold ' + (isAi ? 'text-emerald-300' : 'text-cream') + ' block mb-1">' + escapeHtml(sender) + ':</span>' + escapeHtml(text);
+
+      var html = '<span class="font-semibold ' + (isAi ? 'text-emerald-300' : 'text-cream') + ' block mb-1">' + escapeHtml(sender) + ':</span>' + escapeHtml(text);
+
+      if (isAi && actionSuggestion && actionSuggestion.text) {
+        var actType = escapeHtml(actionSuggestion.type || 'ACTION');
+        var actText = escapeHtml(actionSuggestion.text);
+        var actTarget = escapeHtml(actionSuggestion.target || '');
+
+        html += '<div class="mt-3 pt-2.5 border-t border-white/10 flex flex-wrap items-center gap-2">' +
+          '<button type="button" class="ai-action-btn inline-flex items-center gap-1.5 rounded-full bg-emerald-500/25 hover:bg-emerald-500/40 text-emerald-300 border border-emerald-400/40 px-3.5 py-1.5 text-xs font-semibold shadow-sm transition-all" data-type="' + actType + '" data-target="' + actTarget + '">' +
+          '<span>⚡</span> ' + actText +
+          '</button>' +
+          '<a href="https://wa.me/919509959157?text=' + encodeURIComponent('Hi Ramesh Ji, I was chatting with AI assistant about: ' + text.slice(0, 60)) + '" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-white/10 hover:bg-white/20 text-cream/90 border border-white/10 px-3 py-1.5 text-xs font-medium transition-colors">' +
+          '<span>💬</span> WhatsApp' +
+          '</a>' +
+          '</div>';
+      }
+
+      div.innerHTML = html;
       history.appendChild(div);
       history.scrollTop = history.scrollHeight;
+
+      // Wire interactive action buttons in bubble
+      div.querySelectorAll(".ai-action-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          handleAiAction(btn.getAttribute("data-type"), btn.getAttribute("data-target"));
+        });
+      });
     }
 
     async function sendAiQuery(query) {
-      if (!query || !query.trim()) return;
+      if (!query || !query.trim() || isAiThinking) return;
+      isAiThinking = true;
       addAiMessage("You", query, false);
       var input = document.getElementById("ai-query-input");
       if (input) input.value = "";
 
+      var statusLabel = document.getElementById("ai-status-label");
+      var history = document.getElementById("ai-chat-history");
+
+      // Typing animation
+      var typingDiv = document.createElement("div");
+      typingDiv.id = "ai-typing-indicator";
+      typingDiv.className = "bg-white/10 rounded-2xl p-3 max-w-[80%] flex items-center gap-2 text-xs text-emerald-300";
+      typingDiv.innerHTML = '<span class="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span><span>Optometrist Assistant is thinking...</span>';
+      history.appendChild(typingDiv);
+      history.scrollTop = history.scrollHeight;
+      if (statusLabel) statusLabel.textContent = "Analyzing optical query...";
+
+      function removeTyping() {
+        var el = document.getElementById("ai-typing-indicator");
+        if (el) el.remove();
+        isAiThinking = false;
+      }
+
       try {
+        var csrfToken = getCookie("csrf_token") || "";
         var res = await fetch('/api/ai-call/query', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ query: query, wantVoice: true })
+          headers: {
+            'Content-Type': 'application/json',
+            'x-csrf-token': csrfToken
+          },
+          body: JSON.stringify({ query: query, wantVoice: aiVoiceEnabled })
         });
-        var data = await res.json();
-        if (data.success) {
-          addAiMessage("Ramesh Sharma AI Assistant", data.reply, true);
-          speakText(data.reply);
-        } else {
-          addAiMessage("Ramesh Sharma AI Assistant", "Store open hai 9 AM - 9 PM. Call 9509959157 for instant help.", true);
+
+        removeTyping();
+
+        if (res.ok) {
+          var data = await res.json();
+          if (data && data.success && data.reply) {
+            addAiMessage("Ramesh Sharma AI Assistant", data.reply, true, data.actionSuggestion);
+            speakText(data.reply);
+            return;
+          }
         }
+        // Resilient fallback to local clinical intelligence
+        var local = getLocalAiReply(query);
+        addAiMessage("Ramesh Sharma AI Assistant", local.reply, true, local.actionSuggestion);
+        speakText(local.reply);
       } catch (err) {
-        // Fallback local intelligence if offline
-        var fallback = "The Optical Hub roz subah 9 baje se raat 9 baje tak khula rehta hai. Free eye checkup ke liye aap 9509959157 par call ya WhatsApp kar sakte hain.";
-        addAiMessage("Ramesh Sharma AI Assistant", fallback, true);
-        speakText(fallback);
+        removeTyping();
+        var fallbackLocal = getLocalAiReply(query);
+        addAiMessage("Ramesh Sharma AI Assistant", fallbackLocal.reply, true, fallbackLocal.actionSuggestion);
+        speakText(fallbackLocal.reply);
       }
     }
 
@@ -1771,12 +1975,16 @@
     function openAiCallModal() {
       document.getElementById("ai-call-modal").classList.remove("hidden");
       document.body.classList.add("overflow-hidden");
+      var input = document.getElementById("ai-query-input");
+      if (input) setTimeout(function () { input.focus(); }, 150);
       refreshIcons();
     }
     function closeAiCallModal() {
       document.getElementById("ai-call-modal").classList.add("hidden");
       document.body.classList.remove("overflow-hidden");
       if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      var visualizer = document.getElementById("ai-wave-bars");
+      if (visualizer) visualizer.classList.remove("scale-110");
     }
 
     // Security Modal Handlers
@@ -2092,33 +2300,90 @@
       sendAiQuery(val);
     });
 
-    // Voice Speech Recognition (Checklist & Reel Feature 2)
-    var micBtn = document.getElementById("ai-mic-btn");
-    if (micBtn && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
-      var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
-      var recognition = new SpeechRec();
-      recognition.lang = 'hi-IN';
-      recognition.continuous = false;
-
-      recognition.onstart = function () {
-        micBtn.classList.add("bg-emerald-500", "text-white");
-      };
-      recognition.onend = function () {
-        micBtn.classList.remove("bg-emerald-500", "text-white");
-      };
-      recognition.onresult = function (event) {
-        var transcript = event.results[0][0].transcript;
-        sendAiQuery(transcript);
-      };
-      micBtn.addEventListener("click", function () {
-        recognition.start();
+    // Voice Mute/Unmute Toggle
+    var voiceToggleBtn = document.getElementById("ai-voice-toggle");
+    if (voiceToggleBtn) {
+      voiceToggleBtn.addEventListener("click", function () {
+        aiVoiceEnabled = !aiVoiceEnabled;
+        var voiceLabel = document.getElementById("ai-voice-label");
+        if (aiVoiceEnabled) {
+          if (voiceLabel) voiceLabel.textContent = "Voice On";
+          voiceToggleBtn.classList.remove("opacity-50", "text-cream/50");
+          voiceToggleBtn.classList.add("text-emerald-300");
+          var stat = document.getElementById("ai-status-label");
+          if (stat) stat.textContent = "Voice enabled · AI will speak answers";
+        } else {
+          if (voiceLabel) voiceLabel.textContent = "Voice Muted";
+          voiceToggleBtn.classList.add("opacity-50", "text-cream/50");
+          voiceToggleBtn.classList.remove("text-emerald-300");
+          if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+          var statMute = document.getElementById("ai-status-label");
+          if (statMute) statMute.textContent = "Voice muted · Text replies active";
+        }
       });
     }
 
-    // Quick chips
+    // Voice Speech Recognition (Checklist & Reel Feature 2)
+    var micBtn = document.getElementById("ai-mic-btn");
+    if (micBtn) {
+      var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SpeechRec) {
+        try {
+          var recognition = new SpeechRec();
+          recognition.lang = 'hi-IN';
+          recognition.continuous = false;
+          recognition.interimResults = false;
+
+          recognition.onstart = function () {
+            micBtn.classList.add("bg-emerald-500", "text-white", "animate-pulse");
+            var statusLabel = document.getElementById("ai-status-label");
+            if (statusLabel) statusLabel.textContent = "Listening... Bolna shuru karein";
+          };
+          recognition.onend = function () {
+            micBtn.classList.remove("bg-emerald-500", "text-white", "animate-pulse");
+            var statusLabel = document.getElementById("ai-status-label");
+            if (statusLabel && !isAiThinking) statusLabel.textContent = "Ready · Tap a quick chip or ask another question";
+          };
+          recognition.onerror = function (e) {
+            micBtn.classList.remove("bg-emerald-500", "text-white", "animate-pulse");
+            var statusLabel = document.getElementById("ai-status-label");
+            if (statusLabel) statusLabel.textContent = "Microphone error. Aap type karke pooch sakte hain!";
+          };
+          recognition.onresult = function (event) {
+            if (event.results && event.results[0] && event.results[0][0]) {
+              var transcript = event.results[0][0].transcript;
+              sendAiQuery(transcript);
+            }
+          };
+          micBtn.addEventListener("click", function () {
+            try {
+              recognition.start();
+            } catch (startErr) {
+              try { recognition.stop(); } catch (stopErr) {}
+            }
+          });
+        } catch (recErr) {
+          console.warn("Speech recognition setup notice:", recErr);
+        }
+      } else {
+        // Fallback for browsers without speech recognition
+        micBtn.addEventListener("click", function () {
+          var input = document.getElementById("ai-query-input");
+          if (input) {
+            input.focus();
+            input.placeholder = "Mic not supported here. Type your question...";
+          }
+          var statusLabel = document.getElementById("ai-status-label");
+          if (statusLabel) statusLabel.textContent = "Aapka browser mic support nahi karta, kripya type karein.";
+        });
+      }
+    }
+
+    // Quick inquiry prompt chips
     document.querySelectorAll(".quick-chip").forEach(function (chip) {
       chip.addEventListener("click", function () {
-        sendAiQuery(chip.getAttribute("data-q"));
+        var query = chip.getAttribute("data-q");
+        if (query) sendAiQuery(query);
       });
     });
 

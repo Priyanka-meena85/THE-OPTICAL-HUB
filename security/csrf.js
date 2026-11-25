@@ -26,8 +26,15 @@ function csrfProtection(req, res, next) {
     return next();
   }
 
-  // Skip CSRF for public AI voice query and signed webhooks
-  if (req.path.startsWith('/api/webhooks/') || req.path === '/api/ai-call/query') {
+  // Skip CSRF for public AI voice query and signed webhooks (handles rewritten or routed paths)
+  const path = req.path || '';
+  const orig = req.originalUrl || '';
+  if (
+    path.startsWith('/api/webhooks/') ||
+    path.includes('/api/ai-call/query') ||
+    orig.includes('/api/ai-call/query') ||
+    path.endsWith('/ai-call/query')
+  ) {
     return next();
   }
 

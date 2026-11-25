@@ -293,6 +293,9 @@ app.post('/api/webhooks/whatsapp', webhookSignatureMiddleware, (req, res) => {
 // REEL FEATURE 2: 24/7 AI NIGHT CALLING ASSISTANT
 // "Raat ko AI Call Uthayega - Raat ko bhi customer miss nahi hoga!"
 // --------------------------------------------------------------------------
+// REEL FEATURE 2: 24/7 AI OPTICAL ASSISTANT & VOICE DESK
+// Clinical intelligence answering Jaipur optical customers day & night
+// --------------------------------------------------------------------------
 app.post('/api/ai-call/query', aiCallingLimiter, (req, res) => {
   const { query, callerPhone = 'Guest' } = req.body;
 
@@ -300,46 +303,124 @@ app.post('/api/ai-call/query', aiCallingLimiter, (req, res) => {
     return res.status(400).json({ success: false, error: 'Query text is required.' });
   }
 
-  const normalized = query.toLowerCase();
+  const normalized = query.toLowerCase().trim();
   let intent = 'general_inquiry';
   let replyText = '';
   let actionSuggestion = null;
 
-  // Smart Optical Knowledge Base for Night Inquiries
-  if (normalized.includes('time') || normalized.includes('timing') || normalized.includes('khula') || normalized.includes('open')) {
+  // Comprehensive Clinical & Optical Knowledge Base for The Optical Hub
+  if (normalized.match(/ramesh|doctor|optometrist|owner|phone|contact|mobile|call|whatsapp|baat karni/i)) {
+    intent = 'contact_doctor';
+    replyText = 'Optometrist Ramesh Sharma ji (15+ saal anubhav) se direct consultation ya appointment ke liye aap abhi +91 95099 59157 par call ya WhatsApp message kar sakte hain.';
+    actionSuggestion = {
+      type: 'CALL_NOW',
+      text: 'Direct Call: +91 95099 59157',
+      target: 'tel:+919509959157'
+    };
+  } else if (normalized.match(/time|timing|khula|open|band|close|kab tak|sunday|roz/i)) {
     intent = 'store_hours';
-    replyText = 'The Optical Hub, Pooja Tower Gopal Pura Mode Jaipur roz subah 9 baje se raat 9 baje tak khula rehta hai. Subah aate hi Ramesh Sharma ji aapka 5 minute me free eye checkup kar denge!';
-    actionSuggestion = { type: 'BOOK_APPOINTMENT', text: 'Subah Ka Slot Book Karein' };
-  } else if (normalized.includes('eye test') || normalized.includes('checkup') || normalized.includes('number') || normalized.includes('test')) {
+    replyText = 'The Optical Hub roz subah 9:00 baje se raat 9:00 baje tak open rehta hai (Sunday bhi open hai!). Certified Optometrist Ramesh Sharma ji (15+ yrs exp) dwara 5-minute digital eye checkup bilkul free hota hai. Aap abhi slot book kar sakte hain!';
+    actionSuggestion = {
+      type: 'BOOK_APPOINTMENT',
+      text: 'Free Eye Test Slot Book Karein',
+      target: 'booking-section'
+    };
+  } else if (normalized.match(/home|ghar|senior|elder|bujurg|ghar par|visit/i)) {
+    intent = 'home_eye_test';
+    replyText = 'Senior citizens aur busy patients ke liye The Optical Hub provide karta hai doorstep Home Eye Test pure Jaipur me sirf ₹199 me! Isme computerized digital eye evaluation aur 50+ frames ka home trial shamil hai. Kya aapke parivar ke liye appointment book karein?';
+    actionSuggestion = {
+      type: 'BOOK_APPOINTMENT',
+      text: 'Home Eye Test Book Karein (₹199)',
+      target: 'booking-section'
+    };
+  } else if (normalized.match(/eye test|checkup|test|aankh|vision|power|chashme ka number|aankh ka number|slot|appointment|exam/i)) {
     intent = 'book_eye_test';
-    replyText = 'Ji bilkul! Hamari dukaan par Computerized Eye Testing bilkul FREE hai (zero coupon required). Seniors ke liye Jaipur me Home Eye Test service bhi sirf Rs 199 me available hai. Kya main aapka slot book kar doon?';
-    actionSuggestion = { type: 'OPEN_SLOTS', text: 'Select 11 AM, 12 PM, 4 PM, 5 PM ya 6 PM' };
-  } else if (normalized.includes('blue') || normalized.includes('screen') || normalized.includes('computer') || normalized.includes('lens')) {
+    replyText = 'Hamari clinic par Comprehensive Computerized Eye Testing bilkul FREE hai (zero coupon required). 15+ saal anubhavi Optometrist Ramesh Sharma ji digital auto-refractometer se accurate cylindrical aur spherical number test karte hain. Kya main aapka slot confirm kar doon?';
+    actionSuggestion = {
+      type: 'BOOK_APPOINTMENT',
+      text: 'Instant Free Slot Book Karein',
+      target: 'booking-section'
+    };
+  } else if (normalized.match(/blue|screen|computer|laptop|phone|eye strain|sir dard/i)) {
     intent = 'blue_cut_lenses';
-    replyText = 'Screen work ke liye Blue-Cut Lenses The Optical Hub me sirf Rs 800 me available hain. Anti-glare coating Rs 300 aur Scratch-proof coating Rs 200 ki aati hai. Online calculator se aap abhi apna live total dekh sakte hain.';
-    actionSuggestion = { type: 'OPEN_CALCULATOR', text: 'Price Calculator Kholein' };
-  } else if (normalized.includes('toota') || normalized.includes('screw') || normalized.includes('repair') || normalized.includes('theek')) {
+    replyText = 'Screen work aur night digital fatigue se bachne ke liye The Optical Hub me Certified Blue-Cut Lenses sirf ₹800 se shuru hote hain! Inme 99.9% harmful blue-light filtering, anti-reflective coating aur scratch resistance shamil hai. Aap hamare live calculator se exact price estimate dekh sakte hain.';
+    actionSuggestion = {
+      type: 'OPEN_CALCULATOR',
+      text: 'Lens Price Calculator Kholein',
+      target: 'calculator-section'
+    };
+  } else if (normalized.match(/progressive|varifocal|bifocal|pass ka|door ka|reading|40 saal|presbyopia/i)) {
+    intent = 'progressive_lenses';
+    replyText = 'Progressive lenses me bina kisi dividing line ke door, intermediate (computer), aur pass (reading) teeno visions bilkul natural milti hain. The Optical Hub me high-definition German corridor progressive lenses ₹1,499 se shuru hote hain with adaptation guarantee!';
+    actionSuggestion = {
+      type: 'OPEN_CALCULATOR',
+      text: 'Progressive Lens Price Dekhein',
+      target: 'calculator-section'
+    };
+  } else if (normalized.match(/price|rate|cost|kitne|chashma|frame price|charges|fee/i)) {
+    intent = 'lens_pricing';
+    replyText = 'The Optical Hub me transparent fair pricing hai: Lightweight boutique frames ₹699 se, Blue-Cut lenses ₹800 se, Photogray/Transitions ₹1,200 se aur Progressive lenses ₹1,499 se start hote hain. Complete chashme par 1-year frame warranty milti hai!';
+    actionSuggestion = {
+      type: 'OPEN_CALCULATOR',
+      text: 'Interactive Price Calculator Kholein',
+      target: 'calculator-section'
+    };
+  } else if (normalized.match(/toot|tut|repair|screw|nose pad|theek|loose|dandi|welding|bend|fit/i)) {
     intent = 'repair_help';
-    replyText = 'The Optical Hub workshop me precision frame alignment, laser welding, screw replacement, aur nose pad service same-day complete kiya jata hai. Aap online repair desk me request submit kar sakte hain.';
-    actionSuggestion = { type: 'OPEN_REPAIR', text: 'Repair Desk Kholein' };
-  } else if (normalized.includes('address') || normalized.includes('kahan') || normalized.includes('location') || normalized.includes('landmark')) {
+    replyText = 'Precision optical repair workshop me broken frame welding, temple alignment, loose screws aur nose pad replacement same-day kiya jata hai! Minor repairs aur screw replacements regular customers ke liye free hain, major repairs sirf ₹49 se shuru hoti hain.';
+    actionSuggestion = {
+      type: 'OPEN_REPAIR',
+      text: 'Repair Desk Kholein',
+      target: 'repair-section'
+    };
+  } else if (normalized.match(/address|kahan|location|landmark|pooja tower|gopalpura|mahesh nagar|rasta|map|near/i)) {
     intent = 'store_location';
-    replyText = 'Hamara address hai: Shop no. 128, POOJA TOWER, 80 Feet Road, near AGRAWAL JEWELLERS, Krishna Nagar-B, Mahesh Nagar, Gopal Pura Mode, Jaipur. WhatsApp par location ke liye call karein: 9509959157.';
-    actionSuggestion = { type: 'VIEW_MAP', text: 'Google Maps Par Dekhein' };
+    replyText = 'Hamara physical clinic address hai: Shop No. 128, POOJA TOWER, 80 Feet Road, near AGRAWAL JEWELLERS, Krishna Nagar-B, Mahesh Nagar, Gopal Pura Mode, Jaipur, Rajasthan 302015. Free customer parking uplabdh hai.';
+    actionSuggestion = {
+      type: 'VIEW_MAP',
+      text: 'Google Maps Par Location Dekhein',
+      target: 'https://maps.google.com/?q=The+Optical+Hub+Shop+128+Pooja+Tower+80+Feet+Road+Gopal+Pura+Mode+Jaipur'
+    };
+  } else if (normalized.match(/offer|discount|deal|sasta|saving/i)) {
+    intent = 'offers_discounts';
+    replyText = 'The Optical Hub par current offers: 1) Computerized Eye Testing 100% FREE, 2) Complete Spectacle Sets (Frame + Blue-Cut lenses) starting ₹999, 3) Anti-Glare + UV400 coating combo par 20% direct saving. WhatsApp par latest catalog check karein!';
+    actionSuggestion = {
+      type: 'WHATSAPP_CHAT',
+      text: 'WhatsApp Par Offer Catalog Mangwayein',
+      target: 'https://wa.me/919509959157?text=Hi%20The%20Optical%20Hub,%20mujhe%20current%20eyewear%20offers%20aur%20pricing%20ke%20baare%20me%20janna%20hai.'
+    };
+  } else if (normalized.match(/ramesh|doctor|optometrist|owner|phone|contact|number|call/i)) {
+    intent = 'contact_doctor';
+    replyText = 'Optometrist Ramesh Sharma ji 15+ varsho se clinical optometry practice kar rahe hain. Unse direct baat karne ya appointment ke liye aap abhi +91 95099 59157 par direct call ya WhatsApp message kar sakte hain.';
+    actionSuggestion = {
+      type: 'CALL_NOW',
+      text: 'Direct Call: +91 95099 59157',
+      target: 'tel:+919509959157'
+    };
   } else {
     intent = 'ai_consultation';
-    replyText = 'Namaste! Welcome to The Optical Hub. Main Optometrist Ramesh Sharma ka 24/7 AI Optical Assistant hoon. Clinic me free computerized vision testing, premium frames aur same-day spectacle repairs uplabdh hain. Direct assistance ke liye aap WhatsApp par 9509959157 par connect kar sakte hain.';
-    actionSuggestion = { type: 'WHATSAPP_CHAT', text: 'WhatsApp Par Connect Karein' };
+    replyText = 'Namaste! Welcome to The Optical Hub. Main Optometrist Ramesh Sharma ka 24/7 AI Optical Assistant hoon. Clinic me free computerized vision testing, designer spectacle frames, blue-cut computer lenses aur precision frame repairs uplabdh hain. Aap humse kya janna chahte hain?';
+    actionSuggestion = {
+      type: 'WHATSAPP_CHAT',
+      text: 'WhatsApp Par Connect Karein',
+      target: 'https://wa.me/919509959157?text=Hi%20Ramesh%20Ji,%20I%20have%20an%20optical%20inquiry%20regarding%20glasses%20and%20eye%20testing.'
+    };
   }
 
-  // Log night call record in DB (SQLi safe)
-  db.logAiNightCall({
-    callerPhone,
-    transcript: query,
-    intent,
-    summary: replyText.slice(0, 150),
-    audioRequested: Boolean(req.body.wantVoice)
-  });
+  // Safe logging in DB (never let logging error crash the response)
+  try {
+    if (typeof db?.logAiNightCall === 'function') {
+      db.logAiNightCall({
+        callerPhone,
+        transcript: query,
+        intent,
+        summary: replyText.slice(0, 150),
+        audioRequested: Boolean(req.body.wantVoice)
+      });
+    }
+  } catch (logErr) {
+    secureLogger.warn('AI call log record skipped', { error: logErr.message });
+  }
 
   res.json({
     success: true,
