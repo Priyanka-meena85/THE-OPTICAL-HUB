@@ -2395,6 +2395,294 @@
         var badge = document.getElementById("tryon-selected-shape-badge");
         if (badge) badge.textContent = SHAPE_NAMES[currentShape] || currentShape;
         renderTryOnMount();
+
+    // Quick Inquiry Chips in AI Voice Desk
+    document.querySelectorAll(".quick-chip").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var q = btn.getAttribute("data-q");
+        if (q) sendAiQuery(q);
+      });
+    });
+
+
+    document.querySelectorAll(".slot-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        selectedSlot = btn.getAttribute("data-slot");
+        document.querySelectorAll(".slot-btn").forEach(function (el) {
+          var on = el === btn;
+          el.classList.toggle("is-on", on);
+          el.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        setFieldError("book-slot-error", "");
+      });
+    });
+
+    // Eye Test Booking Form Submission
+    document.getElementById("booking-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      var name = document.getElementById("book-name").value.trim();
+      var phone = normalizePhone(document.getElementById("book-phone").value);
+      var age = Number(document.getElementById("book-age").value);
+      var date = document.getElementById("book-date").value;
+      var home = document.getElementById("book-home").checked;
+      var valid = true;
+
+      if (name.length < 2) {
+        setFieldError("book-name-error", "Enter the name we should call.");
+        valid = false;
+      } else setFieldError("book-name-error", "");
+
+      if (!isValidPhone(phone)) {
+        setFieldError("book-phone-error", "Enter a 10 digit mobile number.");
+        valid = false;
+      } else setFieldError("book-phone-error", "");
+
+      if (!Number.isInteger(age) || age < 1 || age > 110) {
+        setFieldError("book-age-error", "Enter an age from 1 to 110.");
+        valid = false;
+      } else setFieldError("book-age-error", "");
+
+      if (!date || date < todayISO()) {
+        setFieldError("book-date-error", "Choose today or a later date.");
+        valid = false;
+      } else setFieldError("book-date-error", "");
+
+      if (SLOTS.indexOf(selectedSlot) === -1) {
+        setFieldError("book-slot-error", "Pick a time slot.");
+        valid = false;
+      } else setFieldError("book-slot-error", "");
+
+      if (!valid) return;
+
+      var entry = { name: name, phone: phone, age: age, date: date, slot: selectedSlot, home: home };
+      var all = readStore(BOOK_KEY);
+      all.unshift(entry);
+      writeStore(BOOK_KEY, all);
+
+      // Async push to server database
+      fetch('/api/appointments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(entry)
+      }).catch(function () {});
+
+      renderBookings();
+      var success = document.getElementById("book-success");
+      success.classList.remove("hidden");
+      var homeLine = home ? " Home eye test, Rs 199." : "";
+      document.getElementById("book-success-text").textContent = name + ", " + selectedSlot + " on " + prettyDate(date) + " is saved on this phone & clinic server." + homeLine;
+      document.getElementById("book-success-wa").href = waLink(
+        "Hi The Optical Hub, I am " + name + ". Please confirm my free eye test on " + date + " at " + selectedSlot + ". Age " + age + ". Phone " + phone + "." + (home ? " I need a home eye test for seniors, Rs 199." : "")
+      );
+    });
+
+    // Prescription Vault Tab Switcher
+    var rxTabAdd = document.getElementById("rx-tab-add");
+    var rxTabLookup = document.getElementById("rx-tab-lookup");
+    var rxForm = document.getElementById("rx-form");
+    if (rxTabAdd && rxTabLookup) {
+      rxTabAdd.addEventListener("click", function () {
+        rxTabAdd.classList.add("is-active", "bg-pine", "text-white");
+        rxTabAdd.classList.remove("text-ink/70");
+        rxTabLookup.classList.remove("is-active", "bg-pine", "text-white");
+        rxTabLookup.classList.add("text-ink/70");
+        if (rxForm) rxForm.scrollIntoView({ behavior: "smooth" });
+      });
+      rxTabLookup.addEventListener("click", function () {
+        rxTabLookup.classList.add("is-active", "bg-pine", "text-white");
+        rxTabLookup.classList.remove("text-ink/70");
+        rxTabAdd.classList.remove("is-active", "bg-pine", "text-white");
+        rxTabAdd.classList.add("text-ink/70");
+        var lookupInput = document.getElementById("rx-lookup-phone");
+        if (lookupInput) {
+          lookupInput.focus();
+          lookupInput.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    }
+
+    var rxLookupBtn = document.getElementById("rx-lookup-btn");
+    if (rxLookupBtn) {
+      rxLookupBtn.addEventListener("click", function () {
+        var query = (document.getElementById("rx-lookup-phone").value || "").trim();
+        renderPrescriptions(query);
+      });
+      document.getElementById("rx-lookup-phone").addEventListener("input", function (e) {
+        if (!e.target.value.trim()) renderPrescriptions();
+      });
+    }
+
+    // Prescription Vault Form Submission
+    document.getElementById("rx-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var name = document.getElementById("rx-name").value.trim();
+      var phone = normalizePhone(document.getElementById("rx-phone").value);
+      var sphR = document.getElementById("rx-sph-r").value.trim();
+      var cylR = document.getElementById("rx-cyl-r").value.trim();
+      var sphL = document.getElementById("rx-sph-l").value.trim();
+      var cylL = document.getElementById("rx-cyl-l").value.trim();
+      var notes = document.getElementById("rx-notes").value.trim();
+      var statusMsg = document.getElementById("rx-status-msg");
+
+      if (!name || !isValidPhone(phone)) {
+        statusMsg.textContent = "Please enter patient name and valid 10-digit phone.";
+        statusMsg.className = "mt-2 text-xs text-center text-clay block";
+        return;
+      }
+
+      var rxEntry = {
+        patientName: name,
+        phone: phone,
+        sphereR: sphR || '0.00',
+        cylR: cylR || '0.00',
+        sphereL: sphL || '0.00',
+        cylL: cylL || '0.00',
+        notes: notes,
+        created_at: todayISO()
+      };
+
+      var list = readStore(RX_KEY);
+      list.unshift(rxEntry);
+      writeStore(RX_KEY, list);
+      renderPrescriptions();
+
+      statusMsg.textContent = "Prescription encrypted and saved in Medical Vault!";
+      statusMsg.className = "mt-2 text-xs text-center text-pine font-semibold block";
+      this.reset();
+    });
+
+    // Repair Form Submission
+    document.getElementById("repair-photo").addEventListener("change", function (event) {
+      var file = event.target.files && event.target.files[0];
+      var preview = document.getElementById("repair-preview");
+      var container = document.getElementById("repair-preview-container");
+      if (!file || file.type.indexOf("image/") !== 0) {
+        if (container) container.classList.add("hidden");
+        preview.removeAttribute("src");
+        return;
+      }
+      preview.src = URL.createObjectURL(file);
+      if (container) container.classList.remove("hidden");
+    });
+
+    document.getElementById("repair-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      var name = document.getElementById("repair-name").value.trim();
+      var phone = normalizePhone(document.getElementById("repair-phone").value);
+      var problem = document.getElementById("repair-problem").value;
+      var date = document.getElementById("repair-date").value;
+      var file = document.getElementById("repair-photo").files[0];
+      var valid = true;
+
+      if (name.length < 2) {
+        setFieldError("repair-name-error", "Enter the name we should call.");
+        valid = false;
+      } else setFieldError("repair-name-error", "");
+
+      if (!isValidPhone(phone)) {
+        setFieldError("repair-phone-error", "Enter a 10 digit mobile number.");
+        valid = false;
+      } else setFieldError("repair-phone-error", "");
+
+      if (PROBLEMS.indexOf(problem) === -1) {
+        setFieldError("repair-problem-error", "Choose the problem.");
+        valid = false;
+      } else setFieldError("repair-problem-error", "");
+
+      if (!date || date < todayISO()) {
+        setFieldError("repair-date-error", "Choose today or a later date.");
+        valid = false;
+      } else setFieldError("repair-date-error", "");
+
+      if (!valid) return;
+
+      var id = String(Date.now());
+      var ticketId = "OPT-" + Math.floor(1000 + Math.random() * 9000);
+      if (file && file.type.indexOf("image/") === 0) repairPhotos[id] = URL.createObjectURL(file);
+      var entry = { id: id, ticketId: ticketId, name: name, phone: phone, problem: problem, date: date, status: "Raised", hasPhoto: Boolean(file) };
+      var all = readStore(REPAIR_KEY);
+      all.unshift(entry);
+      writeStore(REPAIR_KEY, all);
+
+      renderRepairs();
+      var box = document.getElementById("repair-success");
+      box.classList.remove("hidden");
+      document.getElementById("repair-success-text").textContent = "Namaste " + name + "! Aapka repair ticket successfully generate ho gaya hai: " + ticketId + " (" + problem + "). Expected collection: " + prettyDate(date) + ". Is Ticket ID aur phone number se aap status track kar sakte hain.";
+      event.target.reset();
+      var previewContainer = document.getElementById("repair-preview-container");
+      if (previewContainer) previewContainer.classList.add("hidden");
+    });
+
+    var repairSearchBtn = document.getElementById("repair-search-btn");
+    if (repairSearchBtn) {
+      repairSearchBtn.addEventListener("click", function () {
+        var ticketQ = (document.getElementById("repair-search-ticket").value || "").trim();
+        var phoneQ = (document.getElementById("repair-search-phone").value || "").trim();
+        var errEl = document.getElementById("repair-search-error");
+        if (!ticketQ && !phoneQ) {
+          if (errEl) {
+            errEl.textContent = "Kripya Ticket ID (OPT-XXXX) aur registered mobile number dono enter karein.";
+            errEl.classList.remove("hidden");
+          }
+          renderRepairs();
+          return;
+        }
+        if (errEl) errEl.classList.add("hidden");
+        renderRepairs(ticketQ, phoneQ);
+      });
+      document.getElementById("repair-search-phone").addEventListener("input", function (e) {
+        if (!e.target.value.trim() && !document.getElementById("repair-search-ticket").value.trim()) {
+          renderRepairs();
+        }
+      });
+      document.getElementById("repair-search-ticket").addEventListener("input", function (e) {
+        if (!e.target.value.trim() && !document.getElementById("repair-search-phone").value.trim()) {
+          renderRepairs();
+        }
+      });
+    }
+
+    // Wire Modals & Triggers
+    ["nav-ai-call-btn", "hero-ai-call-btn", "float-ai-call-btn", "bar-ai-call"].forEach(function (id) {
+      var btn = document.getElementById(id);
+      if (btn) btn.addEventListener("click", openAiCallModal);
+    });
+    document.getElementById("close-ai-call").addEventListener("click", closeAiCallModal);
+
+    document.getElementById("open-security-modal").addEventListener("click", openSecurityModal);
+    document.getElementById("close-security-modal").addEventListener("click", closeSecurityModal);
+
+    // AI Call Form
+    document.getElementById("ai-call-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var val = document.getElementById("ai-query-input").value;
+      sendAiQuery(val);
+    });
+
+    // Voice Mute/Unmute Toggle
+    var voiceToggleBtn = document.getElementById("ai-voice-toggle");
+    if (voiceToggleBtn) {
+      voiceToggleBtn.addEventListener("click", function () {
+        aiVoiceEnabled = !aiVoiceEnabled;
+        var voiceLabel = document.getElementById("ai-voice-label");
+        if (aiVoiceEnabled) {
+          if (voiceLabel) voiceLabel.textContent = "Voice On";
+          voiceToggleBtn.classList.remove("opacity-50", "text-cream/50");
+          voiceToggleBtn.classList.add("text-emerald-300");
+          var stat = document.getElementById("ai-status-label");
+          if (stat) stat.textContent = "Voice enabled · AI will speak answers";
+        } else {
+          if (voiceLabel) voiceLabel.textContent = "Voice Muted";
+          voiceToggleBtn.classList.add("opacity-50", "text-cream/50");
+          voiceToggleBtn.classList.remove("text-emerald-300");
+          if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+          var statMute = document.getElementById("ai-status-label");
+          if (statMute) statMute.textContent = "Voice muted · Text replies active";
+        }
+      });
+    }
+
+    
       });
     });
 
