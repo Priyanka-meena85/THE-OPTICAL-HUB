@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <!--
   THE OPTICAL HUB — Jaipur
-  Complete Full-Stack Web Application + 20-Point Security Architecture
+  Precision Vision Care, Boutique Eyewear & Clinical Ophthalmology
   Features:
-  1. Clinic WhatsApp Auto-Booking
-  2. 24/7 AI Night Calling Assistant ("Raat ko AI Call Uthayega")
-  3. Dukaan Website (The Optical Hub, Jaipur)
-  4. PWA App under ₹1,000 ("Free Tools se App Live Karo")
-  + Sensitive Optical Patient Prescription Vault & 20-Point Security Audit Center
+  1. Clinic WhatsApp Direct Booking
+  2. 24/7 AI Optical Assistant & Digital Consultation
+  3. Boutique Frames Collection & Virtual Try-On Studio
+  4. Confidential Patient Prescription Vault & Express Repair Desk
 -->
 <html lang="en">
 <head>
@@ -15,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b4f9c" />
   <title>The Optical Hub | Best Optician &amp; Free Eye Test in Jaipur</title>
-  <meta name="description" content="The Optical Hub, Pooja Tower, Gopal Pura Mode, Jaipur. Free 5-minute digital eye test, designer eyewear from ₹699, 24/7 AI Night Calling, and same-day frame repairs. Mon–Sun 9 AM – 9 PM." />
+  <meta name="description" content="The Optical Hub, Pooja Tower, Gopal Pura Mode, Jaipur. Free 5-minute digital eye test, designer eyewear from ₹699, 24/7 AI Optical Assistant, and same-day frame repairs. Mon–Sun 9 AM – 9 PM." />
   <link rel="canonical" href="https://theopticalhub.vercel.app/" />
 
   <!-- Open Graph & Social Media Cards (WhatsApp, LinkedIn, Facebook) -->
@@ -24,7 +23,7 @@
   <meta property="og:site_name" content="The Optical Hub" />
   <meta property="og:locale" content="en_IN" />
   <meta property="og:title" content="The Optical Hub | Best Optician &amp; Free Eye Test in Jaipur" />
-  <meta property="og:description" content="Jaipur's top-rated 5.0★ optician. Free 5-min digital eye test, 12+ designer boutique frames, 24/7 AI assistance, instant WhatsApp booking &amp; fast repairs at Pooja Tower, Gopal Pura Mode." />
+  <meta property="og:description" content="Jaipur's top-rated 4.9★ optician (350+ Google reviews). Free 5-min digital eye exam, designer frames, 24/7 AI assistant &amp; fast repairs at Shop No. 128, Pooja Tower, Gopal Pura Mode." />
   <meta property="og:image" content="https://theopticalhub.vercel.app/images/logo.jpg" />
   <meta property="og:image:secure_url" content="https://theopticalhub.vercel.app/images/logo.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
@@ -59,9 +58,9 @@
     "priceRange": "₹₹",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Shop No. 128, Pooja Tower, 80 Feet Rd, near Agrawal Jewellers, Gopal Pura Mode, Mahesh Nagar",
+      "streetAddress": "Shop No. 128, Pooja Tower, 80 Feet Road, Near Agrawal Jewellers, Gopal Pura Mode, Mahesh Nagar",
       "addressLocality": "Jaipur",
-      "addressRegion": "RJ",
+      "addressRegion": "Rajasthan",
       "postalCode": "302015",
       "addressCountry": "IN"
     },
@@ -80,8 +79,8 @@
     ],
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "28"
+      "ratingValue": "4.9",
+      "reviewCount": "350"
     }
   }
   </script>
@@ -185,7 +184,7 @@
     "telephone": "+919509959157",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Shop no. 128, POOJA TOWER, 80 Feet Rd, near AGRAWAL JEWELLERS, Krishna Nagar-B, Mahesh Nagar, Gopal Pura Mode",
+      "streetAddress": "Shop No. 128, Pooja Tower, 80 Feet Road, Near Agrawal Jewellers, Gopal Pura Mode, Mahesh Nagar",
       "addressLocality": "Jaipur",
       "addressRegion": "Rajasthan",
       "postalCode": "302015",
@@ -217,13 +216,14 @@
         <a href="#home" class="hover:text-ink">Home</a>
         <a href="#frames" class="hover:text-ink">Frames</a>
         <a href="#calculator" class="hover:text-ink">Calculator</a>
+        <a href="#try-on" class="hover:text-ink">Try-On</a>
         <a href="#prescription-vault" class="hover:text-ink flex items-center gap-1"><i data-lucide="file-text" class="h-3.5 w-3.5 text-pine"></i> Rx Vault</a>
         <a href="#eye-test" class="hover:text-ink">Eye Test</a>
         <a href="#repair" class="hover:text-ink">Repair Desk</a>
         <a href="#contact" class="hover:text-ink">Contact</a>
       </nav>
       <div class="flex items-center gap-1.5 sm:gap-2">
-        <!-- 24/7 AI Night Calling Button in Navbar -->
+        <!-- 24/7 AI Optical Assistant Button in Navbar -->
         <button id="nav-ai-call-btn" type="button" class="inline-flex h-9 sm:h-10 items-center gap-2 rounded-full border border-pine/40 bg-white px-3 sm:px-3.5 text-xs sm:text-sm font-semibold text-pine hover:bg-pine/5 transition-colors shadow-sm">
           <svg class="h-4 w-4 shrink-0 text-pine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 8V4H8"/>
@@ -247,11 +247,12 @@
         <a href="#home" class="border-b border-line/70 py-3">Home</a>
         <a href="#frames" class="border-b border-line/70 py-3">Frames</a>
         <a href="#calculator" class="border-b border-line/70 py-3">Calculator</a>
+        <a href="#try-on" class="border-b border-line/70 py-3">Virtual Try-On</a>
         <a href="#prescription-vault" class="border-b border-line/70 py-3 flex items-center justify-between">
-          <span>Prescription Vault (Medical Data)</span>
-          <span class="rounded-full bg-pine/15 px-2 py-0.5 text-xs text-pine font-semibold">RLS Safe</span>
+          <span>Patient Prescription Vault</span>
+          <span class="rounded-full bg-pine/15 px-2 py-0.5 text-xs text-pine font-semibold">100% Private</span>
         </a>
-        <a href="#eye-test" class="border-b border-line/70 py-3">Eye Test</a>
+        <a href="#eye-test" class="border-b border-line/70 py-3">Free Eye Test</a>
         <a href="#repair" class="border-b border-line/70 py-3">Repair Desk</a>
         <a href="#contact" class="py-3">Contact</a>
       </nav>
@@ -262,13 +263,13 @@
     <!-- SECTION 1: HERO -->
     <section id="home" class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-10 sm:px-6 sm:py-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14 lg:py-16">
       <div>
-        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Jaipur, Rajasthan · Gopal Pura Mode</p>
+        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Shop No. 128, Pooja Tower · Gopal Pura Mode, Jaipur</p>
         <h1 class="mt-4 font-display text-[2rem] font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-[3.4rem] break-words">
           Precision Vision Care &amp; Boutique Frames.
           <span class="mt-2 block text-pine">Free 5-Minute Eye Exam.</span>
         </h1>
         <p class="mt-5 max-w-xl text-base leading-relaxed text-ink/75 sm:text-lg">
-          The Optical Hub at Pooja Tower, Gopal Pura Mode. Certified Optometrist Ramesh Sharma (15+ years experience) delivers accurate digital vision testing, custom lens fitting, and same-day delivery. Open daily, 9 AM – 9 PM.
+          Certified Optometrist Ramesh Sharma (15+ years experience) delivers accurate digital vision testing, custom lens fitting, and same-day delivery. Open daily, 9 AM – 9 PM.
         </p>
         <div class="mt-7 flex flex-col gap-3 sm:flex-row">
           <a href="#eye-test" class="inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-ink px-6 text-sm font-semibold text-cream hover:bg-black transition-colors shadow-sm">
@@ -289,9 +290,9 @@
             <a href="https://www.google.com/search?kgmid=/g/11x5yqv_ww&q=THE+OPTICAL+HUB+--+BEST+OPTICIAN+NEAR+BY" target="_blank" rel="noopener noreferrer" class="block">
               <span class="flex items-center gap-1.5 font-bold text-amber-500">
                 <svg class="h-4 w-4 fill-amber-400" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <span class="text-ink">5.0 ★</span>
+                <span class="text-ink">4.9 ★</span>
               </span>
-              <span class="mt-1 block text-xs text-ink/60">Google Verified</span>
+              <span class="mt-1 block text-xs text-ink/60">350+ Google Reviews</span>
             </a>
           </li>
           <li class="rounded-2xl border border-line bg-cream p-3">
@@ -299,24 +300,24 @@
             <span class="mt-1 block text-xs text-ink/60">Ramesh Sharma</span>
           </li>
           <li class="rounded-2xl border border-line bg-cream p-3">
-            <span class="flex items-center gap-1.5 font-semibold"><i data-lucide="clock" class="h-4 w-4 text-pine"></i> 9–9</span>
-            <span class="mt-1 block text-xs text-ink/60">Mon–Sun</span>
+            <span class="flex items-center gap-1.5 font-semibold"><i data-lucide="clock" class="h-4 w-4 text-pine"></i> 9 AM – 9 PM</span>
+            <span class="mt-1 block text-xs text-ink/60">Open Daily</span>
           </li>
           <li class="rounded-2xl border border-line bg-cream p-3">
-            <span class="flex items-center gap-1.5 font-semibold"><i data-lucide="shield-check" class="h-4 w-4 text-pine"></i> Free</span>
-            <span class="mt-1 block text-xs text-ink/60">In-store eye test</span>
+            <span class="flex items-center gap-1.5 font-semibold"><i data-lucide="shield-check" class="h-4 w-4 text-pine"></i> 100% Free</span>
+            <span class="mt-1 block text-xs text-ink/60">Computerized Eye Exam</span>
           </li>
         </ul>
       </div>
       <div class="relative">
         <img src="images/hero.jpg" alt="Person wearing glasses, smiling" width="900" height="1120" class="aspect-[4/5] w-full rounded-[1.75rem] object-cover object-center shadow-card sm:aspect-[5/6]" />
-        <!-- Floating slot card -->
-        <div class="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/50 bg-cream/95 p-4 shadow-card backdrop-blur sm:right-auto sm:w-64">
-          <p class="flex items-center gap-2 text-sm font-semibold">
-            <i data-lucide="clock-3" class="h-4 w-4 text-pine"></i>
-            Today 4 Slots Left
+        <!-- Clinic Schedule Card -->
+        <div class="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/50 bg-cream/95 p-4 shadow-card backdrop-blur sm:right-auto sm:w-72">
+          <p class="flex items-center gap-2 text-sm font-semibold text-emerald-800">
+            <span class="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Open Today · 9:00 AM – 9:00 PM
           </p>
-          <p class="mt-1 text-xs leading-relaxed text-ink/65">Next open slots from 4 PM. Walk in, or hold one below.</p>
+          <p class="mt-1 text-xs leading-relaxed text-ink/70">Walk-ins &amp; free eye test appointments welcome today. Ramesh Sharma ji is available at clinic.</p>
         </div>
       </div>
     </section>
@@ -435,196 +436,306 @@
     <!-- SECTION 3: PRICE CALCULATOR -->
     <section id="calculator" class="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
       <div class="max-w-2xl">
-        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Price calculator</p>
-        <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">See the total before you leave home.</h2>
-        <p class="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">Frame, lens, and coating. The number updates as you move. Booking sends that total on WhatsApp.</p>
+        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Transparent Price Calculator</p>
+        <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">See your complete total before visiting.</h2>
+        <p class="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">Frame, lens, and coating. Everything is transparent with zero hidden fees. Tap any option and your total updates live.</p>
       </div>
-      <div class="mt-8 grid gap-5 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)]">
-        <div class="space-y-5 rounded-[1.5rem] border border-line bg-cream p-4 sm:p-6">
+
+      <!-- Prominent Live Total Banner (Visible on all screen sizes) -->
+      <div class="mt-6 rounded-2xl border-2 border-emerald-500/30 bg-emerald-50/70 p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+        <div class="flex items-center gap-3">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-emerald-600 text-white shadow-sm shrink-0">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </span>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 block">Live Net Estimate</span>
+            <span id="calc-summary-line" class="text-xs sm:text-sm text-ink/75 font-medium">Frame ₹1,500 + Normal Lens ₹0 + No Coating</span>
+          </div>
+        </div>
+        <div class="flex items-baseline gap-2 self-end sm:self-center">
+          <span class="text-xs text-ink/50 uppercase font-semibold">Grand Total:</span>
+          <span id="calc-banner-total" class="text-2xl sm:text-3xl font-display font-extrabold text-emerald-700">₹1,500</span>
+        </div>
+      </div>
+
+      <div class="mt-6 grid gap-5 lg:grid-cols-[minmax(0,1.2fr)_minmax(19rem,0.8fr)]">
+        <div class="space-y-5 rounded-[1.5rem] border border-line bg-cream p-4 sm:p-6 shadow-sm">
           <div>
             <div class="flex items-baseline justify-between gap-3">
-              <label for="frame-range" class="text-sm font-semibold">Frame price</label>
-              <span id="frame-range-label" class="font-display text-xl font-semibold">₹1,500</span>
+              <label for="frame-range" class="text-sm font-semibold text-ink">1. Choose Frame Budget</label>
+              <span id="frame-range-label" class="font-display text-xl font-bold text-pine">₹1,500</span>
             </div>
             <input id="frame-range" class="mt-4" type="range" min="500" max="5000" step="100" value="1500" />
-            <div class="mt-1 flex justify-between text-xs text-ink/50"><span>₹500</span><span>₹5,000</span></div>
+            <div class="mt-1.5 flex justify-between text-xs text-ink/50"><span>Boutique ₹500</span><span>Designer ₹2,500</span><span>Luxury ₹5,000</span></div>
           </div>
           <fieldset>
-            <legend class="text-sm font-semibold">Lens</legend>
+            <legend class="text-sm font-semibold text-ink">2. Select Lens Type</legend>
             <div class="mt-3 grid gap-2 sm:grid-cols-2">
-              <label class="choice flex cursor-pointer items-center justify-between rounded-2xl border border-line bg-white px-4 py-3 text-sm">
-                <span class="flex items-center gap-2"><input type="radio" name="lens" value="0" data-name="Normal" checked /> Normal</span>
-                <span class="text-ink/60">₹0</span>
+              <label class="choice flex cursor-pointer items-center justify-between rounded-2xl border border-line bg-white px-4 py-3 text-sm hover:border-pine/50 transition-colors">
+                <span class="flex items-center gap-2"><input type="radio" name="lens" value="0" data-name="Standard Power" checked /> Standard Clear</span>
+                <span class="text-emerald-700 font-semibold">₹0</span>
               </label>
-              <label class="choice flex cursor-pointer items-center justify-between rounded-2xl border border-line bg-white px-4 py-3 text-sm">
-                <span class="flex items-center gap-2"><input type="radio" name="lens" value="800" data-name="Blue-Cut" /> Blue-Cut</span>
-                <span class="text-ink/60">₹800</span>
+              <label class="choice flex cursor-pointer items-center justify-between rounded-2xl border border-line bg-white px-4 py-3 text-sm hover:border-pine/50 transition-colors">
+                <span class="flex items-center gap-2"><input type="radio" name="lens" value="800" data-name="Blue-Cut Computer" /> Blue-Cut Shield</span>
+                <span class="text-pine font-semibold">+₹800</span>
               </label>
-              <label class="choice flex cursor-pointer items-center justify-between rounded-2xl border border-line bg-white px-4 py-3 text-sm">
-                <span class="flex items-center gap-2"><input type="radio" name="lens" value="1500" data-name="Progressive" /> Progressive</span>
-                <span class="text-ink/60">₹1,500</span>
+              <label class="choice flex cursor-pointer items-center justify-between rounded-2xl border border-line bg-white px-4 py-3 text-sm hover:border-pine/50 transition-colors">
+                <span class="flex items-center gap-2"><input type="radio" name="lens" value="1500" data-name="German Progressive" /> Progressive Bifocal</span>
+                <span class="text-pine font-semibold">+₹1,500</span>
               </label>
-              <label class="choice flex cursor-pointer items-center justify-between rounded-2xl border border-line bg-white px-4 py-3 text-sm">
-                <span class="flex items-center gap-2"><input type="radio" name="lens" value="1200" data-name="Photochromic" /> Photochromic</span>
-                <span class="text-ink/60">₹1,200</span>
+              <label class="choice flex cursor-pointer items-center justify-between rounded-2xl border border-line bg-white px-4 py-3 text-sm hover:border-pine/50 transition-colors">
+                <span class="flex items-center gap-2"><input type="radio" name="lens" value="1200" data-name="Transitions Photogray" /> Photogray / Sun</span>
+                <span class="text-pine font-semibold">+₹1,200</span>
               </label>
             </div>
           </fieldset>
           <fieldset>
-            <legend class="text-sm font-semibold">Coating</legend>
+            <legend class="text-sm font-semibold text-ink">3. Protective Coatings</legend>
             <div class="mt-3 grid gap-2 sm:grid-cols-2">
-              <label class="choice flex cursor-pointer items-center justify-between rounded-2xl border border-line bg-white px-4 py-3 text-sm">
-                <span class="flex items-center gap-2"><input type="checkbox" data-coat="Anti-Glare" value="300" /> Anti-Glare</span>
-                <span class="text-ink/60">₹300</span>
+              <label class="choice flex cursor-pointer items-center justify-between rounded-2xl border border-line bg-white px-4 py-3 text-sm hover:border-pine/50 transition-colors">
+                <span class="flex items-center gap-2"><input type="checkbox" data-coat="Anti-Glare" value="300" /> Anti-Glare Coating</span>
+                <span class="text-pine font-semibold">+₹300</span>
               </label>
-              <label class="choice flex cursor-pointer items-center justify-between rounded-2xl border border-line bg-white px-4 py-3 text-sm">
-                <span class="flex items-center gap-2"><input type="checkbox" data-coat="Scratch Proof" value="200" /> Scratch Proof</span>
-                <span class="text-ink/60">₹200</span>
+              <label class="choice flex cursor-pointer items-center justify-between rounded-2xl border border-line bg-white px-4 py-3 text-sm hover:border-pine/50 transition-colors">
+                <span class="flex items-center gap-2"><input type="checkbox" data-coat="Scratch Proof" value="200" /> Hard Scratch Guard</span>
+                <span class="text-pine font-semibold">+₹200</span>
               </label>
             </div>
           </fieldset>
         </div>
-        <aside class="h-fit rounded-[1.5rem] bg-ink p-5 text-cream sm:p-6 lg:sticky lg:top-24">
-          <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">Live total</p>
-          <p id="calc-total" class="mt-3 font-display text-5xl font-semibold tracking-tight" aria-live="polite">₹1,500</p>
-          <ul id="calc-breakdown" class="mt-5 space-y-2 border-t border-white/10 pt-4 text-sm text-cream/80"></ul>
-          <a id="calc-book" href="#" class="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-cream text-sm font-semibold text-ink hover:bg-white">
-            Is Price Pe Book Karein
-            <i data-lucide="message-circle" class="h-4 w-4"></i>
+
+        <aside class="h-fit rounded-[1.5rem] bg-ink p-5 text-cream sm:p-6 lg:sticky lg:top-24 shadow-card">
+          <div class="flex items-center justify-between border-b border-white/10 pb-3">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">Price Summary</p>
+            <span class="text-[10px] bg-emerald-500/20 text-emerald-300 font-semibold px-2 py-0.5 rounded-full">Guaranteed Estimate</span>
+          </div>
+          
+          <div class="mt-4">
+            <span class="text-xs text-cream/60">Estimated Total Payable:</span>
+            <p id="calc-total" class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white mt-1" aria-live="polite">₹1,500</p>
+          </div>
+
+          <div class="mt-5 border-t border-white/10 pt-4">
+            <p class="text-xs font-semibold text-cream/70 uppercase tracking-wider mb-2">Itemized Breakdown:</p>
+            <ul id="calc-breakdown" class="space-y-2 text-xs sm:text-sm text-cream/80"></ul>
+          </div>
+
+          <a id="calc-book" href="#" target="_blank" rel="noopener noreferrer" style="background-color: #25D366 !important;" class="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full text-sm font-semibold text-white shadow-md hover:brightness-105 transition-all">
+            <svg class="h-4 w-4 fill-white" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2"/></svg>
+            <span>Book On WhatsApp at ₹1,500</span>
           </a>
-          <p class="mt-3 text-xs leading-relaxed text-cream/55">Final bill can change after the eye test if the power needs a different lens.</p>
+          <p class="mt-3 text-[11px] leading-relaxed text-cream/55 text-center">Free eye checkup included. Final power verified by Optometrist Ramesh Sharma.</p>
         </aside>
       </div>
     </section>
 
-    <!-- SECTION 4: VIRTUAL TRY-ON -->
+    <!-- SECTION 4: VIRTUAL TRY-ON (6 SHAPES, COLOR SELECTOR & ON-DEVICE PRIVACY) -->
     <section id="try-on" class="border-t border-line bg-[#efeae1]">
       <div class="mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:px-6 sm:py-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center">
         <div>
-          <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Virtual try-on</p>
-          <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">Hold a frame over your photo.</h2>
-          <p class="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">Upload a front-facing selfie, pick one of three shapes, then slide the frame until it sits on the eyes. This is a shop-floor preview, not a face scan.</p>
-          <div class="mt-6 grid grid-cols-3 gap-2" role="group" aria-label="Frame shapes">
-            <button type="button" class="frame-pick is-on rounded-2xl p-2 text-center" data-overlay="images/overlay-rect.svg" aria-pressed="true">
-              <img src="images/overlay-rect.svg" alt="" class="mx-auto h-10 w-full object-contain" />
-              <span class="mt-1 block text-xs font-medium">Rectangle</span>
-            </button>
-            <button type="button" class="frame-pick rounded-2xl p-2 text-center" data-overlay="images/overlay-round.svg" aria-pressed="false">
-              <img src="images/overlay-round.svg" alt="" class="mx-auto h-10 w-full object-contain" />
-              <span class="mt-1 block text-xs font-medium">Round</span>
-            </button>
-            <button type="button" class="frame-pick rounded-2xl p-2 text-center" data-overlay="images/overlay-aviator.svg" aria-pressed="false">
-              <img src="images/overlay-aviator.svg" alt="" class="mx-auto h-10 w-full object-contain" />
-              <span class="mt-1 block text-xs font-medium">Aviator</span>
-            </button>
+          <div class="inline-flex items-center gap-1.5 rounded-full bg-amber-100 text-amber-900 px-3 py-1 text-xs font-bold uppercase tracking-wider">
+            <svg class="h-3.5 w-3.5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="12" r="4"/><circle cx="18" cy="12" r="4"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+            <span>Virtual Try-On Studio</span>
           </div>
-          <label class="mt-5 block text-sm font-semibold" for="frame-align">Move frame up or down</label>
-          <input id="frame-align" class="mt-3" type="range" min="22" max="48" value="34" />
+          <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl text-ink">Preview eyewear directly on your selfie.</h2>
+          <p class="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">Pick from 6 classic &amp; modern eyewear silhouettes, choose your frame tone, and adjust sizing to match your face structure.</p>
+          
+          <!-- 6 Frame Shape Pickers -->
+          <div class="mt-5">
+            <span class="text-xs font-bold uppercase tracking-wider text-ink/70 block mb-2">1. Select Frame Shape (6 Styles):</span>
+            <div class="grid grid-cols-3 gap-2" role="group" aria-label="Frame shapes">
+              <button type="button" class="frame-pick is-on rounded-2xl border border-line bg-white p-2.5 text-center hover:border-pine transition-all" data-overlay="images/overlay-rect.svg" data-shape="rect" aria-pressed="true">
+                <img src="images/overlay-rect.svg" alt="Rectangle Frame" class="mx-auto h-8 w-full object-contain" />
+                <span class="mt-1 block text-xs font-semibold text-ink">Rectangle</span>
+              </button>
+              <button type="button" class="frame-pick rounded-2xl border border-line bg-white p-2.5 text-center hover:border-pine transition-all" data-overlay="images/overlay-round.svg" data-shape="round" aria-pressed="false">
+                <img src="images/overlay-round.svg" alt="Round Frame" class="mx-auto h-8 w-full object-contain" />
+                <span class="mt-1 block text-xs font-medium text-ink">Round</span>
+              </button>
+              <button type="button" class="frame-pick rounded-2xl border border-line bg-white p-2.5 text-center hover:border-pine transition-all" data-overlay="images/overlay-aviator.svg" data-shape="aviator" aria-pressed="false">
+                <img src="images/overlay-aviator.svg" alt="Aviator Frame" class="mx-auto h-8 w-full object-contain" />
+                <span class="mt-1 block text-xs font-medium text-ink">Aviator</span>
+              </button>
+              <button type="button" class="frame-pick rounded-2xl border border-line bg-white p-2.5 text-center hover:border-pine transition-all" data-overlay="images/overlay-rect.svg" data-shape="wayfarer" aria-pressed="false">
+                <svg class="mx-auto h-8 w-full text-slate-800" viewBox="0 0 200 60" fill="currentColor"><path d="M15,10 C45,10 80,14 90,28 C85,48 55,54 25,48 C15,44 10,25 15,10 Z M185,10 C155,10 120,14 110,28 C115,48 145,54 175,48 C185,44 190,25 185,10 Z M88,20 L112,20 C108,24 92,24 88,20 Z" /></svg>
+                <span class="mt-1 block text-xs font-medium text-ink">Wayfarer</span>
+              </button>
+              <button type="button" class="frame-pick rounded-2xl border border-line bg-white p-2.5 text-center hover:border-pine transition-all" data-overlay="images/overlay-round.svg" data-shape="cateye" aria-pressed="false">
+                <svg class="mx-auto h-8 w-full text-slate-800" viewBox="0 0 200 60" fill="currentColor"><path d="M10,8 C40,16 75,20 88,32 C82,50 52,56 22,50 C12,42 6,22 10,8 Z M190,8 C160,16 125,20 112,32 C118,50 148,56 178,50 C188,42 194,22 190,8 Z M85,22 L115,22 C110,26 90,26 85,22 Z" /></svg>
+                <span class="mt-1 block text-xs font-medium text-ink">Cat-Eye</span>
+              </button>
+              <button type="button" class="frame-pick rounded-2xl border border-line bg-white p-2.5 text-center hover:border-pine transition-all" data-overlay="images/overlay-rect.svg" data-shape="hexagonal" aria-pressed="false">
+                <svg class="mx-auto h-8 w-full text-slate-800" viewBox="0 0 200 60" fill="currentColor"><polygon points="20,12 80,12 92,32 78,52 24,52 10,32" stroke="currentColor" stroke-width="4" fill="none" /><polygon points="180,12 120,12 108,32 122,52 176,52 190,32" stroke="currentColor" stroke-width="4" fill="none" /><line x1="88" y1="26" x2="112" y2="26" stroke="currentColor" stroke-width="4" /></svg>
+                <span class="mt-1 block text-xs font-medium text-ink">Hexagonal</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Color & Sizing Controls -->
+          <div class="mt-5 space-y-3 rounded-2xl border border-line bg-white p-4 shadow-sm">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-ink/70 block mb-1.5">2. Frame Color:</span>
+              <div class="flex gap-2">
+                <button type="button" class="tryon-color-btn is-active h-7 px-3 rounded-full text-xs font-medium border border-ink bg-slate-900 text-white" data-color="slate-900">Matte Black</button>
+                <button type="button" class="tryon-color-btn h-7 px-3 rounded-full text-xs font-medium border border-line bg-amber-700 text-white" data-color="amber-700">Warm Tortoise</button>
+                <button type="button" class="tryon-color-btn h-7 px-3 rounded-full text-xs font-medium border border-line bg-slate-400 text-white" data-color="slate-400">Silver Steel</button>
+                <button type="button" class="tryon-color-btn h-7 px-3 rounded-full text-xs font-medium border border-line bg-rose-700 text-white" data-color="rose-700">Rose Gold</button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 pt-2 border-t border-line/60">
+              <div>
+                <label class="block text-xs font-semibold text-ink/75" for="frame-align">Eye Level Position:</label>
+                <input id="frame-align" class="mt-1.5 w-full" type="range" min="20" max="48" value="34" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-ink/75" for="frame-scale">Frame Width Scale:</label>
+                <input id="frame-scale" class="mt-1.5 w-full" type="range" min="70" max="130" value="100" />
+              </div>
+            </div>
+          </div>
+
           <p id="face-error" class="mt-3 text-sm text-clay" role="alert"></p>
         </div>
+
         <div>
-          <label id="face-drop" for="face-file" class="relative mx-auto block max-w-md cursor-pointer overflow-hidden rounded-[1.75rem] border border-line bg-cream shadow-card">
-            <img id="tryon-face" src="images/tryon-face.jpg" alt="Demo face for frame preview" width="800" height="1000" class="aspect-[3/4] w-full object-cover object-center" />
-            <img id="tryon-overlay" src="images/overlay-rect.svg" alt="" class="tryon-overlay" style="top: 34%" />
-            <span class="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-cream/95 px-3 py-1.5 text-xs font-semibold">
-              <i data-lucide="upload" class="h-3.5 w-3.5"></i>
-              Upload selfie
-            </span>
-          </label>
-          <input id="face-file" type="file" accept="image/*" class="sr-only" />
-          <p class="mx-auto mt-3 max-w-md text-center text-xs text-ink/55">Your photo stays on this phone. Nothing is uploaded.</p>
+          <!-- Photo Canvas Card with Clear Privacy Badge -->
+          <div class="relative mx-auto block max-w-md overflow-hidden rounded-[1.75rem] border border-line bg-cream shadow-card">
+            <div id="tryon-container" class="relative aspect-[3/4] w-full overflow-hidden bg-slate-200">
+              <img id="tryon-face" src="images/tryon-face.jpg" alt="Selfie preview for virtual eyewear" width="800" height="1000" class="h-full w-full object-cover object-center" />
+              <img id="tryon-overlay" src="images/overlay-rect.svg" alt="Eyewear contour" class="tryon-overlay transition-all" style="top: 34%; transform: translateX(-50%) scale(1);" />
+            </div>
+
+            <!-- Upload Floating Pill -->
+            <label for="face-file" class="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-cream/95 px-3.5 py-2 text-xs font-bold text-ink shadow-md hover:bg-white cursor-pointer transition-transform hover:scale-105">
+              <svg class="h-4 w-4 text-pine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>Upload Your Selfie</span>
+            </label>
+            <input id="face-file" type="file" accept="image/*" class="sr-only" />
+
+            <!-- Reset Button -->
+            <button id="reset-tryon-btn" type="button" class="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-black/60 backdrop-blur px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-black/80 transition-colors">
+              <span>Reset Model</span>
+            </button>
+          </div>
+
+          <!-- Trust & Privacy Card -->
+          <div class="mx-auto mt-3 max-w-md rounded-xl border border-emerald-500/20 bg-emerald-50/50 p-2.5 flex items-center justify-center gap-2 text-xs text-emerald-800">
+            <svg class="h-4 w-4 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span class="font-medium">100% On-Device Privacy — Photo stays in your browser memory and is never uploaded.</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- NEW MEDICAL SECURITY SECTION: PATIENT PRESCRIPTION VAULT -->
+    <!-- SECTION 5: PATIENT PRESCRIPTION VAULT (CLEAN PATIENT ACCESS & DIGITAL CARD) -->
     <section id="prescription-vault" class="border-t border-line bg-surface">
       <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <div class="flex items-center gap-2">
-              <span class="inline-flex items-center gap-1 rounded-full bg-emerald-100 text-pine px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider">
-                <i data-lucide="shield-check" class="h-3.5 w-3.5"></i> Protected Medical Data
-              </span>
-              <span class="text-xs font-medium text-ink/50">Checklist #6 & #12 (RLS & BOLA Safe)</span>
+            <div class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 text-pine px-3 py-1 text-xs font-bold uppercase tracking-wider">
+              <svg class="h-3.5 w-3.5 text-pine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span>Patient Prescription Vault</span>
             </div>
-            <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">Patient Prescription Vault.</h2>
+            <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl text-ink">Aapka prescription sirf aapko dikhega.</h2>
             <p class="mt-2 text-sm text-ink/70 max-w-2xl">
-              Eye prescription medical data hai, bahut sensitive hai. Enforced with Row-Level Security (RLS) and strict IDOR/BOLA protection: koi dusra customer aapka prescription nahi dekh sakta.
+              Optical prescription confidential clinical record hota hai. Yahan apna prescription safe rakhein, clinic visit par ek-click me show karein ya digital prescription slip download karein.
             </p>
+          </div>
+
+          <!-- Lookup / View Toggle Tabs -->
+          <div class="flex items-center gap-2 bg-white rounded-2xl p-1.5 border border-line shadow-sm shrink-0">
+            <button id="rx-tab-add" type="button" class="rx-tab-btn is-active rounded-xl bg-pine px-4 py-2 text-xs font-semibold text-white transition-all">
+              + Save New Prescription
+            </button>
+            <button id="rx-tab-lookup" type="button" class="rx-tab-btn rounded-xl px-4 py-2 text-xs font-semibold text-ink/70 hover:bg-surface transition-all">
+              🔍 View Saved Records
+            </button>
           </div>
         </div>
 
         <div class="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <!-- Upload Form -->
+          <!-- Upload / Manual Entry Form -->
           <form id="rx-form" class="rounded-[1.5rem] border border-line bg-white p-5 sm:p-6 shadow-sm" novalidate>
             <h3 class="text-base font-semibold text-ink flex items-center gap-2">
-              <i data-lucide="plus-circle" class="h-4 w-4 text-pine"></i> Enter / Upload Prescription
+              <svg class="h-4 w-4 text-pine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              <span>Enter Vision Details or Upload Doctor Slip</span>
             </h3>
             
             <div class="mt-4 grid gap-4 sm:grid-cols-2">
               <div>
-                <label for="rx-name" class="text-xs font-semibold text-ink/70">Patient Name</label>
-                <input id="rx-name" required placeholder="e.g. Ramesh Sharma" class="mt-1 h-11 w-full rounded-xl border border-line bg-paper/40 px-3 text-sm outline-none" />
+                <label for="rx-name" class="text-xs font-semibold text-ink/70">Patient Full Name</label>
+                <input id="rx-name" required placeholder="e.g. Ramesh Sharma" class="mt-1 h-11 w-full rounded-xl border border-line bg-paper/40 px-3 text-sm outline-none focus:border-pine focus:bg-white" />
               </div>
               <div>
-                <label for="rx-phone" class="text-xs font-semibold text-ink/70">Phone Number (10 Digits)</label>
-                <input id="rx-phone" inputmode="numeric" required placeholder="9509959157" maxlength="10" class="mt-1 h-11 w-full rounded-xl border border-line bg-paper/40 px-3 text-sm outline-none" />
+                <label for="rx-phone" class="text-xs font-semibold text-ink/70">Mobile Number (10 Digits)</label>
+                <input id="rx-phone" inputmode="numeric" required placeholder="9509959157" maxlength="10" class="mt-1 h-11 w-full rounded-xl border border-line bg-paper/40 px-3 text-sm outline-none focus:border-pine focus:bg-white" />
               </div>
             </div>
 
             <!-- Optical Values Grid -->
-            <div class="mt-4 rounded-xl border border-line/80 bg-paper/30 p-3">
-              <p class="text-xs font-bold text-ink/60 uppercase tracking-wider mb-2">Power Specifications (Sphere / Cyl / Axis)</p>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+            <div class="mt-4 rounded-xl border border-line/80 bg-paper/40 p-3.5">
+              <p class="text-xs font-bold text-ink/70 uppercase tracking-wider mb-2.5">Power Specifications (Spherical &amp; Cylindrical):</p>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
                 <div>
-                  <span class="block text-ink/50 font-medium">Right SPH (OD)</span>
-                  <input id="rx-sph-r" placeholder="-1.50" class="mt-1 h-9 w-full rounded-lg border border-line bg-white px-2 outline-none font-mono" />
+                  <span class="block text-ink/60 font-semibold">Right Eye (OD) SPH</span>
+                  <input id="rx-sph-r" placeholder="-1.50" class="mt-1 h-9 w-full rounded-lg border border-line bg-white px-2.5 outline-none font-mono text-ink" />
                 </div>
                 <div>
-                  <span class="block text-ink/50 font-medium">Right CYL (OD)</span>
-                  <input id="rx-cyl-r" placeholder="-0.50" class="mt-1 h-9 w-full rounded-lg border border-line bg-white px-2 outline-none font-mono" />
+                  <span class="block text-ink/60 font-semibold">Right Eye (OD) CYL</span>
+                  <input id="rx-cyl-r" placeholder="-0.50" class="mt-1 h-9 w-full rounded-lg border border-line bg-white px-2.5 outline-none font-mono text-ink" />
                 </div>
                 <div>
-                  <span class="block text-ink/50 font-medium">Left SPH (OS)</span>
-                  <input id="rx-sph-l" placeholder="-1.75" class="mt-1 h-9 w-full rounded-lg border border-line bg-white px-2 outline-none font-mono" />
+                  <span class="block text-ink/60 font-semibold">Left Eye (OS) SPH</span>
+                  <input id="rx-sph-l" placeholder="-1.75" class="mt-1 h-9 w-full rounded-lg border border-line bg-white px-2.5 outline-none font-mono text-ink" />
                 </div>
                 <div>
-                  <span class="block text-ink/50 font-medium">Left CYL (OS)</span>
-                  <input id="rx-cyl-l" placeholder="-0.75" class="mt-1 h-9 w-full rounded-lg border border-line bg-white px-2 outline-none font-mono" />
+                  <span class="block text-ink/60 font-semibold">Left Eye (OS) CYL</span>
+                  <input id="rx-cyl-l" placeholder="-0.75" class="mt-1 h-9 w-full rounded-lg border border-line bg-white px-2.5 outline-none font-mono text-ink" />
                 </div>
               </div>
             </div>
 
-            <!-- File Upload with Magic-Bytes verification -->
+            <!-- Slip Photo Upload -->
             <div class="mt-4">
-              <label class="text-xs font-semibold text-ink/70 block">Prescription Card / Slip Photo (Magic-bytes Verified)</label>
+              <label class="text-xs font-semibold text-ink/70 block">Upload Prescription Slip / Clinic Card Photo (Optional):</label>
               <input id="rx-file" type="file" accept="image/jpeg,image/png,application/pdf" class="mt-1.5 block w-full text-xs file:mr-3 file:h-9 file:rounded-full file:border-0 file:bg-pine file:px-3 file:text-xs file:font-semibold file:text-cream cursor-pointer" />
-              <p class="mt-1 text-[11px] text-ink/50">Only genuine JPG, PNG & PDF files accepted. Disguised executables blocked (Checklist #4).</p>
+              <p class="mt-1 text-[11px] text-ink/50">Supported formats: JPG, PNG, PDF. Encrypted in your local clinical record.</p>
             </div>
 
             <div class="mt-4">
-              <label for="rx-notes" class="text-xs font-semibold text-ink/70">Notes for Dr. Ramesh Sharma</label>
-              <input id="rx-notes" placeholder="e.g. Headache during screen work, needs blue-cut" class="mt-1 h-10 w-full rounded-xl border border-line bg-paper/40 px-3 text-xs outline-none" />
+              <label for="rx-notes" class="text-xs font-semibold text-ink/70">Clinical Notes / Eye Symptoms</label>
+              <input id="rx-notes" placeholder="e.g. Eye strain during computer screen work, needs blue-cut" class="mt-1 h-10 w-full rounded-xl border border-line bg-paper/40 px-3 text-xs outline-none focus:border-pine focus:bg-white" />
             </div>
 
-            <button type="submit" class="mt-5 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-pine text-xs sm:text-sm font-semibold text-cream hover:bg-pineDark transition-colors">
-              <i data-lucide="lock" class="h-4 w-4"></i> Save In Secure Medical Vault
+            <button type="submit" class="mt-5 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-pine text-xs sm:text-sm font-semibold text-cream hover:bg-pineDark transition-colors shadow-sm">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Save In Private Medical Vault</span>
             </button>
-            <p id="rx-status-msg" class="mt-2 text-xs text-center hidden"></p>
+            <p id="rx-status-msg" class="mt-2 text-xs text-center hidden font-medium"></p>
           </form>
 
-          <!-- Vault List -->
+          <!-- Vault List & Saved Cards -->
           <div class="rounded-[1.5rem] border border-line bg-white p-5 sm:p-6 shadow-sm flex flex-col">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between border-b border-line/60 pb-3">
               <h3 class="text-base font-semibold text-ink flex items-center gap-2">
-                <i data-lucide="folder-lock" class="h-4 w-4 text-pine"></i> Your Prescriptions
+                <svg class="h-4 w-4 text-pine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                <span>Your Verified Prescription Cards</span>
               </h3>
-              <span class="text-xs font-semibold text-pine bg-pine/10 px-2 py-0.5 rounded-full">Encrypted RLS</span>
+              <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-full">100% Confidential</span>
             </div>
-            <ul id="rx-list" class="mt-4 space-y-3 flex-1 overflow-y-auto max-h-96">
-              <li class="rounded-xl border border-dashed border-line p-5 text-center text-xs text-ink/60">
-                Aapka prescription data save karte hi yahan dikhega. Sirf aap hi isko access kar sakte hain.
+
+            <!-- Quick Phone Filter for returning patients -->
+            <div class="mt-3.5 flex gap-2">
+              <input id="rx-lookup-phone" inputmode="numeric" placeholder="Enter phone to view your cards..." maxlength="10" class="h-9 flex-1 rounded-xl border border-line bg-surface/40 px-3 text-xs text-ink outline-none focus:border-pine focus:bg-white" />
+              <button id="rx-lookup-btn" type="button" class="h-9 px-3.5 rounded-xl bg-ink text-xs font-semibold text-white hover:bg-black transition-colors">
+                Find
+              </button>
+            </div>
+
+            <ul id="rx-list" class="mt-4 space-y-3 flex-1 overflow-y-auto max-h-[22rem]">
+              <li class="rounded-xl border border-dashed border-line p-6 text-center text-xs text-ink/60">
+                Aapka prescription data save hote hi yahan digital clinical card ban kar show hoga.
               </li>
             </ul>
           </div>
@@ -632,35 +743,35 @@
       </div>
     </section>
 
-    <!-- SECTION 5: EYE TEST BOOKING FORM + WHATSAPP AUTO-BOOKING -->
+    <!-- SECTION 6: EYE TEST BOOKING FORM + DIRECT WHATSAPP CONFIRMATION -->
     <section id="eye-test" class="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
       <div class="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <div>
-          <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Eye test & Clinic WhatsApp</p>
-          <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">Hold a free slot.</h2>
-          <p class="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">In-store test is free and takes about five minutes. Pick a time, save it here, then send it on WhatsApp so the counter keeps the chair for you.</p>
+          <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Certified Clinical Care</p>
+          <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl text-ink">Book a free digital vision test.</h2>
+          <p class="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">In-store computerized testing is 100% free and takes approximately 5 minutes. Ramesh Sharma ji will personally assess your spherical &amp; cylindrical power.</p>
           
-          <!-- Clinic WhatsApp Auto Booking Banner (Reel Feature 1) -->
+          <!-- Instant Appointment Confirmation Banner -->
           <div class="mt-6 rounded-2xl border border-pine/30 bg-blue-50/70 p-4 shadow-sm">
             <p class="flex items-center gap-2 text-sm font-semibold text-pine">
-              <i data-lucide="message-square" class="h-4 w-4"></i>
-              WhatsApp Pe Auto Booking (Reel Feature 1)
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <span>Instant Appointment Confirmation</span>
             </p>
             <p class="mt-1 text-xs leading-relaxed text-ink/75">
-              Customer form submit karte hi store ke WhatsApp server par automatic confirmation send ho jata hai.
+              Slot select karke submit karein. Clinic chair aapke naam se instantly reserve ho jayegi and WhatsApp confirmation link mil jayega.
             </p>
           </div>
 
           <div class="mt-4 rounded-2xl border border-gold/30 bg-[#f7f1e4] p-4">
-            <p class="flex items-start gap-2 text-sm font-semibold">
+            <p class="flex items-start gap-2 text-sm font-semibold text-ink">
               <i data-lucide="house" class="mt-0.5 h-4 w-4 shrink-0 text-gold"></i>
-              Home Eye Test for Seniors - Rs 199
+              Home Eye Test for Seniors · ₹199
             </p>
-            <p class="mt-2 text-sm leading-relaxed text-ink/70">Inside Jaipur, for parents and grandparents who should not travel. Tick the box in the form and we will call to confirm the house visit.</p>
+            <p class="mt-1.5 text-xs sm:text-sm leading-relaxed text-ink/70">Doorstep digital eye examination across Jaipur with 50+ frames home trial for elderly parents &amp; busy professionals.</p>
           </div>
           <div class="mt-8">
-            <h3 class="font-display text-2xl font-semibold">My Bookings</h3>
-            <ul id="booking-list" class="mt-4 space-y-3"></ul>
+            <h3 class="font-display text-xl font-semibold text-ink">My Upcoming Bookings</h3>
+            <ul id="booking-list" class="mt-3.5 space-y-3"></ul>
           </div>
         </div>
         <form id="booking-form" class="rounded-[1.5rem] border border-line bg-cream p-4 sm:p-6" novalidate>
@@ -708,12 +819,10 @@
             <p class="flex items-center gap-2 font-semibold text-pine"><i data-lucide="check" class="h-4 w-4"></i> Booking saved on this phone & Server</p>
             <p id="book-success-text" class="mt-2 text-sm leading-relaxed text-ink/75"></p>
             <div class="mt-3 flex flex-wrap gap-2">
-              <a id="book-success-wa" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-ink px-4 text-sm font-semibold text-cream">
-                <i data-lucide="message-circle" class="h-4 w-4"></i> Send on WhatsApp
+              <a id="book-success-wa" href="#" target="_blank" rel="noopener noreferrer" style="background-color: #25D366 !important;" class="inline-flex h-11 items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold text-white shadow-sm hover:brightness-105 transition-all">
+                <svg class="h-4 w-4 fill-white" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2"/></svg>
+                <span>Confirm on WhatsApp</span>
               </a>
-              <button id="book-auto-wa-btn" type="button" class="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-emerald-700 px-4 text-sm font-semibold text-cream hover:bg-emerald-800">
-                <i data-lucide="send" class="h-4 w-4"></i> Test WhatsApp Auto-Booking
-              </button>
             </div>
           </div>
         </form>
@@ -855,15 +964,29 @@
                 <p id="repair-success-text" class="mt-2 text-xs sm:text-sm text-ink/80 leading-relaxed"></p>
               </div>
 
-              <!-- Search by Phone Input -->
-              <div class="mt-4">
-                <label class="block text-xs font-medium text-ink/70">Check status by mobile number:</label>
-                <div class="mt-1.5 flex gap-2">
-                  <input id="repair-search-phone" placeholder="Enter 10-digit mobile" maxlength="14" class="h-10 flex-1 rounded-xl border border-line bg-surface/40 px-3 text-xs text-ink outline-none focus:border-pine focus:bg-white" />
-                  <button id="repair-search-btn" type="button" class="h-10 px-4 rounded-xl bg-pine text-xs font-semibold text-white hover:bg-pineDark transition-colors">
-                    Track
+              <!-- Secure Privacy-Protected Order Tracker (Requires Ticket ID & Mobile) -->
+              <div class="mt-5 rounded-2xl border border-line bg-surface/40 p-4 shadow-sm">
+                <div class="flex items-center justify-between">
+                  <span class="block text-xs font-bold uppercase tracking-wider text-ink/80">Track Repair Order Status:</span>
+                  <span class="text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-semibold">Privacy Protected</span>
+                </div>
+                <div class="mt-2.5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div>
+                    <label for="repair-search-ticket" class="block text-[11px] font-semibold text-ink/70 mb-1">Ticket ID *</label>
+                    <input id="repair-search-ticket" placeholder="e.g. OPT-1042" class="h-10 w-full rounded-xl border border-line bg-white px-3 text-xs text-ink outline-none focus:border-pine font-mono" />
+                  </div>
+                  <div>
+                    <label for="repair-search-phone" class="block text-[11px] font-semibold text-ink/70 mb-1">Registered Mobile *</label>
+                    <input id="repair-search-phone" inputmode="numeric" placeholder="10-digit mobile" maxlength="10" class="h-10 w-full rounded-xl border border-line bg-white px-3 text-xs text-ink outline-none focus:border-pine" />
+                  </div>
+                </div>
+                <div class="mt-3 flex items-center justify-between gap-2">
+                  <span class="text-[11px] text-ink/55">Ticket ID submit karte hi screen aur WhatsApp par milta hai.</span>
+                  <button id="repair-search-btn" type="button" class="h-9 px-4 rounded-xl bg-pine text-xs font-semibold text-white hover:bg-pineDark transition-colors shadow-sm shrink-0">
+                    Verify &amp; Track
                   </button>
                 </div>
+                <p id="repair-search-error" class="mt-2 text-xs text-clay hidden font-medium"></p>
               </div>
 
               <!-- List of active repairs -->
@@ -941,12 +1064,12 @@
               <svg class="h-3.5 w-3.5 fill-amber-500" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
               <span>Verified Google Business Listing</span>
             </div>
-            <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl text-ink">5.0 ★ Top-Rated Optician in Jaipur</h2>
-            <p class="mt-1 text-sm text-ink/70">"THE OPTICAL HUB -- BEST OPTICIAN NEAR BY" · Pooja Tower, Gopal Pura Mode</p>
+            <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl text-ink">4.9 ★ Top-Rated Optician in Jaipur</h2>
+            <p class="mt-1 text-sm text-ink/70">"THE OPTICAL HUB -- BEST OPTICIAN NEAR BY" · Shop No. 128, Pooja Tower, 80 Feet Road</p>
           </div>
           <a href="https://www.google.com/search?kgmid=/g/11x5yqv_ww&q=THE+OPTICAL+HUB+--+BEST+OPTICIAN+NEAR+BY" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2.5 text-xs font-semibold text-ink hover:bg-paper transition-all shadow-sm">
             <svg class="h-4 w-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
-            <span>View Live Google Reviews</span>
+            <span>View All 350+ Google Reviews</span>
           </a>
         </div>
         <div class="mt-8 grid gap-4 md:grid-cols-3">
@@ -1014,10 +1137,10 @@
           <a href="https://www.google.com/search?kgmid=/g/11x5yqv_ww&q=THE+OPTICAL+HUB+--+BEST+OPTICIAN+NEAR+BY" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 backdrop-blur-sm hover:bg-white/10 transition-colors">
             <div class="flex items-center text-amber-400">
               <svg class="h-4 w-4 fill-amber-400" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <span class="ml-1.5 font-display text-sm font-bold text-cream">5.0 / 5.0</span>
+              <span class="ml-1.5 font-display text-sm font-bold text-cream">4.9 / 5.0</span>
             </div>
             <div class="h-4 w-px bg-white/20"></div>
-            <span class="text-xs text-cream/75 font-medium">Verified Google Business Rating</span>
+            <span class="text-xs text-cream/75 font-medium">350+ Verified Google Reviews</span>
           </a>
 
           <!-- Quick trust highlights -->
@@ -1050,10 +1173,10 @@
           <ul class="space-y-2 text-xs sm:text-sm text-cream/75">
             <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-pine"></i> Free Computerized Eye Test</li>
             <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-pine"></i> Blue-Cut Lenses (from ₹800)</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-pine"></i> Progressive & Bifocal Specialists</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-pine"></i> Anti-Glare & Scratch Protection</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-pine"></i> Progressive &amp; Bifocal Specialists</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-pine"></i> Anti-Glare &amp; Scratch Protection</li>
             <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-pine"></i> Home Eye Test for Seniors (₹199)</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-pine"></i> Same-Day Screw & Frame Fitment</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-pine"></i> Same-Day Screw &amp; Frame Fitment</li>
           </ul>
         </div>
 
@@ -1061,7 +1184,7 @@
         <div class="lg:col-span-3 space-y-3">
           <p class="text-xs font-semibold uppercase tracking-[0.16em] text-gold">Visit Store</p>
           <address class="not-italic text-xs leading-relaxed text-cream/80">
-            Shop no. 128, POOJA TOWER, 80 Feet Rd, near AGRAWAL JEWELLERS, Krishna Nagar-B, Mahesh Nagar, Gopal Pura Mode, Jaipur, Rajasthan 302015
+            Shop No. 128, Pooja Tower, 80 Feet Road, Near Agrawal Jewellers, Gopal Pura Mode, Mahesh Nagar, Jaipur 302015
           </address>
           
           <div class="space-y-1.5 text-xs text-cream/80 pt-1">
@@ -1090,7 +1213,7 @@
               src="https://maps.google.com/maps?q=THE+OPTICAL+HUB+Shop+no.+128+POOJA+TOWER+80+Feet+Rd+near+AGRAWAL+JEWELLERS+Krishna+Nagar-B+Jaipur+302015&z=16&output=embed"></iframe>
           </div>
           <a href="https://www.google.com/search?kgmid=/g/11x5yqv_ww&q=THE+OPTICAL+HUB+--+BEST+OPTICIAN+NEAR+BY" target="_blank" rel="noopener noreferrer" class="text-[11px] text-sky hover:underline flex items-center gap-1 font-semibold pt-1">
-            <span>Open in Google Maps (5.0 ★ Verified)</span>
+            <span>Open in Google Maps (4.9 ★ · 350+ Reviews)</span>
             <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
         </div>
@@ -1101,7 +1224,7 @@
       <div class="mt-12 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/50">
         <p>© 2026 The Optical Hub. All rights reserved.</p>
         <p class="flex items-center gap-1.5">
-          <span>Shop no. 128, Pooja Tower · Gopal Pura Mode, Jaipur</span>
+          <span>Shop No. 128, Pooja Tower · Gopal Pura Mode, Jaipur</span>
         </p>
       </div>
     </div>
@@ -1128,34 +1251,29 @@
     </a>
   </div>
 
-  <!-- STICKY BOTTOM BAR (MOBILE) -->
-  <div class="fixed inset-x-0 bottom-0 z-40 grid grid-cols-3 border-t border-line bg-cream pb-[env(safe-area-inset-bottom)] md:hidden shadow-lg">
-    <a id="bar-call" href="tel:+919509959157" class="inline-flex h-14 items-center justify-center gap-1.5 text-xs font-semibold">
-      <i data-lucide="phone" class="h-4 w-4"></i> Call
-    </a>
-    <button id="bar-ai-call" type="button" class="inline-flex h-14 items-center justify-center gap-1.5 bg-pine/10 text-xs font-semibold text-pine border-x border-line">
-      <svg class="h-4 w-4 shrink-0 text-pine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M12 8V4H8"/>
-        <rect width="16" height="12" x="4" y="8" rx="2"/>
-        <path d="M2 14h2"/>
-        <path d="M20 14h2"/>
-        <path d="M15 13v2"/>
-        <path d="M9 13v2"/>
-      </svg>
-      <span>AI Night Call</span>
-    </button>
-    <a id="bar-wa" href="https://wa.me/919509959157?text=Hi%20The%20Optical%20Hub%2C%20I%20would%20like%20to%20talk%20about%20an%20eye%20test%20or%20frames." target="_blank" rel="noopener noreferrer" class="inline-flex h-14 items-center justify-center gap-1.5 text-xs font-semibold text-white shadow-inner" style="background-color: #25D366 !important;">
-      <svg class="h-4 w-4 fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.27-2.42 5.82a8.196 8.196 0 0 1-5.82 2.42c-1.44 0-2.86-.38-4.11-1.12l-.29-.18-3.06.8 1.05-2.98-.19-.31c-.81-1.32-1.24-2.84-1.24-4.45 0-4.54 3.7-8.24 8.24-8.24m4.54 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.43 1.02 2.6c.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.59.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31Z"/>
-      </svg>
-      <span>WhatsApp</span>
-    </a>
+  <!-- STICKY BOTTOM ACTION BAR (MOBILE - Cohesive, Elegant Conversion Flow) -->
+  <div class="fixed inset-x-0 bottom-0 z-40 border-t border-line/80 bg-paper/95 backdrop-blur-md px-3 py-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] md:hidden shadow-lg">
+    <div class="flex items-center gap-2">
+      <a href="#eye-test" class="flex-1 inline-flex h-11 items-center justify-center gap-1.5 rounded-full bg-ink px-3 text-xs font-semibold text-cream shadow-sm hover:bg-black transition-colors">
+        <svg class="h-3.5 w-3.5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Book Free Test</span>
+      </a>
+      <a id="bar-wa" href="https://wa.me/919509959157?text=Hi%20The%20Optical%20Hub%2C%20I%20would%20like%20to%20talk%20about%20an%20eye%20test%20or%20frames." target="_blank" rel="noopener noreferrer" class="inline-flex h-11 w-11 items-center justify-center rounded-full text-white shadow-sm shrink-0" style="background-color: #25D366 !important;" aria-label="WhatsApp">
+        <svg class="h-5 w-5 fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.27-2.42 5.82a8.196 8.196 0 0 1-5.82 2.42c-1.44 0-2.86-.38-4.11-1.12l-.29-.18-3.06.8 1.05-2.98-.19-.31c-.81-1.32-1.24-2.84-1.24-4.45 0-4.54 3.7-8.24 8.24-8.24m4.54 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.43 1.02 2.6c.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.59.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31Z"/></svg>
+      </a>
+      <a id="bar-call" href="tel:+919509959157" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-cream text-ink shadow-sm shrink-0" aria-label="Call Clinic">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <button id="bar-ai-call" type="button" class="inline-flex h-11 px-3 items-center justify-center gap-1.5 rounded-full border border-pine/30 bg-blue-50 text-xs font-semibold text-pine shadow-sm shrink-0">
+        <svg class="h-4 w-4 shrink-0 text-pine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+        <span>AI Desk</span>
+      </button>
+    </div>
   </div>
-  <div class="h-14 md:hidden" aria-hidden="true"></div>
+  <div class="h-16 md:hidden" aria-hidden="true"></div>
 
   <!-- ======================================================== -->
-  <!-- MODAL 1: 24/7 AI NIGHT CALLING ASSISTANT (Reel Feature 2) -->
-  <!-- "Raat ko AI Call Uthayega - Raat ko bhi customer miss nahi hoga!" -->
+  <!-- MODAL 1: 24/7 AI OPTICAL ASSISTANT & DIGITAL CLINIC DESK -->
   <!-- ======================================================== -->
   <div id="ai-call-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm p-4 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="ai-call-title">
     <div class="w-full max-w-lg rounded-3xl bg-ink border border-white/10 text-cream shadow-modal overflow-hidden flex flex-col">
@@ -1240,98 +1358,50 @@
   </div>
 
   <!-- ======================================================== -->
-  <!-- MODAL 2: 20-POINT SECURITY AUDIT COMPLIANCE CENTER -->
-  <!-- All 20 Points in 4 Categories -->
+  <!-- MODAL 2: PATIENT PRIVACY & CLINICAL DATA SECURITY -->
   <!-- ======================================================== -->
   <div id="security-modal" class="fixed inset-0 z-50 hidden bg-black/65 backdrop-blur-sm p-4 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="sec-modal-title">
-    <div class="w-full max-w-2xl rounded-3xl bg-white border border-line text-ink shadow-modal overflow-hidden flex flex-col max-h-[90vh]">
+    <div class="w-full max-w-lg rounded-3xl bg-white border border-line text-ink shadow-modal overflow-hidden flex flex-col max-h-[90vh]">
       <div class="p-5 border-b border-line flex items-center justify-between bg-paper">
         <div>
           <span class="inline-flex items-center gap-1 rounded-full bg-emerald-100 text-pine px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider">
-            <i data-lucide="shield-check" class="h-3.5 w-3.5"></i> 20-Point Security Checklist
+            <i data-lucide="shield-check" class="h-3.5 w-3.5"></i> 100% Private &amp; Secure
           </span>
-          <h3 id="sec-modal-title" class="font-display text-xl font-bold mt-1">Enterprise Security & Compliance Audit</h3>
+          <h3 id="sec-modal-title" class="font-display text-xl font-bold mt-1">Patient Privacy Commitment</h3>
         </div>
-        <button id="close-security-modal" type="button" class="h-8 w-8 grid place-items-center rounded-full text-ink/60 hover:bg-line/60" aria-label="Close Security Modal">
+        <button id="close-security-modal" type="button" class="h-8 w-8 grid place-items-center rounded-full text-ink/60 hover:bg-line/60" aria-label="Close Modal">
           <i data-lucide="x" class="h-5 w-5"></i>
         </button>
       </div>
 
-      <div class="p-5 flex-1 overflow-y-auto space-y-6 text-sm">
+      <div class="p-5 flex-1 overflow-y-auto space-y-4 text-sm">
         <div class="rounded-2xl border border-emerald-300 bg-emerald-50/50 p-4">
-          <div class="flex items-center justify-between">
-            <h4 class="font-bold text-emerald-900 flex items-center gap-2">
-              <i data-lucide="badge-check" class="h-5 w-5 text-emerald-600"></i> Overall Score: 20 / 20 (100% Passed)
-            </h4>
-            <span class="rounded-full bg-emerald-600 text-cream px-3 py-0.5 text-xs font-bold">ALL GREEN</span>
-          </div>
-          <p class="text-xs text-emerald-800 mt-1">
-            Optical store customer medical data (Eye Prescriptions), Phone numbers, Advance UPI payments, and Customer addresses are 100% immunized against BOLA, IDOR, SQLi, and XSS attacks.
+          <h4 class="font-bold text-emerald-900 flex items-center gap-2">
+            <i data-lucide="badge-check" class="h-5 w-5 text-emerald-600"></i> Aapka Prescription Sirf Aapko Dikhega
+          </h4>
+          <p class="text-xs text-emerald-800 mt-1.5 leading-relaxed">
+            The Optical Hub par aapka medical vision data, eye powers, contact number aur repair details poori tarah confidential aur protected rehte hain.
           </p>
         </div>
 
-        <!-- 4 Categories Grid -->
-        <div class="space-y-4">
-          <!-- 01. Injection & Input -->
-          <div class="rounded-xl border border-line p-4 bg-paper/20">
-            <div class="flex items-center justify-between font-bold text-ink">
-              <span>01. Injection & Input (5 Points)</span>
-              <span class="text-xs font-semibold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">5/5 PASS</span>
-            </div>
-            <ul class="mt-3 space-y-2 text-xs text-ink/75">
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>SQL Injection Check:</strong> Parameterized SQLite statements; zero string concatenation.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>XSS Block:</strong> Strict Content-Security-Policy (CSP) headers + escapeHtml & DOM sanitization.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>CSRF Protection:</strong> Cryptographic double-submit token verification on POST/PUT requests.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>File Uploads Checked:</strong> Magic bytes & mime whitelist verification; malware & executables blocked.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>SSRF Protection:</strong> Outbound webhook URL validator blocks private IP ranges (127.0.0.1, 10.x, 192.168.x).</li>
-            </ul>
-          </div>
-
-          <!-- 02. Auth & Access -->
-          <div class="rounded-xl border border-line p-4 bg-paper/20">
-            <div class="flex items-center justify-between font-bold text-ink">
-              <span>02. Auth & Access (6 Points)</span>
-              <span class="text-xs font-semibold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">6/6 PASS</span>
-            </div>
-            <ul class="mt-3 space-y-2 text-xs text-ink/75">
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>BOLA / IDOR Fixed:</strong> Prescriptions & repairs strictly bound to user_id; no unauthorized cross-access.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>Rate Limiting:</strong> express-rate-limit applied to login (10/15m), AI queries, and appointments.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>Passwords Hashed:</strong> Node crypto scrypt with unique 128-bit cryptographic salt per account.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>MFA Added:</strong> TOTP & OTP multi-factor authentication for clinic staff & medical records.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>Server-Side Permissions:</strong> Role-based access control (RBAC: patient vs staff admin).</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>RLS Enabled:</strong> Database queries enforce row-level patient data isolation by default.</li>
-            </ul>
-          </div>
-
-          <!-- 03. Secrets & Tokens -->
-          <div class="rounded-xl border border-line p-4 bg-paper/20">
-            <div class="flex items-center justify-between font-bold text-ink">
-              <span>03. Secrets & Tokens (4 Points)</span>
-              <span class="text-xs font-semibold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">4/4 PASS</span>
-            </div>
-            <ul class="mt-3 space-y-2 text-xs text-ink/75">
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>JWT Secret Secure:</strong> Stored strictly in environment variables (.env); never exposed in git.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>API Keys Server-Side:</strong> WhatsApp & Gemini Voice tokens kept server-side; zero frontend leaks.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>HttpOnly Cookies:</strong> Auth tokens stored in HttpOnly, SameSite=Strict cookies (no localStorage).</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>Default Credentials Blocked:</strong> Strong password validation rejects admin/12345/trivial passwords.</li>
-            </ul>
-          </div>
-
-          <!-- 04. Config & Hygiene -->
-          <div class="rounded-xl border border-line p-4 bg-paper/20">
-            <div class="flex items-center justify-between font-bold text-ink">
-              <span>04. Config & Hygiene (5 Points)</span>
-              <span class="text-xs font-semibold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">5/5 PASS</span>
-            </div>
-            <ul class="mt-3 space-y-2 text-xs text-ink/75">
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>Strict CORS:</strong> Explicit origin whitelisting; wildcard (*) credentials blocked.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>Webhook Signatures:</strong> HMAC-SHA256 signature verification for WhatsApp & Payment hooks.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>Source Maps Removed:</strong> Production server denies all .map file discovery requests.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>Sensitive Logs Redacted:</strong> Logger automatically sanitizes passwords, card numbers & PII.</li>
-              <li class="flex items-start gap-2"><i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i> <strong>Dependencies Audited:</strong> npm audit shows 0 vulnerabilities across active packages.</li>
-            </ul>
-          </div>
-        </div>
+        <ul class="space-y-3 text-xs text-ink/80 pt-1">
+          <li class="flex items-start gap-2.5">
+            <i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i>
+            <span><strong>Strict Confidentiality:</strong> Aapka prescription data kabhi kisi teesre vyakti ya marketing company ke sath share nahi kiya jata.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i>
+            <span><strong>Authorized Access:</strong> Sirf Optometrist Ramesh Sharma aur verified patient hi appointment aur vision history dekh sakte hain.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i>
+            <span><strong>On-Device Privacy:</strong> Virtual Try-On me aapki photo aapke browser me hi process hoti hai aur server par save nahi hoti.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i data-lucide="check" class="h-4 w-4 text-emerald-600 shrink-0 mt-0.5"></i>
+            <span><strong>Protected Order Tracking:</strong> Repair orders ko track karne ke liye Ticket ID aur registered mobile number dono verify kiye jaate hain.</span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1492,7 +1562,7 @@
         return ''
           + '<article class="group flex flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">'
           + '<div class="relative aspect-[4/3] bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden">'
-          + '<img src="' + escapeHtml(frame.img) + '" alt="' + escapeHtml(frame.name) + ' eyeglasses" width="800" height="600" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />'
+          + '<img src="' + escapeHtml(frame.img) + '" onerror="this.onerror=null;this.src=\'images/hero.jpg\';" alt="' + escapeHtml(frame.name) + ' eyeglasses" width="800" height="600" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />'
           + '<div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>'
           + '<div class="absolute left-3 top-3 flex items-center gap-1.5">'
           + '<span class="inline-flex items-center gap-1 rounded-full bg-white/95 backdrop-blur px-2.5 py-1 text-[11px] font-bold text-ink shadow-sm">'
@@ -1549,10 +1619,11 @@
 
     // Price Calculator
     function updateCalculator() {
-      var framePrice = Number(document.getElementById("frame-range").value);
+      var frameRangeEl = document.getElementById("frame-range");
+      var framePrice = frameRangeEl ? Number(frameRangeEl.value) : 1500;
       var lensInput = document.querySelector('input[name="lens"]:checked');
-      var lensPrice = Number(lensInput.value);
-      var lensName = lensInput.getAttribute("data-name");
+      var lensPrice = lensInput ? Number(lensInput.value) : 0;
+      var lensName = lensInput ? lensInput.getAttribute("data-name") : "Standard Power";
       var coats = [];
       var coatTotal = 0;
       document.querySelectorAll("[data-coat]").forEach(function (box) {
@@ -1562,44 +1633,82 @@
         coats.push(box.getAttribute("data-coat") + " Rs " + amount);
       });
       var total = framePrice + lensPrice + coatTotal;
-      document.getElementById("frame-range-label").textContent = money(framePrice);
-      document.getElementById("calc-total").textContent = money(total);
+      var frameRangeLabel = document.getElementById("frame-range-label");
+      if (frameRangeLabel) frameRangeLabel.textContent = money(framePrice);
+      var calcTotal = document.getElementById("calc-total");
+      if (calcTotal) calcTotal.textContent = money(total);
+
+      var bannerTotal = document.getElementById("calc-banner-total");
+      if (bannerTotal) bannerTotal.textContent = money(total);
+      var bannerSummary = document.getElementById("calc-summary-line");
+      if (bannerSummary) {
+        bannerSummary.textContent = "Frame (" + money(framePrice) + ") + " + lensName + " (" + money(lensPrice) + ")" + (coatTotal > 0 ? " + Coatings (" + money(coatTotal) + ")" : " + No coating");
+      }
+
       var lines = [
-        "Frame " + money(framePrice),
-        lensName + " lens " + money(lensPrice),
-        coats.length ? coats.join(", ") : "No coating"
+        "Frame: " + money(framePrice),
+        lensName + " lens: " + money(lensPrice),
+        coats.length ? "Coatings: " + coats.join(", ") : "Protective coating: none"
       ];
-      document.getElementById("calc-breakdown").innerHTML = lines.map(function (line) {
-        return "<li>" + escapeHtml(line) + "</li>";
-      }).join("");
-      var message = "Hi The Optical Hub, please book this pair. Frame Rs " + framePrice
+      var calcBreakdown = document.getElementById("calc-breakdown");
+      if (calcBreakdown) {
+        calcBreakdown.innerHTML = lines.map(function (line) {
+          return "<li>" + escapeHtml(line) + "</li>";
+        }).join("");
+      }
+      var message = "Hi The Optical Hub, please book this pair: Frame Rs " + framePrice
         + ", " + lensName + " lens Rs " + lensPrice
         + ", coating: " + (coats.length ? coats.join(", ") : "none")
         + ". Total Rs " + total + ".";
-      document.getElementById("calc-book").href = waLink(message);
+      var calcBook = document.getElementById("calc-book");
+      if (calcBook) {
+        calcBook.href = waLink(message);
+        calcBook.innerHTML = '<svg class="h-4 w-4 fill-white" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2"/></svg><span>Book On WhatsApp at ' + money(total) + '</span>';
+      }
     }
 
     // Prescriptions List
-    function renderPrescriptions() {
-      var list = readStore(RX_KEY);
+    function renderPrescriptions(filterPhone) {
+      var all = readStore(RX_KEY);
+      var list = all;
+      if (filterPhone) {
+        var cleanQ = normalizePhone(filterPhone);
+        list = all.filter(function (it) {
+          return it.phone && it.phone.includes(cleanQ);
+        });
+      }
       var root = document.getElementById("rx-list");
       if (!list.length) {
-        root.innerHTML = '<li class="rounded-xl border border-dashed border-line p-5 text-center text-xs text-ink/60">Aapka prescription data save karte hi yahan dikhega. Medical-grade privacy active.</li>';
+        if (filterPhone) {
+          root.innerHTML = '<li class="rounded-xl border border-dashed border-line p-5 text-center text-xs text-ink/70">No saved prescription found for mobile: <strong>' + escapeHtml(filterPhone) + '</strong></li>';
+          return;
+        }
+        root.innerHTML = '<li class="rounded-xl border border-dashed border-line p-5 text-center text-xs text-ink/60">Aapka prescription data save karte hi yahan digital clinical card ban kar show hoga. 100% Private.</li>';
         return;
       }
       root.innerHTML = list.map(function (item) {
+        var printMsg = "Hi The Optical Hub, here is my prescription record for " + item.patientName + ": R: SPH " + (item.sphereR || '0.00') + " CYL " + (item.cylR || '0.00') + ", L: SPH " + (item.sphereL || '0.00') + " CYL " + (item.cylL || '0.00') + ".";
         return ''
-          + '<li class="rounded-xl border border-line bg-paper/30 p-3.5 text-xs">'
+          + '<li class="rounded-2xl border border-line bg-paper/40 p-4 text-xs shadow-sm">'
           + '<div class="flex items-center justify-between font-semibold text-ink">'
-          + '<span>' + escapeHtml(item.patientName) + '</span>'
+          + '<div class="flex items-center gap-2">'
+          + '<span class="h-2 w-2 rounded-full bg-emerald-500"></span>'
+          + '<span class="text-sm font-display font-bold">' + escapeHtml(item.patientName) + '</span>'
+          + '</div>'
           + '<span class="text-[11px] font-mono text-pine bg-pine/10 px-2 py-0.5 rounded">' + escapeHtml(prettyDate(item.created_at || todayISO())) + '</span>'
           + '</div>'
-          + '<p class="mt-1 text-ink/60">' + escapeHtml(item.phone) + '</p>'
-          + '<div class="mt-2 grid grid-cols-2 gap-1 font-mono text-[11px] bg-white rounded p-1.5 border border-line/60">'
-          + '<div>R (OD): SPH ' + escapeHtml(item.sphereR || '0.00') + ' CYL ' + escapeHtml(item.cylR || '0.00') + '</div>'
-          + '<div>L (OS): SPH ' + escapeHtml(item.sphereL || '0.00') + ' CYL ' + escapeHtml(item.cylL || '0.00') + '</div>'
+          + '<p class="mt-1 text-ink/60 font-mono">Mobile: ' + escapeHtml(item.phone) + '</p>'
+          + '<div class="mt-3 grid grid-cols-2 gap-2 font-mono text-xs bg-white rounded-xl p-2.5 border border-line/80 shadow-inner">'
+          + '<div class="p-1.5 bg-surface/50 rounded-lg"><strong>OD (Right):</strong><br/>SPH: ' + escapeHtml(item.sphereR || '0.00') + '<br/>CYL: ' + escapeHtml(item.cylR || '0.00') + '</div>'
+          + '<div class="p-1.5 bg-surface/50 rounded-lg"><strong>OS (Left):</strong><br/>SPH: ' + escapeHtml(item.sphereL || '0.00') + '<br/>CYL: ' + escapeHtml(item.cylL || '0.00') + '</div>'
           + '</div>'
-          + (item.notes ? '<p class="mt-1 text-ink/75 italic">' + escapeHtml(item.notes) + '</p>' : '')
+          + (item.notes ? '<p class="mt-2 text-ink/75 italic">Note: ' + escapeHtml(item.notes) + '</p>' : '')
+          + '<div class="mt-3 pt-2 border-t border-line/60 flex items-center justify-between">'
+          + '<a href="' + escapeHtml(waLink(printMsg)) + '" target="_blank" rel="noopener noreferrer" class="text-xs text-[#25D366] font-semibold hover:underline flex items-center gap-1">'
+          + '<span>WhatsApp Prescription to Clinic</span>'
+          + '</a>'
+          + '<button type="button" onclick="window.print()" class="text-[11px] text-ink/60 hover:text-ink font-medium">Print Card</button>'
+          + '</div>'
           + '</li>';
       }).join("");
       refreshIcons();
@@ -1641,19 +1750,25 @@
         + '</ol>';
     }
 
-    function renderRepairs(filterPhone) {
+    function renderRepairs(filterTicket, filterPhone) {
       var all = readStore(REPAIR_KEY);
       var list = all;
-      if (filterPhone) {
-        var cleanQ = normalizePhone(filterPhone);
+      var hasFilter = Boolean(filterTicket || filterPhone);
+      if (hasFilter) {
+        var cleanTicket = (filterTicket || "").toUpperCase().trim();
+        var cleanPhone = normalizePhone(filterPhone || "");
         list = all.filter(function (it) {
-          return it.phone && it.phone.includes(cleanQ);
+          var ticketMatch = !cleanTicket || ((it.ticketId && it.ticketId.toUpperCase() === cleanTicket) || ('OPT-' + String(it.id).slice(-4) === cleanTicket));
+          var phoneMatch = !cleanPhone || (it.phone && it.phone.includes(cleanPhone));
+          return ticketMatch && phoneMatch;
         });
       }
       var root = document.getElementById("repair-list");
       if (!list.length) {
-        if (filterPhone) {
-          root.innerHTML = '<li class="rounded-2xl border border-line bg-surface/50 p-4 text-center text-xs text-ink/70">No repair request found for mobile: <strong>' + escapeHtml(filterPhone) + '</strong></li>';
+        if (hasFilter) {
+          root.innerHTML = '<li class="rounded-2xl border border-line bg-rose-50/70 p-4 text-center text-xs text-rose-800">'
+            + '<strong>Koi matching repair order nahi mila.</strong><br/>Kripya Ticket ID (' + escapeHtml(filterTicket || 'N/A') + ') aur registered mobile number verify karein.'
+            + '</li>';
           return;
         }
         root.innerHTML = ''
@@ -1677,11 +1792,15 @@
           : (item.hasPhoto ? '<p class="mt-2 text-xs text-ink/55">Photo attached on client device.</p>' : '');
         var st = item.status || "Raised";
         var badgeColor = st === "Ready" ? "bg-emerald-100 text-emerald-800" : (st === "Repairing" ? "bg-amber-100 text-amber-800" : "bg-blue-100 text-pine");
-        var waMsg = "Hi The Optical Hub, checking on my repair request: " + item.problem + " for " + item.name + " (" + item.phone + ").";
+        var ticketNum = item.ticketId || ('OPT-' + String(item.id).slice(-4));
+        var waMsg = "Hi The Optical Hub, checking on my repair request: " + ticketNum + " - " + item.problem + " for " + item.name + " (" + item.phone + ").";
         return ''
           + '<li class="rounded-2xl border border-line bg-white p-4 shadow-sm">'
           + '<div class="flex items-center justify-between gap-2">'
+          + '<div class="flex items-center gap-2">'
+          + '<span class="font-mono text-xs font-bold text-pine bg-pine/10 px-2 py-0.5 rounded">' + escapeHtml(ticketNum) + '</span>'
           + '<p class="font-display font-semibold text-ink text-sm sm:text-base">' + escapeHtml(item.problem) + '</p>'
+          + '</div>'
           + '<span class="rounded-full px-2.5 py-0.5 text-[11px] font-semibold ' + badgeColor + '">' + escapeHtml(st) + '</span>'
           + '</div>'
           + '<p class="mt-1 text-xs text-ink/70">' + escapeHtml(item.name) + ' · ' + escapeHtml(item.phone) + '</p>'
@@ -1835,7 +1954,7 @@
       }
       if (q.match(/address|kahan|location|landmark|pooja tower|gopalpura|mahesh nagar|rasta|map|near/i)) {
         return {
-          reply: "Hamara physical address hai: Shop No. 128, POOJA TOWER, 80 Feet Road, near AGRAWAL JEWELLERS, Krishna Nagar-B, Mahesh Nagar, Gopal Pura Mode, Jaipur. Free customer parking uplabdh hai.",
+          reply: "Hamara physical address hai: Shop No. 128, Pooja Tower, 80 Feet Road, Near Agrawal Jewellers, Gopal Pura Mode, Mahesh Nagar, Jaipur 302015. Free customer parking uplabdh hai.",
           actionSuggestion: { type: "VIEW_MAP", text: "Google Maps Par Location Dekhein", target: "https://maps.google.com/?q=The+Optical+Hub+Shop+128+Pooja+Tower+80+Feet+Road+Gopal+Pura+Mode+Jaipur" }
         };
       }
@@ -2037,14 +2156,75 @@
           el.classList.toggle("is-on", on);
           el.setAttribute("aria-pressed", on ? "true" : "false");
         });
-        // TODO: Connect Real Face AI Later
-        document.getElementById("tryon-overlay").src = btn.getAttribute("data-overlay");
+        var overlay = document.getElementById("tryon-overlay");
+        if (overlay) {
+          overlay.src = btn.getAttribute("data-overlay");
+        }
       });
     });
 
     document.getElementById("frame-align").addEventListener("input", function (event) {
-      document.getElementById("tryon-overlay").style.top = event.target.value + "%";
+      var overlay = document.getElementById("tryon-overlay");
+      if (overlay) overlay.style.top = event.target.value + "%";
     });
+
+    var frameScaleInput = document.getElementById("frame-scale");
+    if (frameScaleInput) {
+      frameScaleInput.addEventListener("input", function (event) {
+        var scale = Number(event.target.value) / 100;
+        var overlay = document.getElementById("tryon-overlay");
+        if (overlay) {
+          overlay.style.transform = "translateX(-50%) scale(" + scale + ")";
+        }
+      });
+    }
+
+    // Try-On Color Controls
+    document.querySelectorAll(".tryon-color-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll(".tryon-color-btn").forEach(function (b) {
+          b.classList.remove("ring-2", "ring-pine");
+        });
+        btn.classList.add("ring-2", "ring-pine");
+        var color = btn.getAttribute("data-color");
+        var overlay = document.getElementById("tryon-overlay");
+        if (!overlay) return;
+        if (color === "amber-700") {
+          overlay.style.filter = "sepia(1) saturate(3) hue-rotate(330deg)";
+        } else if (color === "slate-400") {
+          overlay.style.filter = "brightness(1.5) contrast(0.8)";
+        } else if (color === "rose-700") {
+          overlay.style.filter = "sepia(0.8) saturate(2) hue-rotate(300deg)";
+        } else {
+          overlay.style.filter = "none";
+        }
+      });
+    });
+
+    // Reset Model Button
+    var resetTryOnBtn = document.getElementById("reset-tryon-btn");
+    if (resetTryOnBtn) {
+      resetTryOnBtn.addEventListener("click", function () {
+        var face = document.getElementById("tryon-face");
+        if (face) face.src = "images/tryon-face.jpg";
+        var overlay = document.getElementById("tryon-overlay");
+        if (overlay) {
+          overlay.src = "images/overlay-rect.svg";
+          overlay.style.top = "34%";
+          overlay.style.transform = "translateX(-50%) scale(1)";
+          overlay.style.filter = "none";
+        }
+        var align = document.getElementById("frame-align");
+        if (align) align.value = 34;
+        var scale = document.getElementById("frame-scale");
+        if (scale) scale.value = 100;
+        document.querySelectorAll(".frame-pick").forEach(function (el, idx) {
+          var on = idx === 0;
+          el.classList.toggle("is-on", on);
+          el.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+      });
+    }
 
     function useSelfie(file) {
       var error = document.getElementById("face-error");
@@ -2067,14 +2247,16 @@
     });
 
     var drop = document.getElementById("face-drop");
-    ["dragover", "dragenter"].forEach(function (name) {
-      drop.addEventListener(name, function (event) { event.preventDefault(); });
-    });
-    drop.addEventListener("drop", function (event) {
-      event.preventDefault();
-      var file = event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0];
-      useSelfie(file);
-    });
+    if (drop) {
+      ["dragover", "dragenter"].forEach(function (name) {
+        drop.addEventListener(name, function (event) { event.preventDefault(); });
+      });
+      drop.addEventListener("drop", function (event) {
+        event.preventDefault();
+        var file = event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0];
+        useSelfie(file);
+      });
+    }
 
     document.querySelectorAll(".slot-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -2147,28 +2329,39 @@
       );
     });
 
-    // Reel Feature 1: Test WhatsApp Auto-Booking
-    var autoWaBtn = document.getElementById("book-auto-wa-btn");
-    if (autoWaBtn) {
-      autoWaBtn.addEventListener("click", async function () {
-        var name = document.getElementById("book-name").value.trim() || "Customer";
-        var phone = normalizePhone(document.getElementById("book-phone").value) || "9509959157";
-        var date = document.getElementById("book-date").value || todayISO();
-        var slot = selectedSlot || "11 AM";
-
-        try {
-          var res = await fetch('/api/whatsapp/auto-book', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: name, phone: phone, date: date, slot: slot })
-          });
-          var data = await res.json();
-          if (data.success && data.whatsappResponse) {
-            window.open(data.whatsappResponse.directWaLink, '_blank');
-          }
-        } catch (e) {
-          window.open(waLink("Hi The Optical Hub, Auto-Booking confirmed: " + name + " on " + date + " at " + slot), '_blank');
+    // Prescription Vault Tab Switcher
+    var rxTabAdd = document.getElementById("rx-tab-add");
+    var rxTabLookup = document.getElementById("rx-tab-lookup");
+    var rxForm = document.getElementById("rx-form");
+    if (rxTabAdd && rxTabLookup) {
+      rxTabAdd.addEventListener("click", function () {
+        rxTabAdd.classList.add("is-active", "bg-pine", "text-white");
+        rxTabAdd.classList.remove("text-ink/70");
+        rxTabLookup.classList.remove("is-active", "bg-pine", "text-white");
+        rxTabLookup.classList.add("text-ink/70");
+        if (rxForm) rxForm.scrollIntoView({ behavior: "smooth" });
+      });
+      rxTabLookup.addEventListener("click", function () {
+        rxTabLookup.classList.add("is-active", "bg-pine", "text-white");
+        rxTabLookup.classList.remove("text-ink/70");
+        rxTabAdd.classList.remove("is-active", "bg-pine", "text-white");
+        rxTabAdd.classList.add("text-ink/70");
+        var lookupInput = document.getElementById("rx-lookup-phone");
+        if (lookupInput) {
+          lookupInput.focus();
+          lookupInput.scrollIntoView({ behavior: "smooth" });
         }
+      });
+    }
+
+    var rxLookupBtn = document.getElementById("rx-lookup-btn");
+    if (rxLookupBtn) {
+      rxLookupBtn.addEventListener("click", function () {
+        var query = (document.getElementById("rx-lookup-phone").value || "").trim();
+        renderPrescriptions(query);
+      });
+      document.getElementById("rx-lookup-phone").addEventListener("input", function (e) {
+        if (!e.target.value.trim()) renderPrescriptions();
       });
     }
 
@@ -2257,8 +2450,9 @@
       if (!valid) return;
 
       var id = String(Date.now());
+      var ticketId = "OPT-" + Math.floor(1000 + Math.random() * 9000);
       if (file && file.type.indexOf("image/") === 0) repairPhotos[id] = URL.createObjectURL(file);
-      var entry = { id: id, name: name, phone: phone, problem: problem, date: date, status: "Raised", hasPhoto: Boolean(file) };
+      var entry = { id: id, ticketId: ticketId, name: name, phone: phone, problem: problem, date: date, status: "Raised", hasPhoto: Boolean(file) };
       var all = readStore(REPAIR_KEY);
       all.unshift(entry);
       writeStore(REPAIR_KEY, all);
@@ -2266,7 +2460,7 @@
       renderRepairs();
       var box = document.getElementById("repair-success");
       box.classList.remove("hidden");
-      document.getElementById("repair-success-text").textContent = name + ", the " + problem.toLowerCase() + " request is Raised. Collect on " + prettyDate(date) + ".";
+      document.getElementById("repair-success-text").textContent = "Namaste " + name + "! Aapka repair ticket successfully generate ho gaya hai: " + ticketId + " (" + problem + "). Expected collection: " + prettyDate(date) + ". Is Ticket ID aur phone number se aap status track kar sakte hain.";
       event.target.reset();
       var previewContainer = document.getElementById("repair-preview-container");
       if (previewContainer) previewContainer.classList.add("hidden");
@@ -2275,11 +2469,29 @@
     var repairSearchBtn = document.getElementById("repair-search-btn");
     if (repairSearchBtn) {
       repairSearchBtn.addEventListener("click", function () {
-        var query = (document.getElementById("repair-search-phone").value || "").trim();
-        renderRepairs(query);
+        var ticketQ = (document.getElementById("repair-search-ticket").value || "").trim();
+        var phoneQ = (document.getElementById("repair-search-phone").value || "").trim();
+        var errEl = document.getElementById("repair-search-error");
+        if (!ticketQ && !phoneQ) {
+          if (errEl) {
+            errEl.textContent = "Kripya Ticket ID (OPT-XXXX) aur registered mobile number dono enter karein.";
+            errEl.classList.remove("hidden");
+          }
+          renderRepairs();
+          return;
+        }
+        if (errEl) errEl.classList.add("hidden");
+        renderRepairs(ticketQ, phoneQ);
       });
       document.getElementById("repair-search-phone").addEventListener("input", function (e) {
-        if (!e.target.value.trim()) renderRepairs();
+        if (!e.target.value.trim() && !document.getElementById("repair-search-ticket").value.trim()) {
+          renderRepairs();
+        }
+      });
+      document.getElementById("repair-search-ticket").addEventListener("input", function (e) {
+        if (!e.target.value.trim() && !document.getElementById("repair-search-phone").value.trim()) {
+          renderRepairs();
+        }
       });
     }
 
